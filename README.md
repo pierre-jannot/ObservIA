@@ -13,11 +13,20 @@ Ajouter la table de correspondances avec le nom table-correspondance-rome-rncp.c
 ## Données formations.csv
 Colonnes :
 
+annee_mois
+code_rncp
+intitule_certification
+entrees_formation
+
+Nombre de lignes : 2942 sans en-tête
+
+## Données correspondances.csv
+Colonnes :
+
 code_rome
 intitule_rome
 code_rncp
 intitule_rncp
 niveau_rncp
-annee_mois
-intitule_certification
-entrees_formation
+
+Nombre de lignes : 313 sans en-tête
