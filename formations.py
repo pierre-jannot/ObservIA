@@ -14,22 +14,29 @@ def filter_data(formations, correspondances):
 
     correspondances["code_rncp"] = correspondances["code_rncp"].str.extract(r"(\d+)")[0].astype(int)
 
-    data = correspondances.merge(formations, on="code_rncp", how="inner")
+    formations = formations[formations["code_rncp"].isin(correspondances["code_rncp"])]
+    correspondances = correspondances[correspondances["code_rncp"].isin(formations["code_rncp"])]
 
-    return data
+    return formations, correspondances
 
-def write_data(data):
+def write_data(formations, correspondances):
     if os.path.exists("result/formations.csv"):
         print("Données result/formations.csv existantes. Réécriture des données ignorée.")
     else:
-        data.to_csv("result/formations.csv", sep=";", index=False, encoding="utf-8")
+        formations.to_csv("result/formations.csv", sep=";", index=False, encoding="utf-8")
         print("Données result/formations.csv écrites avec succès.")
 
+    if os.path.exists("result/correspondances.csv"):
+        print("Données result/correspondances.csv existantes. Réécriture des données ignorée.")
+    else:
+        correspondances.to_csv("result/correspondances.csv", sep=";", index=False, encoding="utf-8")
+        print("Données result/correspondances.csv écrites avec succès.")
+
 def compute_formation_data():
-    if os.path.exists("result/formations.csv"):
-        print("Données result/formations.csv existantes. Réécriture des données ignorée.")
+    if os.path.exists("result/formations.csv") and os.path.exists("result/correspondances.csv"):
+        print("Données result/formations.csv et correspondances.csv existantes. Réécriture des données ignorée.")
         return
     else:
         formations, correspondances = init_data()
-        data = filter_data(formations=formations, correspondances=correspondances)
-        write_data(data)
+        formations, correspondances = filter_data(formations=formations, correspondances=correspondances)
+        write_data(formations, correspondances)
