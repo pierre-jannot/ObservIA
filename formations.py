@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 def init_data():
     formations = pd.read_csv("data/datagouv/entree_sortie_formation.csv", sep=";", encoding="utf-8")
@@ -18,4 +19,17 @@ def filter_data(formations, correspondances):
     return data
 
 def write_data(data):
-    data.to_csv("result/formations.csv", sep=";", index=False, encoding="utf-8")
+    if os.path.exists("result/formations.csv"):
+        print("Données result/formations.csv existantes. Réécriture des données ignorée.")
+    else:
+        data.to_csv("result/formations.csv", sep=";", index=False, encoding="utf-8")
+        print("Données result/formations.csv écrites avec succès.")
+
+def compute_formation_data():
+    if os.path.exists("result/formations.csv"):
+        print("Données result/formations.csv existantes. Réécriture des données ignorée.")
+        return
+    else:
+        formations, correspondances = init_data()
+        data = filter_data(formations=formations, correspondances=correspondances)
+        write_data(data)
