@@ -1,4 +1,4 @@
-from formations import compute_formation_data
+from compute_formations import compute_formation_data
 
 def main():
     compute_formation_data()

@@ -1,3 +1,4 @@
-/data
-/result
+/data/*
+/result/*
 /__pycache__
+*/__pycache__
