@@ -1,0 +1,9 @@
+User-Agent: *
+Disallow: /test-widget
+Disallow: /recherche-formation
+Disallow: /recherche-emploi
+Disallow: /espace-pro
+Disallow: /1jeune1solution
+Disallow: /1jeune1solution-recruteurs
+
+Sitemap: https://labonnealternance.apprentissage.beta.gouv.fr/sitemap-index.xml

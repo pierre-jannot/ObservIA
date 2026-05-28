@@ -1,0 +1,79 @@
+PRÉAMBULE
+La plateforme La bonne alternance (ci-après la Plateforme) est un système d’information ayant pour objet :
+La mise en relation de plusieurs acteurs de l’apprentissage à savoir les alternants, les entreprises et les centres de formation; 
+De permettre aux alternants de déposer une candidature spontanée, de candidater via France travail ou de prendre rendez-vous avec un centre de formation ;
+Et de permettre aux entreprises et centres de formation de mettre en	avant leurs offres d’emploi ou de formation.
+La Plateforme est créée et administrée par la Délégation générale à l'Emploi et à la Formation professionnelle du ministère du Travail (ci-après « la DGEFP »).
+L’Utilisateur reconnaît que l’utilisation de la Plateforme nécessite le respect de l’ensemble des	dispositions des présentes et adhère sans réserve aux présentes conditions générales d’utilisation.
+DÉFINITIONS
+Les termes ci-dessous définis ont, entre les parties, la signification suivante :
+« DGEFP » : délégation générale à l’emploi et à la formation professionnelle.
+« La bonne alternance » : service numérique destiné à faciliter la mise en relation des jeunes, des entreprises et des centres de formation.
+« Ministère » : ministère du Travail, du plein Emploi et de l’Insertion
+« Utilisateur » : désigne toute personne qui utilise les services proposés par la « Plateforme » (candidat, représentant de l’entreprise ou représentant du centre de formation)
+OBJET
+Les présentes conditions générales ont pour objet de définir les modalités d’utilisation de la Plateforme, les fonctionnalités de la Plateforme et les responsabilités de la DGEFP et des Utilisateurs.
+ACCEPTATION
+Les présentes conditions générales ont valeur contractuelle et sont opposables à l’Utilisateur dès leur acceptation par ce dernier.
+A défaut d’acceptation des présentes conditions générales d’utilisation, l’Utilisateur ne pourra pas bénéficier des services de la plateforme.
+Les présentes conditions générales d’utilisation sont opposables pendant toute la durée d’utilisation de la Plateforme et l’utilisateur reste responsable de toute action effectuée durant l’utilisation de la Plateforme.
+MISE À JOUR DES CONDITIONS GÉNÉRALES D’UTILISATION
+Les termes des présentes conditions générales d’utilisation peuvent être amendés à tout moment, sans préavis, en fonction des modifications apportées à la Plateforme, de l’évolution de la législation ou pour tout autre motif jugé nécessaire. Chaque modification donne lieu à une nouvelle version qui est acceptée par l’Utilisateur.
+L'Utilisateur sera informé en cas de modification des Conditions Générales d'Utilisation.
+Si l'Utilisateur s'oppose aux modifications apportées, il est libre de cesser d'utiliser à tout moment les services de la Plateforme.
+ENTRÉE EN VIGUEUR
+Les présentes conditions générales d’utilisation entrent en vigueur à compter de leur date de mise en ligne sur la Plateforme.
+Les anciennes conditions générales d’utilisation peuvent être consultées à tout moment grâce à un versionnage mis en place par la Plateforme.
+CRÉATION DU COMPTE
+La procédure de création de compte permet aux Utilisateurs de se créer un compte associé à leur type de profil et d’accéder aux fonctionnalités de la Plateforme . L’Utilisateur est titulaire d'un compte personnel, accessible par son identifiant personnel et un lien magique envoyé sur son adresse électronique dès lors que toutes les formalités nécessaires à son inscription sont	complétées. Un seul compte peut être attribué par Utilisateur.
+L’Utilisateur doit indiquer une adresse électronique valide.
+Il incombe à l’Utilisateur de s’assurer qu’il a seul accès à son courrier électronique.
+Tout accès à, et toute utilisation de la Plateforme à partir de l’adresse électronique de l’Utilisateur est présumé comme émanant exclusivement de l’Utilisateur.
+L’Utilisateur est responsable de la sincérité des informations qu’il fournit et s’engage à mettre à jour les informations le concernant ou à aviser la DGEFP sans délai de toute modification affectant sa situation.
+En cas d’utilisation frauduleuse de son compte, l’Utilisateur s’engage à prévenir immédiatement la DGEFP. Cette notification devra être adressée à la DGEFP via l’adresse e-mail suivante :	contact@labonnealternance.apprentissage.beta.gouv.fr
+La date de réceptionde cette notification fera foi entre les parties. En l’absence de cette notification, l’utilisation est présumée être celle de l’Utilisateur. Il lui reviendra de s’assurer de l’usurpation ou de la compromission éventuelle.
+PRÉSENTATION DE LA PLATEFORME
+La bonne alternance permet :
+La recherche de formations et d’entreprises ;
+La mise en relation avec les entreprises ;
+L’envoi de candidatures ;
+La prise de rendez-vous auprès de centres de formation ;
+Le recueil de besoins en recrutement ;
+La certification des comptes professionnels; 
+La mise en relation CFA-Entreprises.
+
+Chaque candidat peut rechercher une offre d’emploi ou une formation en renseignant le métier ou diplôme recherché, le lieu, le rayon (en kilomètres) et le niveau d’études visé.
+Chaque candidat peut ensuite déposer une candidature pour répondre à une offre déposée par une entreprise, candidater via France travail ou candidater à une entreprise identifiée par la Plateforme. Chaque candidat peut aussi prendre rendez-vous avec un centre de formation pour bénéficier d’informations complémentaires.
+Chaque entreprise peut, en se créant un compte, déposer une offre d’alternance et peut être accompagnée par un centre de formation ou un OPCO pour mettre en avant l’offre de recrutement.
+Chaque centre de formation peut, en se créant un compte, déposer des offres d’emploi pour des entreprises partenaires.
+ACCÈS À LA PLATEFORME
+La DGEFP se réserve le droit, sans préavis, ni indemnité, de fermer temporairement l’accès à une ou plusieurs fonctionnalités de la Plateforme pour effectuer une mise à jour, des modifications ou changement sur les méthodes opérationnelles, les serveurs et les heures d’accessibilité. Cette liste n’est pas limitative. Dans ce cas, la DGEFP peut indiquer une date de réouverture du compte ou d’accessibilité à une ou plusieurs fonctionnalités.
+En cas d’impossibilité d’accéder et/ou d’utiliser la Plateforme, l’Utilisateur peut toujours s’adresser à la DGEFP pour obtenir des informations via l’adresse suivante : contact@labonnealternance.apprentissage.beta.gouv.fr
+CONFIDENTIALITÉ / SECURITÉ
+La DGEFP met en place les moyens nécessaires pour assurer le bon fonctionnement de la plateforme et pour assurer la sécurité et la confidentialité des données des utilisateurs.
+RESPONSABILITÉ DU MINISTÈRE
+La DGEFP ne saurait être responsable :
+En raison	d'une interruption du service quelle que soit la durée ou la fréquence de cette interruption et quelle qu'en soit la cause, notamment en raison d'une maintenance nécessaire au fonctionnement,	de pannes éventuelles, d'aléas techniques liés à la nature du réseau Internet, d'actes de malveillance ou de toute atteinte portée au fonctionnement de la Plateforme ;
+Sauf faute ou négligence prouvée de la DGEFP, des atteintes à la confidentialité des données personnelles de l’Utilisateur résultant de l’utilisation de son	identifiant ;
+Des conséquences provoquées par le caractère erroné ou frauduleux des informations fournies par un Utilisateur ;
+Des dommages directs ou indirects résultant de l'attitude, de la conduite ou du	comportement d'un autre Utilisateur ;
+Des	atteintes à la sécurité du système d’information, ainsi qu’aux données, pouvant causer des dommages aux matériels informatiques des Utilisateurs et à leurs données dès lors que le fait ne lui est pas imputable.
+RESPONSABILITÉ DES UTILISATEURS
+Dans le cadre de l’utilisation de la Plateforme, l’Utilisateur s’engage à :
+Se conformer aux stipulations décrites dans les Conditions Générales d'Utilisation et aux dispositions des lois et règlements en vigueur, et à respecter les droits des tiers ;
+Ne créer qu'un seul compte utilisateur et ne communiquer que des informations, fichiers et autres contenus conformes à la réalité, honnêtes et loyaux ;
+Ne pas divulguer via la Plateforme des propos ou des contenus illicites, et notamment tous contenus contrefaits, diffamatoires, injurieux, insultants, obscènes, offensants, discriminatoires, violents, xénophobes, incitant à la haine raciale ou faisant l'apologie du terrorisme, ou tout autre contenu contraire à la législation et réglementation applicable ainsi qu'aux bonnes mœurs et aux règles de bienséance ;
+Ne pas intégrer et diffuser via la Plateforme du contenu qui serait contraire à la finalité de celle-ci ;
+Ne pas communiquer ou envoyer, par l'intermédiaire de la plateforme, du contenu, quel qu'il soit, qui comprendrait des liens pointant vers des sites internet illicites, offensants ou incompatibles avec la finalité du Site ;
+En outre, l'Utilisateur garantit expressément la véracité et la réalité des informations qu'il communique sur la Plateforme.
+En cas de manquement à une ou plusieurs de ces obligations, la DGEFP se réserve le droit de suspendre l’accès et/ou de supprimer le compte de l'Utilisateur responsable.
+PROPRIÉTÉ INTELLECTUELLE
+La Plateforme et tous les éléments qui le composent notamment les programmes, données, textes, images, sons, dessins, graphismes	etc. sont la propriété de la DGEFP ou font l'objet d'une	concession accordée à son profit. Toute copie, reproduction, représentation, adaptation, diffusion, intégrale ou partielle de	la Plateforme, par quelque procédé que ce soit et sur quelque support que ce soit est soumise à l’accord préalable écrit de la DGEFP, sous réserve des exceptions prévues par le Code de propriété intellectuelle.
+Toute utilisation non autorisée des contenus ou informations de la Plateforme, notamment à des fins d’exploitation commerciale, pourra faire l’objet de poursuites sur la base d’une action en	contrefaçon et/ou d’une action en concurrence déloyale et/ou parasitisme de la part de la DGEFP.
+ 
+PROTECTION DES DONNÉES À CARACTÈRE PERSONNEL
+Les données à caractère personnel sont traitées par la DGEFP et les utilisateurs dans le respect des dispositions de la Loi n° 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, dans sa version en vigueur, ainsi qu’au Règlement Général sur la Protection des Données (RGPD).
+Conformément à l’article L. 322-2 du code entre le public et l’administration, la réutilisation éventuelle d'informations publiques comportant des données à caractère personnel est subordonnée au respect des dispositions de la loi n° 78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés.
+ 
+DROIT APPLICABLE ET APPLICATION DE COMPÉTENCE
+Les Conditions Générales d'Utilisation sont régies par le droit français. Toute difficulté relative à la validité, l'application ou l'interprétation des Conditions Générales d'Utilisation seront soumises, à défaut d'accord amiable, à la compétence du Tribunal Administratif de Paris, auquel les parties attribuent compétence territoriale, quel que soit le lieu d'exécution de la Plateforme ou le domicile du défendeur. Cette attribution de compétence s'applique également en cas de procédure en référé, de pluralité de défendeurs ou d'appel en garantie.
