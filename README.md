@@ -6,6 +6,9 @@ py 3.14.2 -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 
+## Ajout des variables d'environnement
+Copier le .env.example en .env et remplir les champs avec les informations de l'API France Travail
+
 ## Initialisation du projet
 Ajouter les données csv au dossier data/datagouv
 Ajouter la table de correspondances avec le nom table-correspondance-rome-rncp.csv au dossier data/datagouv
