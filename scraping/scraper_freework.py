@@ -12,6 +12,9 @@ def scrape_freework_offer(url):
     try:
         soup = BeautifulSoup(requests.get(url, headers=HEADERS).text, "html.parser") # télécharge la page de l'offre
 
+        # Juste après soup = BeautifulSoup(...)
+        #print(soup.prettify()[:3000])  # affiche les 3000 premiers caractères du HTML brut
+
          # Titre
         titre = soup.find("h1").get_text(strip=True) # Va chercher le titre depuis la balise <h1> dans le HTML de la page et extrait le texte brut -  Résultat brut : "Offre d'emploiLead Architect"
         titre = titre.replace("Offre d'emploi", "").replace("Mission freelance", "").strip()  
@@ -38,18 +41,39 @@ def scrape_freework_offer(url):
             sections[titre_section] = " ".join(contenu)
             #  Boucle sur tous les titres <h2> de la page, Pour chaque titre, récupère tout le texte qui suit jusqu'au prochain <h2>, Résultat : {"Profil recherché": "Bac+5...", "Environnement de travail": "..."} python
 
+        
+        # Localisation depuis og:title
+        og_title = soup.find("meta", property="og:title")
+        ville = ""
+        region = ""
+
+        if og_title:
+            contenu = og_title.get("content", "")
+            # Extrait ce qui est juste avant "| Free-work"
+            match = re.search(r'[\—\-]\s*([\w\s\(\)\-\.]+?)\s*\|\s*Free-work', contenu)
+            if match:
+                ville = match.group(1).strip()
+                # Nettoie les numéros de département ex: "Lyon (69)" → "Lyon"
+                ville = re.sub(r'\s*\(\d+\)', '', ville).strip()
+
+            loc_tag = soup.find("span", attrs={"title": re.compile(r".+, .+")})
+            print(f"DEBUG localisation : {loc_tag}")  # ← ajoute ça
+
         return {
             "titre": titre,
             "date_publication": date_pub,
             "competences_tags": tags,
-            "profil": sections.get("Profil recherché", "") # Retourne uniquement les 4 champs qui nous intéressent
+            "profil": sections.get("Profil recherché", ""), # Retourne uniquement les 4 champs qui nous intéressent
+            "ville": ville,
+            "region": region
         }
+
     except Exception as e:
         print(f"Erreur : {e}")
         return None #  Si quoi que ce soit plante sur cette offre → on affiche l'erreur et on continue sans bloquer tout le script
 
 
-def get_all_offer_urls(nb_pages=555):
+def get_all_offer_urls(nb_pages=3):
     all_urls = []
     for page in range(1, nb_pages + 1): # boucle de la page 1 à page 555
         print(f"Scraping page {page}/{nb_pages}...")
@@ -69,7 +93,7 @@ def get_all_offer_urls(nb_pages=555):
 
 def scrape_all_offers():
     print("=== Étape 1 : Récupération des URLs ===")
-    urls = get_all_offer_urls(nb_pages=3)
+    urls = get_all_offer_urls(nb_pages=1)
     print(f"\nTotal URLs trouvées : {len(urls)}")
 
     print("\n=== Étape 2 : Scraping des offres ===")
@@ -77,16 +101,20 @@ def scrape_all_offers():
     for i, url in enumerate(urls): #  Boucle sur chaque URL récupérée à l'étape 1 'enumerate' donne aussi le numéro i pour afficher la progression
         print(f"Offre {i+1}/{len(urls)}")
         offre = scrape_freework_offer(url) # Appelle la fonction qui scrape le détail de l'offre
-        if offre:
+        
+        # FILTRE - offres françaises uniquement
+        pays_exclus = ["Suisse", "Belgique", "España", "Luxembourg"]
+        if offre and offre.get("region", "") not in pays_exclus:
             offres.append(offre)
-        if i % 100 == 0 and i > 0:
+
+        if i % 100 == 0 and i > 0: #  "toutes les 100 offres (100, 200, 300...), sauf au début"
             with open("offres_freework_backup.json", "w", encoding="utf-8") as f:
-                json.dump(offres, f, ensure_ascii=False, indent=2) # toutes les 100 offres on sauvegarde, si ça plante à l'offre 500 on ne perd pas tout 
+                json.dump(offres, f, ensure_ascii=False, indent=2) # "Sauvegarde ma liste d’offres dans un fichier JSON, proprement formaté et lisible"
             print(f"  → Backup sauvegardé ({len(offres)} offres)")
         time.sleep(random.uniform(1, 2)) # pause entre chaque offre - on évite le blocage
 
     with open("offres_freework.json", "w", encoding="utf-8") as f:
-        json.dump(offres, f, ensure_ascii=False, indent=2) #  Sauvegarde finale de toutes les offres dans un fichier JSON
+        json.dump(offres, f, ensure_ascii=False, indent=2) #  Sauvegarde finale de toutes les offres dans un fichier JSON ( pas de doublon)
     
 
     print(f"\n✅ Terminé ! {len(offres)} offres sauvegardées")
