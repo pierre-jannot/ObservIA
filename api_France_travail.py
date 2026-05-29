@@ -1,6 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv
+import time
 
 # Chargement des variables d'environnement (.env)
 load_dotenv()
@@ -17,12 +18,12 @@ def get_france_travail_token():
         'grant_type': 'client_credentials',
         'client_id': client_id,
         'client_secret': client_secret,
-        'scope': 'api_offresdemploiv2'
+        'scope': 'api_offresdemploiv2 o2dsoffre'
     }
 
     url_token = "https://entreprise.francetravail.fr/connexion/oauth2/access_token?realm=/partenaire"
 
-    reponse = requests.post(url_token, data=donnees_authentification)
+    reponse = requests.post(url_token, data=donnees_authentification, headers={'Content-Type': 'application/x-www-form-urlencoded'})
     print("Code Statut HTTP Authentification :", reponse.status_code)
     print("Réponse brute de l'authentification :", reponse.text)
     
@@ -40,6 +41,8 @@ def chercher_offres(token_access):
     # Configuration des entêtes avec le Bearer token
     entetes = {
         'Authorization': f'Bearer {token_access}',
+        'Accept': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
     }
 
     # Critères de recherche (Filtres)
@@ -89,7 +92,9 @@ def chercher_offres(token_access):
             print(f"Compétences : {competences_propres}")
             print("-" * 50)
     else:
-        print("Erreur lors de la recherche d'offres :", reponse.text)
+        print("Erreur lors de la recherche d'offres :", dict(reponse.headers))
+        print(reponse.text)
+    time.sleep(0.2)  # Pause pour éviter de surcharger l'API
 
 
 # --- SCRIPT GLOBAL (POINT D'ENTRÉE) ---
