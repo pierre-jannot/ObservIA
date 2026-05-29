@@ -1,12 +1,9 @@
 <mxfile host="Electron">
   <diagram name="Page-1" id="a_VvsDKZCs2n-q3zeITP">
-    <mxGraphModel dx="2519" dy="2049" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3647" dy="2636" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="06uHW34ZKOic_WIQbYIw-37" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="France_travail" vertex="1">
-          <mxGeometry height="200" width="200" x="980" y="1140" as="geometry" />
-        </mxCell>
         <mxCell id="06uHW34ZKOic_WIQbYIw-59" parent="1" style="shape=internalStorage;whiteSpace=wrap;html=1;backgroundOutline=1;dx=40;dy=30;" value="" vertex="1">
           <mxGeometry height="310" width="250" x="22" y="260" as="geometry" />
         </mxCell>
