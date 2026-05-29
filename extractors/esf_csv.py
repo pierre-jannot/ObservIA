@@ -1,5 +1,4 @@
 import pandas as pd
-import os
 
 def load_csv_data():
     formations = pd.read_csv("data/datagouv/entree_sortie_formation.csv", sep=";", encoding="utf-8")
