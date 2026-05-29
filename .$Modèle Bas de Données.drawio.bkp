@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Page-1" id="a_VvsDKZCs2n-q3zeITP">
-    <mxGraphModel dx="2237" dy="1902" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2779" dy="2184" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -332,6 +332,33 @@
         </mxCell>
         <mxCell id="GHxzwjz7yCiV_zcave8q-25" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="FK" vertex="1">
           <mxGeometry height="30" width="73" x="433.5" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="Tm-9-QcNfQ9spIL5owFW-1" parent="1" style="shape=internalStorage;whiteSpace=wrap;html=1;backgroundOutline=1;dx=40;dy=30;" value="" vertex="1">
+          <mxGeometry height="130" width="270" x="-550" y="-210" as="geometry" />
+        </mxCell>
+        <mxCell id="Tm-9-QcNfQ9spIL5owFW-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Siret" vertex="1">
+          <mxGeometry height="30" width="60" x="-480" y="-210" as="geometry" />
+        </mxCell>
+        <mxCell id="Tm-9-QcNfQ9spIL5owFW-3" parent="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="nom_raison_social" vertex="1">
+          <mxGeometry height="30" width="140" x="-510" y="-150" as="geometry" />
+        </mxCell>
+        <mxCell id="Tm-9-QcNfQ9spIL5owFW-4" parent="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Région" vertex="1">
+          <mxGeometry height="30" width="140" x="-510" y="-115" as="geometry" />
+        </mxCell>
+        <mxCell id="Tm-9-QcNfQ9spIL5owFW-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="PK" vertex="1">
+          <mxGeometry height="30" width="38" x="-550" y="-180" as="geometry" />
+        </mxCell>
+        <mxCell id="Tm-9-QcNfQ9spIL5owFW-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="VARCHAR255" vertex="1">
+          <mxGeometry height="30" width="90" x="-380" y="-150" as="geometry" />
+        </mxCell>
+        <mxCell id="Tm-9-QcNfQ9spIL5owFW-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="INT" vertex="1">
+          <mxGeometry height="30" width="80" x="-380" y="-180" as="geometry" />
+        </mxCell>
+        <mxCell id="Tm-9-QcNfQ9spIL5owFW-8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="INT" vertex="1">
+          <mxGeometry height="30" width="60" x="-340" y="-110" as="geometry" />
+        </mxCell>
+        <mxCell id="Tm-9-QcNfQ9spIL5owFW-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Siret" vertex="1">
+          <mxGeometry height="30" width="60" x="-500" y="-180" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
