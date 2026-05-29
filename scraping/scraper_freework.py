@@ -5,7 +5,11 @@ import time           # faire des pauses
 import random         # générer des nombres aléatoires
 import json           # sauvegarder en fichier JSON
 
-HEADERS = {"User-Agent": "Mozilla/5.0"} #  On se déguise en vrai navigateur pour ne pas se faire bloquer
+HEADERS = {"User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/125.0 Safari/537.36"
+    )} #  On se déguise en vrai navigateur pour ne pas se faire bloquer
 BASE_URL = "https://www.free-work.com" # L'adresse de base du site, réutilisée partout dans le code
 
 def scrape_freework_offer(url):
@@ -30,6 +34,14 @@ def scrape_freework_offer(url):
         tags = [a.get_text(strip=True) for a in soup.select("a[href*='/jobs/']")]
         # Récupère les tags compétences cliquables ex: ["PHP", "Drupal", "CSS"]
 
+        zone = soup.find("aside").find_all("span")[-1].get_text(strip=True)
+        zone = zone.split(", ")
+        if len(zone)>1:
+            ville, region = zone
+        else:
+            ville = ''
+            region = zone
+
         sections = {}
         for h2 in soup.find_all("h2"):
             titre_section = h2.get_text(strip=True)
@@ -42,22 +54,22 @@ def scrape_freework_offer(url):
             #  Boucle sur tous les titres <h2> de la page, Pour chaque titre, récupère tout le texte qui suit jusqu'au prochain <h2>, Résultat : {"Profil recherché": "Bac+5...", "Environnement de travail": "..."} python
 
         
-        # Localisation depuis og:title
-        og_title = soup.find("meta", property="og:title")
-        ville = ""
-        region = ""
+        # # Localisation depuis og:title
+        # og_title = soup.find("meta", property="og:title")
+        # ville = ""
+        # region = ""
 
-        if og_title:
-            contenu = og_title.get("content", "")
-            # Extrait ce qui est juste avant "| Free-work"
-            match = re.search(r'[\—\-]\s*([\w\s\(\)\-\.]+?)\s*\|\s*Free-work', contenu)
-            if match:
-                ville = match.group(1).strip()
-                # Nettoie les numéros de département ex: "Lyon (69)" → "Lyon"
-                ville = re.sub(r'\s*\(\d+\)', '', ville).strip()
+        # if og_title:
+        #     contenu = og_title.get("content", "")
+        #     # Extrait ce qui est juste avant "| Free-work"
+        #     match = re.search(r'[\—\-]\s*([\w\s\(\)\-\.]+?)\s*\|\s*Free-work', contenu)
+        #     if match:
+        #         ville = match.group(1).strip()
+        #         # Nettoie les numéros de département ex: "Lyon (69)" → "Lyon"
+        #         ville = re.sub(r'\s*\(\d+\)', '', ville).strip()
 
-            loc_tag = soup.find("span", attrs={"title": re.compile(r".+, .+")})
-            print(f"DEBUG localisation : {loc_tag}")  # ← ajoute ça
+        #     loc_tag = soup.find("span", attrs={"title": re.compile(r".+, .+")})
+        #     print(f"DEBUG localisation : {loc_tag}")  # ← ajoute ça
 
         return {
             "titre": titre,
