@@ -1,109 +1,144 @@
-import os          # pour lire les variables d'environnement (.env)
-import requests    # pour faire des appels HTTP à l'API
-from dotenv import load_dotenv  # pour charger le fichier .env
-import time        # pour les pauses entre appels API
+import os
+import requests
+import csv
+import time
+from dotenv import load_dotenv
 
-load_dotenv()  # lit ton fichier .env et charge ID_FRANCE_TRAVAIL et CLE_FRANCE_TRAVAIL
-               # dans l'environnement, sinon os.getenv() retournerait None
+load_dotenv()
 
-# Liste simple des codes ROME tech — une liste suffit, pas besoin d'un dictionnaire
-# car on ne veut pas afficher l'intitulé du ROME, juste faire les appels
-CODES_ROME_TECH = [
-    'M1801', 'M1802', 'M1803', 'M1804', 'M1805',
-    'M1806', 'M1807', 'M1808', 'M1810',
-    'I1401', 'I1305', 'I1307', 'I1302',
-    'H1202', 'H1206', 'H1208', 'H1209', 'H1210',
-    'E1101', 'E1104', 'E1205'
-]
+
+def charger_codes_rome(chemin_csv):
+    liste_rome = []
+    with open(chemin_csv, "r", encoding="utf-8-sig") as fichier:
+        lecteur = csv.DictReader(fichier, delimiter=";")
+        for ligne in lecteur:
+            if ligne["code_rome"] not in liste_rome:
+                liste_rome.append(ligne["code_rome"])
+    return liste_rome
 
 
 def get_france_travail_token():
-    # os.getenv() va chercher la valeur dans le .env chargé par load_dotenv()
     client_id     = os.getenv("ID_FRANCE_TRAVAIL")
     client_secret = os.getenv("CLE_FRANCE_TRAVAIL")
 
     reponse = requests.post(
         "https://entreprise.francetravail.fr/connexion/oauth2/access_token?realm=/partenaire",
         data={
-            'grant_type':    'client_credentials',  # type d'auth machine-to-machine (pas d'utilisateur humain)
+            'grant_type':    'client_credentials',
             'client_id':     client_id,
             'client_secret': client_secret,
             'scope':         'api_offresdemploiv2 o2dsoffre'
-            
         },
         headers={'Content-Type': 'application/x-www-form-urlencoded'}
     )
 
-    resultat = reponse.json()  # convertit la réponse texte en dictionnaire Python
-    token = resultat.get("access_token")  # extrait uniquement le token du dictionnaire
+    if reponse.status_code != 200:
+        print("Erreur de token :", reponse.text)
+        return None
+
+    resultat = reponse.json()
+    token = resultat.get("access_token")
     print(f"Token généré (expire dans {resultat.get('expires_in')}s)")
-    return token  # on retourne le token pour l'utiliser dans chercher_offres()
+    return token
 
 
-def chercher_offres(token_access, code_rome):
+def chercher_offres(token_access, code_rome, writer):
     entetes = {
         'Authorization': f'Bearer {token_access}',
         'Accept': 'application/json',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
     }
 
-    reponse = requests.get(
-        "https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search",
-        headers=entetes,
-        params={'rome': code_rome}
-    )
+    debut = 0          
+    taille = 149       
+    total = None       
 
-    if reponse.status_code == 429:
-        print(f"  Rate limit atteint, pause 15s...")
-        time.sleep(15)
-        return chercher_offres(token_access, code_rome)  # rappel récursif de la même fonction
+    while True:
+        # CORRECTION 1 : Le paramètre s'appelle 'codeROME'
+        params = {
+            'codeROME': code_rome,
+            'range': f"{debut}-{debut + taille}"
+        }
 
-    if reponse.status_code not in [200, 206]:
-        
-        print(f"  Erreur {reponse.status_code} sur {code_rome}")
-        return
+        reponse = requests.get(
+            "https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search",
+            headers=entetes,
+            params=params
+        )
 
-    liste_offres = reponse.json().get("resultats", [])
-    # .get("resultats", []) : si la clé "resultats" n'existe pas, retourne [] 
-    # plutôt que de planter avec une KeyError
-    print(f"  [{code_rome}] {len(liste_offres)} offres trouvées")
-    print("-" * 50)
+        if reponse.status_code == 429:
+            print("  Rate limit atteint, pause 15s...")
+            time.sleep(15)
+            continue 
 
-    for offre in liste_offres:
-        lieu = offre.get("lieuTravail", {})
-        # lieuTravail est un sous-dictionnaire imbriqué dans l'offre
-        # on le sort d'abord dans une variable pour ne pas répéter offre.get("lieuTravail")
+        # CORRECTION 2 : L'API renvoie 204 quand elle ne trouve aucune offre pour ce code
+        if reponse.status_code == 204:
+            if debut == 0:
+                print(f"  [{code_rome}] 0 offre au total (aucun poste vacant actuellement)")
+            break
 
-        localisation = f"{lieu.get('libelle', '')} ({lieu.get('codePostal', '')})"
+        if reponse.status_code not in [200, 206]:
+            print(f"  Erreur {reponse.status_code} sur {code_rome} : {reponse.text}")
+            break
 
+        # CORRECTION 3 : Récupérer le nombre total via les headers ("Content-Range: offres 0-149/1500")
+        if total is None:
+            content_range = reponse.headers.get("Content-Range", "")
+            if "/" in content_range:
+                total_str = content_range.split("/")[-1]
+                total = int(total_str) if total_str.isdigit() else 3000
+                print(f"  [{code_rome}] {total} offres au total")
+            else:
+                total = 3000
 
-        competences = [
-            {"code": c.get("code"), "nom": c.get("libelle")}
-            for c in offre.get("competences", [])
+        data = reponse.json()
+        liste_offres = data.get("resultats", [])
 
-        ]
+        for offre in liste_offres:
+            lieu = offre.get("lieuTravail", {})
+            localisation = f"{lieu.get('libelle', '')} ({lieu.get('codePostal', '')})"
 
-        print(f"ID : {offre.get('id')}")
-        print(f"Intitulé : {offre.get('intitule')}")
-        print(f"Date Actualisation : {offre.get('dateActualisation')}")
-        print(f"Code ROME : {offre.get('romeCode')}")
-        print(f"Localisation : {localisation}")
-        print(f"Compétences : {competences}")
-        print("-" * 50)
+            competences = [
+                {"code": c.get("code"), "nom": c.get("libelle")}
+                for c in offre.get("competences", [])
+            ]
 
-    time.sleep(0.3)
-    # pause de 300ms entre chaque code ROME
-    # évite de surcharger l'API et de déclencher le rate limit (429)
+            writer.writerow([
+                offre.get('id'),
+                offre.get('intitule'),
+                offre.get('dateActualisation'),
+                offre.get('romeCode'),
+                localisation,
+                competences
+            ])
+
+        # CORRECTION 4 : Arrêter proprement quand on atteint la fin des offres
+        if len(liste_offres) < (taille + 1):
+            break
+
+        debut += taille + 1
+
+        if debut >= total or debut >= 3000:
+            break
+
+        time.sleep(0.3)
 
 
 # ── POINT D'ENTRÉE ──────────────────────────────────────────────────
+if __name__ == "__main__":
+    CODES_ROME = charger_codes_rome("correspondance-rome-rncp.csv")
+    print(f"{len(CODES_ROME)} codes ROME chargés depuis le CSV\n")
 
-token_access = get_france_travail_token()
+    token_access = get_france_travail_token()
 
-if token_access:
-    for code in CODES_ROME_TECH:
-        # on boucle sur chaque code ROME tech et on appelle chercher_offres()
-        # le token est le même pour tous les appels (valide 25 min)
-        chercher_offres(token_access, code)
-else:
-    print("Token invalide.")
+    if token_access:
+        with open("offres.csv", "w", encoding="utf-8-sig", newline="") as fichier:
+            writer = csv.writer(fichier, delimiter=";")
+            writer.writerow(["id", "intitule", "dateActualisation", "romeCode", "localisation", "competences"])
+
+            for code in CODES_ROME:
+                chercher_offres(token_access, code, writer)
+                
+        print("\nTraitement terminé. Résultats sauvegardés dans offres.csv")
+    else:
+        print("Token invalide.")
