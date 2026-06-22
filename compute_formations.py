@@ -2,6 +2,7 @@ import os
 import pandas as pd
 from dotenv import load_dotenv
 from extractors.esf_csv import load_csv_data
+from extractors.scrap_departments import scrap_departments_information
 from transformers.rome_rncp_filtering import filter_data
 from transformers.siret_information import get_sirets_information
 from utils.write_to_csv import write_dataframe
@@ -14,6 +15,7 @@ result_path = os.getenv("RESULT_FOLDER_PATH")
 formations_path = os.getenv("FORMATIONS_PATH")
 correspondances_path = os.getenv("CORRESPONDANCES_PATH")
 sirets_path = os.getenv("SIRETS_PATH")
+departments_path = os.getenv("DEPARTMENTS_PATH")
 
 def compute_formation_data():
     create_folder(result_path)
@@ -26,7 +28,7 @@ def compute_formation_data():
         write_dataframe(path=formations_path, dataframe=formations)
         write_dataframe(path=correspondances_path, dataframe=correspondances)
 
-def compute_sirets_informations():
+def compute_sirets_information():
     if os.path.exists(sirets_path):
         print(f"Données {sirets_path} existantes. Réécriture des données ignorée.")
         return
@@ -35,3 +37,11 @@ def compute_sirets_informations():
         unique_sirets = get_unique_values(formations, "siret_of_contractant")
         sirets_information = pd.DataFrame(get_sirets_information(unique_sirets=unique_sirets))
         write_dataframe(path=sirets_path, dataframe=sirets_information)
+
+def compute_departments_information():
+    if os.path.exists(departments_path):
+        print(f"Données {departments_path} existantes. Réécriture des données ignorée.")
+        return
+    else:
+        departments = scrap_departments_information()
+        write_dataframe(path=departments_path, dataframe=departments)

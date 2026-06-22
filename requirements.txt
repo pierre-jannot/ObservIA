@@ -3,3 +3,4 @@ pandas
 requests
 tqdm
 sqlalchemy
+beautifulsoup4

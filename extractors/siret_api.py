@@ -1,4 +1,12 @@
 import requests
+import os
+import pandas as pd
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DEPARTMENTS_PATH = os.getenv("DEPARTMENTS_PATH")
 
 regions_table = {
     "84": "Auvergne-Rhône-Alpes",
@@ -33,4 +41,24 @@ def get_region_from_siret(siret: str) -> dict:
         "nom_raison_sociale": result["nom_raison_sociale"],
         "code_postal": siege["code_postal"],
         "region":      regions_table[siege["region"]],
+    }
+
+def get_department_from_siret(siret: str) -> dict:
+    departments_df = pd.read_csv(DEPARTMENTS_PATH, sep=";", dtype=str)
+
+    DEPARTMENT_TO_REGION = dict(
+    zip(departments_df["identifiant_departement"], departments_df["nom_departement"])
+    )
+
+    r = requests.get(
+        "https://recherche-entreprises.api.gouv.fr/search",
+        params={"q": siret, "mtm_campaign": "annuaire"}
+    )
+    result = r.json()["results"][0]
+    siege = result["siege"]
+    return {
+        "siret": siret,
+        "nom_raison_sociale": result["nom_raison_sociale"],
+        "code_postal": siege["code_postal"],
+        "departement":      DEPARTMENT_TO_REGION[siege["departement"]],
     }
