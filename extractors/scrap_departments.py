@@ -29,8 +29,8 @@ def scrap_departments_information():
 
     for title in titles:
         number_match = re.search(r'(?<=\s)(\d+[A-Z]?)(?=\s)', title)
-        department_match = re.search(r"(?<=\s|')([A-Z]\S*).", title)
-        department_dictionnary[number_match.group(1).strip()] = department_match.group(1).strip()
+        department_match = re.search(r"(?<=\s|')([A-Z][^.\s]*(?:\s[^.\s]+)*)\.", title)
+        department_dictionnary[number_match.group(1)] = department_match.group(1)
 
     df = pd.DataFrame(
         list(department_dictionnary.items()),

@@ -1,4 +1,4 @@
-from extractors.siret_api import get_department_from_siret
+from extractors.siret_api import get_department_from_siret, get_region_from_siret
 from tqdm import tqdm
 import time
 
