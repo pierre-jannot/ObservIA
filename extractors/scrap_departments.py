@@ -1,12 +1,11 @@
 import requests
-import re
 import pandas as pd
 
 from bs4 import BeautifulSoup
 
 def scrap_departments_information():
 
-    url = "https://www.regions-departements-france.fr/numero-departement.html"
+    url = "https://www.regions-departements-france.fr/"
     response = requests.get(
         url,
         headers={"User-Agent": "ScraperBot/1.0"},
@@ -18,24 +17,15 @@ def scrap_departments_information():
     html = response.text  # str de 50 ko
 
     soup = BeautifulSoup(html, "html.parser")
-    titles = [
-        a.get("title")
-        for tr in soup.select("tbody tr")
-        for th in tr.select("th")
-        for a in th.select("a")
+    table = soup.find("table", id="tableDepartements")
+    numbers = [
+        tr.get_text() for tr in table.select("tr")
     ]
 
-    department_dictionnary = {}
+    department_list = []
+    for value in numbers[1:]:
+        department_list.append(value[1:-1].split('\n'))
 
-    for title in titles:
-        number_match = re.search(r'(?<=\s)(\d+[A-Z]?)(?=\s)', title)
-        department_match = re.search(r"(?<=\s|')([A-Z][^.\s]*(?:\s[^.\s]+)*)\.", title)
-        department_dictionnary[number_match.group(1)] = department_match.group(1)
-
-    df = pd.DataFrame(
-        list(department_dictionnary.items()),
-        columns=["identifiant_departement", "nom_departement"])
-    
-    df = df.sort_values("identifiant_departement")
+    df = pd.DataFrame(department_list, columns=["identifiant_departement", "nom_departement", "region"])
 
     return df
