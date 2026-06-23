@@ -4,14 +4,15 @@ import time
 import psycopg2
 from dotenv import load_dotenv
 
+# Chargement des variables d'environnement depuis le fichier .env
 load_dotenv()
 
-# Recuperation des parametres de configuration PostgreSQL
+# Récupération des paramètres de configuration PostgreSQL
 DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_PORT = os.getenv("DB_PORT", "5432")
 DB_USER = os.getenv("DB_USER", "postgres")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_NAME = os.getenv("DB_NAME", "mon_projet_emploi")
+DB_NAME = os.getenv("DB_NAME", "ObservIA")  # Assure-toi que cette variable est bien définie sur ObservIA dans le .env
 
 CONN_PARAMS = {
     "host": DB_HOST,
@@ -23,17 +24,24 @@ CONN_PARAMS = {
 
 
 def charger_codes_rome_depuis_bdd(conn):
-    """Recupere uniquement les codes ROME presents en BDD qui commencent par M."""
-    print("Recuperation des codes ROME depuis la base de donnees...")
+    """Récupère uniquement les codes ROME présents en BDD qui commencent par M."""
+    print("Récupération des codes ROME depuis la base de données...")
     cursor = conn.cursor()
+    
+    # Correction : On cible le premier élément du tableau postgres code_rome[1] 
+    # et on filtre ceux qui commencent par 'M'
     query = "SELECT code_rome[1] FROM correspondance_rome_rncp WHERE code_rome[1] LIKE 'M%';"
+    
     cursor.execute(query)
     liste_rome = [row[0] for row in cursor.fetchall() if row[0]]
     cursor.close()
-    return liste_rome
+    
+    # Utilisation de set() pour éliminer les doublons éventuels
+    return list(set(liste_rome))
 
 
 def get_france_travail_token():
+    """Récupère le token d'authentification OAuth2 auprès de France Travail."""
     client_id = os.getenv("ID_FRANCE_TRAVAIL")
     client_secret = os.getenv("CLE_FRANCE_TRAVAIL")
 
@@ -49,19 +57,19 @@ def get_france_travail_token():
     )
 
     if reponse.status_code != 200:
-        print("Erreur de token :", reponse.text)
+        print("Erreur d'obtention du token :", reponse.text)
         return None
 
     resultat = reponse.json()
     token = resultat.get("access_token")
-    print(f"Token genere (expire dans {resultat.get('expires_in')}s)")
+    print(f"Token généré (expire dans {resultat.get('expires_in')}s)")
     return token
 
 
 def stocker_offre_et_competences(cursor, offre):
-    """Insere une offre, ses competences et met a jour la table pivot."""
+    """Insère une offre, ses compétences et met à jour la table pivot."""
     
-    # Extraction et nettoyage strict du code departement (ex: 75, 13, 974)
+    # Extraction et nettoyage strict du code département (ex: 75, 13, 974)
     lieu = offre.get("lieuTravail", {})
     code_postal = lieu.get("codePostal")
     code_dept = None
@@ -69,36 +77,44 @@ def stocker_offre_et_competences(cursor, offre):
     if code_postal and isinstance(code_postal, str):
         code_postal = code_postal.strip()
         if code_postal.startswith(("97", "98")):
-            # Outre-mer : le departement est sur 3 chiffres (ex: 97400 -> 974)
+            # Outre-mer : le département est sur 3 chiffres (ex: 97400 -> 974)
             code_dept = code_postal[:3]
         else:
-            # Metropole : le departement est sur 2 chiffres (ex: 75001 -> 75)
+            # Métropole : le département est sur 2 chiffres (ex: 75001 -> 75)
             code_dept = code_postal[:2]
             
-    # Securite pour respecter la taille VARCHAR de la colonne
+    # Sécurité pour respecter la contrainte de taille de la colonne en BDD
     if code_dept:
         code_dept = code_dept[:5]
 
-    # Insertion de l'offre France Travail
+    # Insertion sécurisée contre les doublons d'offres (ON CONFLICT)
     insert_offre_query = """
-    INSERT INTO Offre_France_travail (code_rome, code_Region, Competence, dateActualisation, dateCreation)
-    VALUES (%s, %s, %s, %s, %s)
+    INSERT INTO Offre_France_travail (ID_FranceTravail, code_rome, code_Region, Competence, dateActualisation, dateCreation)
+    VALUES (%s, %s, %s, %s, %s, %s)
+    ON CONFLICT (ID_FranceTravail) DO UPDATE 
+    SET dateActualisation = EXCLUDED.dateActualisation
     RETURNING ID_FranceTravail;
     """
     
-    # Transmission de la chaine brute "M1201" (pas de tableau)
+    id_offre_brut = offre.get('id')
     rome_code_param = offre.get('romeCode') 
 
     cursor.execute(insert_offre_query, (
+        id_offre_brut,
         rome_code_param,
         code_dept,
         offre.get('intitule'),
         offre.get('dateActualisation'),
         offre.get('dateCreation')
     ))
-    id_france_travail = cursor.fetchone()[0]
+    
+    res = cursor.fetchone()
+    if not res:
+        # L'offre existait déjà et n'a pas été modifiée/insérée à nouveau
+        return 
+    id_france_travail = res[0]
 
-    # Insertion des competences liees et alimentation de la table pivot
+    # Insertion des compétences liées et alimentation de la table pivot
     liste_competences = offre.get("competences", [])
     for comp in liste_competences:
         nom_comp = comp.get("libelle")
@@ -116,7 +132,7 @@ def stocker_offre_et_competences(cursor, offre):
         cursor.execute(select_comp_query, (nom_comp,))
         id_competence = cursor.fetchone()[0]
 
-        # FIX OBLIGATOIRE PK : Insertion du chiffre 0 au lieu de NULL pour la cle composite
+        # FIX OBLIGATOIRE PK : Insertion de 0 au lieu de NULL pour la clé composite
         insert_pivot_query = """
         INSERT INTO Offre_Competence (ID_Competence, ID_FranceTravail, ID_Scraping)
         VALUES (%s, %s, 0)
@@ -126,6 +142,7 @@ def stocker_offre_et_competences(cursor, offre):
 
 
 def chercher_offres(token_access, code_rome, conn):
+    """Parcourt l'API de France Travail pour un code ROME donné et stocke les résultats."""
     cursor = conn.cursor()
     entetes = {
         'Authorization': f'Bearer {token_access}',
@@ -149,26 +166,29 @@ def chercher_offres(token_access, code_rome, conn):
             params=params
         )
 
+        # Gestion du Rate Limit de l'API
         if reponse.status_code == 429:
             print("  Rate limit atteint, pause 15s...")
             time.sleep(15)
             continue 
 
+        # Pas de contenu (0 offre pour ce code)
         if reponse.status_code == 204:
             if debut == 0:
-                print(f"  [{code_rome}] 0 offre au total (aucun poste vacant actuellement)")
+                print(f"  [{code_rome}] 0 offre au total (aucun poste vacant)")
             break
 
         if reponse.status_code not in [200, 206]:
             print(f"  Erreur {reponse.status_code} sur {code_rome} : {reponse.text}")
             break
 
+        # Extraction de la taille totale du lot d'offres disponible
         if total is None:
             content_range = reponse.headers.get("Content-Range", "")
             if "/" in content_range:
                 total_str = content_range.split("/")[-1]
                 total = int(total_str) if total_str.isdigit() else 3000
-                print(f"  [{code_rome}] {total} offres au total")
+                print(f"  [{code_rome}] {total} offres trouvées")
             else:
                 total = 3000
 
@@ -183,16 +203,20 @@ def chercher_offres(token_access, code_rome, conn):
         except Exception as e:
             conn.rollback()
             print(f"Erreur d'insertion pour le lot {code_rome} : {e}")
+            break
 
+        # Si on récupère moins d'offres que la taille demandée, on a fini
         if len(liste_offres) < (taille + 1):
             break
 
         debut += taille + 1
 
+        # Limite maximale de pagination autorisée par l'API France Travail
         if debut >= total or debut >= 3000:
             break
 
-        time.sleep(0.3)
+        # Temporisation pour respecter les quotas d'appels par seconde de l'API
+        time.sleep(0.5)
         
     cursor.close()
 
@@ -202,12 +226,13 @@ if __name__ == "__main__":
 
     if token_access:
         try:
-            print("Connexion a la base de donnees...")
+            print("Connexion à la base de données...")
             conn = psycopg2.connect(**CONN_PARAMS)
             
             CODES_ROME = charger_codes_rome_depuis_bdd(conn)
-            print(f"{len(CODES_ROME)} codes ROME trouves en BDD.\n")
+            print(f"{len(CODES_ROME)} codes ROME uniques trouvés en BDD.\n")
             
+            # Application de la contrainte unique de sécurité sur la table Competence
             with conn.cursor() as cur:
                 cur.execute("""
                     ALTER TABLE Competence 
@@ -217,12 +242,13 @@ if __name__ == "__main__":
                 """)
                 conn.commit()
 
+            # Lancement de la collecte pour chaque code ROME trouvé
             for code in CODES_ROME:
                 chercher_offres(token_access, code, conn)
                 
             conn.close()
-            print("\nTraitement et stockage en base de donnees termines avec succes.")
+            print("\nTraitement et stockage en base de données terminés avec succès.")
         except Exception as e:
-            print(f"Erreur generale pendant l'execution : {e}")
+            print(f"Erreur générale pendant l'exécution : {e}")
     else:
-        print("Token invalide.")
+        print("Impossible de démarrer le script : Token invalide.")
