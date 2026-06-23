@@ -1,2 +1,7 @@
 python-dotenv
 pandas
+requests
+tqdm
+sqlalchemy
+beautifulsoup4
+fastapi

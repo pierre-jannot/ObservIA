@@ -19,6 +19,7 @@ Colonnes :
 annee_mois
 code_rncp
 intitule_certification
+siret_of_contractant
 entrees_formation
 
 Nombre de lignes : 2942 sans en-tête
@@ -29,7 +30,5 @@ Colonnes :
 code_rome
 intitule_rome
 code_rncp
-intitule_rncp
-niveau_rncp
 
 Nombre de lignes : 313 sans en-tête
