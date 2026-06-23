@@ -1,43 +1,54 @@
+import os
 import psycopg2
-from psycopg2 import Extension, errors
+from psycopg2 import errors
+from dotenv import load_dotenv
 
-# ⚙️ CONFIGURATION DE LA CONNEXION
+# Chargement des variables d'environnement depuis le fichier .env
+load_dotenv()
+
+# Recuperation des parametres de configuration
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = os.getenv("DB_PORT", "3432")
+DB_USER = os.getenv("DB_USER", "postgres")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_NAME = os.getenv("DB_NAME", "ObservIA")
+
+# Dictionnaire de connexion (sans la base cible pour la creation de la BDD)
 CONN_PARAMS = {
-    "host": "localhost",
-    "port": "3455",          # Remplace par ton port (ex: 3455 ou 5432)
-    "user": "postgres",
-    "password": "TON_MOT_DE_PASSE_ICI"  # Mets ton vrai mot de passe
+    "host": DB_HOST,
+    "port": DB_PORT,
+    "user": DB_USER,
+    "password": DB_PASSWORD
 }
-DB_NAME = "mon_projet_emploi"
 
 
 def create_database():
-    """Se connecte à Postgres pour créer la base de données si elle n'existe pas."""
-    print("🔄 Connexion au serveur PostgreSQL...")
-    # On se connecte à la base par défaut 'postgres' pour pouvoir créer la nouvelle base
+    """Se connecte a Postgres pour creer la base de donnees si elle n'existe pas."""
+    print("Connexion au serveur PostgreSQL via les variables d'environnement...")
+    
     conn = psycopg2.connect(**CONN_PARAMS, database="postgres")
     conn.autocommit = True
     cursor = conn.cursor()
 
     try:
         cursor.execute(f"CREATE DATABASE {DB_NAME};")
-        print(f"✅ Base de données '{DB_NAME}' créée avec succès !")
+        print(f"Base de donnees '{DB_NAME}' creee avec succes !")
     except errors.DuplicateDatabase:
-        print(f"ℹ️ La base de données '{DB_NAME}' existe déjà.")
+        print(f"La base de donnees '{DB_NAME}' existe deja.")
     finally:
         cursor.close()
         conn.close()
 
 
 def create_tables():
-    """Se connecte à la nouvelle base de données et crée toutes les tables."""
-    print(f"🔄 Connexion à la base '{DB_NAME}' pour créer les tables...")
+    """Se connecte a la base de donnees et cree toutes les tables du schema."""
+    print(f"Connexion a la base '{DB_NAME}' pour generer les tables...")
     conn = psycopg2.connect(**CONN_PARAMS, database=DB_NAME)
     cursor = conn.cursor()
 
-    # Définition des tables dans l'ordre de dépendance (très important pour les clés étrangères)
+    # Liste des requetes SQL ordonnees selon les dependances du schema
     sql_queries = [
-        # --- Tables Indépendantes ---
+        # --- NIVEAU 1 : Tables totalement independantes ---
         """
         CREATE TABLE IF NOT EXISTS Competence (
             ID_Competence SERIAL PRIMARY KEY,
@@ -57,14 +68,16 @@ def create_tables():
             intitule_rome VARCHAR(255)
         );
         """,
+        
+        # --- NIVEAU 2 : Tables dependantes du Niveau 1 ---
         """
         CREATE TABLE IF NOT EXISTS Siret (
-            siret_of_contractant BIGINT PRIMARY KEY, -- BIGINT car les SIRET font 14 chiffres
+            siret_of_contractant BIGINT PRIMARY KEY,
             nom_raison_social VARCHAR(255),
-            Region INT
+            code_Departement VARCHAR(5),
+            FOREIGN KEY (code_Departement) REFERENCES Localisation(code_Departement) ON DELETE SET NULL
         );
         """,
-        # --- Tables Dépendantes (Niveau 1) ---
         """
         CREATE TABLE IF NOT EXISTS Scraping (
             ID_Scraping SERIAL PRIMARY KEY,
@@ -93,7 +106,8 @@ def create_tables():
             FOREIGN KEY (code_rome) REFERENCES correspondance_rome_rncp(code_rome) ON DELETE CASCADE
         );
         """,
-        # --- Tables Dépendantes (Niveau 2 & Pivot) ---
+        
+        # --- NIVEAU 3 : Tables dependantes du Niveau 2 & Tables Pivot ---
         """
         CREATE TABLE IF NOT EXISTS Csv_Formation (
             ID_formation SERIAL PRIMARY KEY,
@@ -122,18 +136,16 @@ def create_tables():
         for query in sql_queries:
             cursor.execute(query)
         conn.commit()
-        print("🚀 Toutes les tables et clés composites ont été créées avec succès !")
+        print("Structure relationnelle complete creee avec succes dans PostgreSQL !")
     except Exception as e:
         conn.rollback()
-        print(f"❌ Erreur lors de la création des tables : {e}")
+        print(f"Erreur lors de la creation des tables : {e}")
     finally:
         cursor.close()
         conn.close()
 
 
 if __name__ == "__main__":
-    # 1. On crée d'abord la base de données
     create_database()
-    # 2. On injecte les tables dedans
     create_tables()
-    print("\n🏁 Processus terminé. Tu peux aller voir sur pgAdmin, tout est prêt !")
+    print("\nProcessus termine. Les tables ont ete configurees sur pgAdmin 4.")
