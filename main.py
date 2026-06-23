@@ -42,3 +42,13 @@ def get_offers_per_quarter():
     for index, value in dataframe.items()
     ]
     return {"result": result}
+
+@app.get("/offers-per-department")
+def get_formations_per_department():
+    dataframe = pd.read_csv("result/freework_offers.csv", sep=";", encoding="utf-8")
+    dataframe = count_unique_values(dataframe, "location")
+    result = [
+    {"département": index, "nombre_offres_freework": int(value)}
+    for index, value in dataframe.sort_values(ascending=False).items()
+    ]
+    return {"result": result}
