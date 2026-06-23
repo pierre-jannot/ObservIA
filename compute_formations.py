@@ -45,3 +45,12 @@ def compute_departments_information():
     else:
         departments = scrap_departments_information()
         write_dataframe(path=departments_path, dataframe=departments)
+
+def compute_all():
+    compute_formation_data()
+    compute_departments_information()
+    compute_sirets_information()
+    return
+
+if __name__ == "__main__":
+    compute_all()
