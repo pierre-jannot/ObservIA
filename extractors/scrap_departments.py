@@ -1,38 +1,52 @@
 import requests
 import pandas as pd
+import json
 
-from bs4 import BeautifulSoup
+HEADERS = {"User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/125.0 Safari/537.36"
+    )}
 
 def scrap_departments_information():
 
-    url = "https://www.regions-departements-france.fr/"
-    response = requests.get(
-        url,
-        headers={"User-Agent": "ScraperBot/1.0"},
-        timeout=10
-    )
+    url = "https://geo.api.gouv.fr/departements"
+    response = requests.get(url, headers=HEADERS).text
+    departements = json.loads(response)
 
-    response.encoding = "utf-8"
+    url = "https://geo.api.gouv.fr/regions"
+    response = requests.get(url, headers=HEADERS).text
+    regions = json.loads(response)
 
-    html = response.text  # str de 50 ko
+    mapping_regions = {
+        region["code"]: region["nom"]
+        for region in regions
+    }
 
-    soup = BeautifulSoup(html, "html.parser")
-    table = soup.find("table", id="tableDepartements")
-    numbers = [
-        tr.get_text() for tr in table.select("tr")
-    ]
+    for departement in departements:
+        departement["nomRegion"] = mapping_regions.get(
+            departement["codeRegion"]
+        )
 
-    department_list = []
-    for value in numbers[1:]:
-        department_list.append(value[1:-1].split('\n'))
 
-    df = pd.DataFrame(department_list, columns=["code_departement", "nom_departement", "nom_region"])
+    dataframe = pd.DataFrame(departements)
+
+    dataframe = dataframe[["code", "nom", "codeRegion", "nomRegion"]]
+
+    dataframe = dataframe.rename(columns={
+        "nom": "nom_departement",
+        "code": "code_departement",
+        "codeRegion": "code_region",
+        "nomRegion": "nom_region"
+    })
+
     df_polynesie = pd.DataFrame([{
         "code_departement": "987",
         "nom_departement": "Polynésie française",
-        "region": "Polynésie française"
+        "code_region": "987",
+        "nom_region": "Polynésie française"
     }])
 
-    df = pd.concat([df, df_polynesie], ignore_index=True)
+    dataframe = pd.concat([dataframe, df_polynesie], ignore_index=True)
 
-    return df
+    return dataframe
