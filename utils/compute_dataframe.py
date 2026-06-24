@@ -16,3 +16,7 @@ def get_quarter_values(dataframe, column_name):
 def count_unique_values(dataframe, column_name):
     dataframe = dataframe.groupby(column_name).size()
     return dataframe
+
+def sum_values(dataframe, column_name, group_by_column):
+    dataframe = dataframe.groupby(group_by_column)[column_name].sum()
+    return dataframe

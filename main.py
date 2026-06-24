@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from utils.compute_dataframe import get_filtered_values, get_quarter_values, get_unique_values, count_unique_values
+from utils.compute_dataframe import get_filtered_values, get_quarter_values, get_unique_values, count_unique_values, sum_values
 from compute_freework_offers import compute_freework_offers
 from compute_formations import compute_all
 
@@ -30,9 +30,9 @@ def root():
 def get_offers_per_quarter():
     dataframe = pd.read_csv("result/formations.csv", sep=";", encoding="utf-8")
     dataframe = get_quarter_values(dataframe, "annee_mois")
-    dataframe = count_unique_values(dataframe, "quarter")
+    dataframe = sum_values(dataframe, "entrees_formation", "quarter")
     result = [
-    {"trimestre": str(index), "nombre_formations": int(value)}
+    {"trimestre": str(index), "nombre_entrées_formations": int(value)}
     for index, value in dataframe.items()
     ]
     return {"result": result}
