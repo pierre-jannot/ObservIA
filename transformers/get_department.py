@@ -28,7 +28,7 @@ def get_department(locations):
         if location in departments["nom_departement"].values:   
             return(location)
         else:
-            if location in departments["region"].values:
+            if location in departments["nom_region"].values:
                 return(location)
     else:
         address = normalize_address(locations)

@@ -1,9 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from utils.compute_dataframe import get_filtered_values, get_quarter_values, get_unique_values, count_unique_values
+from compute_freework_offers import compute_freework_offers
+from compute_formations import compute_all
+from routers import formations, freework
 
 import pandas as pd
 from compute_stats import get_top_skills
+compute_all()
+compute_freework_offers()
 
 app = FastAPI(
     title="Tensions formations et offres d'emploi Tech IA",
@@ -18,42 +22,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(formations.router, prefix="/formations", tags=["Formations"])
+app.include_router(freework.router, prefix="/freework", tags=["Freework"])
+
 @app.get("/")
 def root():
     return {"status": "ok"}
-
-@app.get("/formations-per-quarter")
-def get_offers_per_quarter():
-    dataframe = pd.read_csv("result/formations.csv", sep=";", encoding="utf-8")
-    dataframe = get_quarter_values(dataframe, "annee_mois")
-    dataframe = count_unique_values(dataframe, "quarter")
-    result = [
-    {"trimestre": str(index), "nombre_formations": int(value)}
-    for index, value in dataframe.items()
-    ]
-    return {"result": result}
-
-@app.get("/offers-per-quarter")
-def get_offers_per_quarter():
-    dataframe = pd.read_csv("result/freework_offers.csv", sep=";", encoding="utf-8")
-    dataframe = get_quarter_values(dataframe, "publication_date")
-    dataframe = count_unique_values(dataframe, "quarter")
-    result = [
-    {"trimestre": str(index), "nombre_offres_freework": int(value)}
-    for index, value in dataframe.items()
-    ]
-    return {"result": result}
-
-@app.get("/offers-per-department")
-def get_formations_per_department():
-    dataframe = pd.read_csv("result/freework_offers.csv", sep=";", encoding="utf-8")
-    dataframe = count_unique_values(dataframe, "location")
-    result = [
-    {"département": index, "nombre_offres_freework": int(value)}
-    for index, value in dataframe.sort_values(ascending=False).items()
-    ]
-    return {"result": result}
-
-@app.get("/stats/skills")
-def top_skills():
-    return get_top_skills()

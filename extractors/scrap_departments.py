@@ -26,7 +26,7 @@ def scrap_departments_information():
     for value in numbers[1:]:
         department_list.append(value[1:-1].split('\n'))
 
-    df = pd.DataFrame(department_list, columns=["code_departement", "nom_departement", "region"])
+    df = pd.DataFrame(department_list, columns=["code_departement", "nom_departement", "nom_region"])
     df_polynesie = pd.DataFrame([{
         "code_departement": "987",
         "nom_departement": "Polynésie française",
