@@ -51,6 +51,3 @@ def compute_all():
     compute_departments_information()
     compute_sirets_information()
     return
-
-if __name__ == "__main__":
-    compute_all()
