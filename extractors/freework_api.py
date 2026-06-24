@@ -36,6 +36,20 @@ def scrap_freework_offers(items_per_page, page):
             skills_tags.append(skill["name"])
         profile = element["candidateProfile"] or ""
         profile = BeautifulSoup(profile, "html.parser").get_text(separator=" ", strip=True)
+        experience = element["experienceLevel"] or "NaN"
+        min_annual_salary = element["minAnnualSalary"] or "NaN"
+        max_annual_salary = element["maxAnnualSalary"] or "NaN"
+        min_daily_salary = element["maxDailySalary"] or "NaN"
+        max_daily_salary = element["maxDailySalary"] or "NaN"
+        duration_value = element["durationValue"] or 0
+        duration_period = element["durationPeriod"] or "NaN"
+        if type(duration_value) == int and duration_value > 0 and duration_period in ["month", "year"]:
+            if duration_period == "month":
+                month_duration = duration_value
+            elif duration_period == "year":
+                month_duration = duration_value * 12
+        else:
+            month_duration = 0
         address = element["location"]["label"]
         location = get_department(address)
         slug = element["slug"]
@@ -47,6 +61,12 @@ def scrap_freework_offers(items_per_page, page):
             "publication_date": publication_date,
             "skill_tags": skills_tags,
             "profile": profile,
+            "experience": experience,
+            "min_annual_salary": min_annual_salary,
+            "max_annual_salary": max_annual_salary,
+            "min_daily_salary": min_daily_salary,
+            "max_daily_salary": max_daily_salary,
+            "month_duration": month_duration,
             "address": address,
             "location": location,
             "url": url
