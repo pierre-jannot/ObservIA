@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from utils.compute_dataframe import get_filtered_values, get_quarter_values, get_unique_values, count_unique_values
 
 import pandas as pd
+from compute_stats import get_top_skills
 
 app = FastAPI(
     title="Tensions formations et offres d'emploi Tech IA",
@@ -52,3 +53,7 @@ def get_formations_per_department():
     for index, value in dataframe.sort_values(ascending=False).items()
     ]
     return {"result": result}
+
+@app.get("/stats/skills")
+def top_skills():
+    return get_top_skills()
