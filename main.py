@@ -26,13 +26,24 @@ app.add_middleware(
 def root():
     return {"status": "ok"}
 
-@app.get("/formations-per-quarter")
-def get_offers_per_quarter():
+@app.get("/formation-entry-per-quarter")
+def get_formation_entry_per_quarter():
     dataframe = pd.read_csv("result/formations.csv", sep=";", encoding="utf-8")
     dataframe = get_quarter_values(dataframe, "annee_mois")
     dataframe = sum_values(dataframe, "entrees_formation", "quarter")
     result = [
     {"trimestre": str(index), "nombre_entrées_formations": int(value)}
+    for index, value in dataframe.items()
+    ]
+    return {"result": result}
+
+@app.get("/formation-exit-per-quarter")
+def get_formation_exit_per_quarter():
+    dataframe = pd.read_csv("result/formations.csv", sep=";", encoding="utf-8")
+    dataframe = get_quarter_values(dataframe, "annee_mois")
+    dataframe = sum_values(dataframe, "sorties_realisation_totale", "quarter")
+    result = [
+    {"trimestre": str(index), "nombre_sorties_formations": int(value)}
     for index, value in dataframe.items()
     ]
     return {"result": result}
@@ -49,7 +60,7 @@ def get_offers_per_quarter():
     return {"result": result}
 
 @app.get("/offers-per-department")
-def get_formations_per_department():
+def get_offers_per_department():
     dataframe = pd.read_csv("result/freework_offers.csv", sep=";", encoding="utf-8")
     departments = pd.read_csv("result/departments.csv", sep=";", encoding="utf-8")
     dataframe = get_filtered_values(dataframe, "location", departments["nom_departement"])
@@ -61,7 +72,7 @@ def get_formations_per_department():
     return {"result": result}
 
 @app.get("/offers-per-region")
-def get_formations_per_region():
+def get_offers_per_region():
     dataframe = pd.read_csv("result/freework_offers.csv", sep=";", encoding="utf-8")
     departments = pd.read_csv("result/departments.csv", sep=";", encoding="utf-8")
     correspondance = dict(zip(departments["nom_departement"], departments["nom_region"]))
@@ -75,7 +86,7 @@ def get_formations_per_region():
 
 
 @app.get("/offers-per-region/{region}")
-def get_formations_per_region(region: str):
+def get_offers_per_region(region: str):
     dataframe = pd.read_csv("result/freework_offers.csv", sep=";", encoding="utf-8")
     departments = pd.read_csv("result/departments.csv", sep=";", encoding="utf-8")
     correspondance = dict(zip(departments["nom_departement"], departments["nom_region"]))
