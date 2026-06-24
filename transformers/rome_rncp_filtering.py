@@ -1,5 +1,5 @@
 def filter_data(formations, correspondances):
-    formations = formations.drop(columns=["annee", "mois", "type_referentiel", "code_rs", "code_certifinfo", "raison_sociale_of_contractant", "sorties_realisation_partielle", "sorties_realisation_totale", "date_chargement"])
+    formations = formations.drop(columns=["annee", "mois", "type_referentiel", "code_rs", "code_certifinfo", "raison_sociale_of_contractant", "sorties_realisation_partielle", "date_chargement"])
     formations = formations[formations["code_rncp"] != -1]
     formations = formations[formations["entrees_formation"] > 0]
 
