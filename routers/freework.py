@@ -1,7 +1,7 @@
 from utils.compute_dataframe import get_filtered_values, get_quarter_values, count_unique_values
 from fastapi import APIRouter, Query
-
-import pandas as pd
+from extractors.offers import load_freework_offers
+from extractors.departments import load_departments
 
 router = APIRouter()
 
@@ -9,7 +9,7 @@ router = APIRouter()
 def get_offers_per_quarter(
     zone: list[str] | None = Query(None)
 ):
-    dataframe = pd.read_csv("result/freework_offers.csv", sep=";", encoding="utf-8")
+    dataframe = load_freework_offers()
     if zone:
         dataframe = get_filtered_values(dataframe, "location", zone)
     dataframe = get_quarter_values(dataframe, "publication_date")
@@ -22,8 +22,8 @@ def get_offers_per_quarter(
 
 @router.get("/offers-per-department")
 def get_offers_per_department():
-    dataframe = pd.read_csv("result/freework_offers.csv", sep=";", encoding="utf-8")
-    departments = pd.read_csv("result/departments.csv", sep=";", encoding="utf-8")
+    dataframe = load_freework_offers()
+    departments = load_departments()
     dataframe = get_filtered_values(dataframe, "location", departments["nom_departement"])
     dataframe = count_unique_values(dataframe, "location")
     result = [
@@ -34,8 +34,8 @@ def get_offers_per_department():
 
 @router.get("/offers-per-region")
 def get_offers_per_region():
-    dataframe = pd.read_csv("result/freework_offers.csv", sep=";", encoding="utf-8")
-    departments = pd.read_csv("result/departments.csv", sep=";", encoding="utf-8")
+    dataframe = load_freework_offers()
+    departments = load_departments()
     correspondance = dict(zip(departments["nom_departement"], departments["nom_region"]))
     dataframe["region"] = dataframe["location"].map(correspondance).fillna(dataframe["location"])
     dataframe = count_unique_values(dataframe, "region")
@@ -48,8 +48,8 @@ def get_offers_per_region():
 
 @router.get("/offers-per-region/{region}")
 def get_offers_per_region(region: str):
-    dataframe = pd.read_csv("result/freework_offers.csv", sep=";", encoding="utf-8")
-    departments = pd.read_csv("result/departments.csv", sep=";", encoding="utf-8")
+    dataframe = load_freework_offers()
+    departments = load_departments()
     correspondance = dict(zip(departments["nom_departement"], departments["nom_region"]))
     dataframe["region"] = dataframe["location"].map(correspondance).fillna(dataframe["location"])
     dataframe = get_filtered_values(dataframe, "region", [region])

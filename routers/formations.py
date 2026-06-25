@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Query
-from utils.compute_dataframe import get_quarter_values, sum_values, get_filtered_values
-
-import pandas as pd
+from utils.compute_dataframe import get_quarter_values, sum_values, get_filtered_values, load_csv_to_df
+from extractors.formations import load_formations
+from extractors.sirets import load_sirets
 
 router = APIRouter()
 
@@ -9,12 +9,11 @@ router = APIRouter()
 def get_formation_entry_per_quarter(
     zone: list[str] | None = Query(None)
 ):
-    dataframe = pd.read_csv("result/formations.csv", sep=";", encoding="utf-8")
+    dataframe = load_formations()
     if zone:
-        sirets = pd.read_csv("result/sirets.csv", sep=";", encoding="utf-8")
+        sirets = load_sirets()
         correspondance = dict(zip(sirets["siret"], sirets["departement"]))
         dataframe["zone"] = dataframe["siret_of_contractant"].map(correspondance)
-        print(dataframe["zone"])
         dataframe = get_filtered_values(dataframe, "zone", zone)
     dataframe = get_quarter_values(dataframe, "annee_mois")
     dataframe = sum_values(dataframe, "entrees_formation", "quarter")
@@ -28,12 +27,11 @@ def get_formation_entry_per_quarter(
 def get_formation_exit_per_quarter(
     zone: list[str] | None = Query(None)
 ):
-    dataframe = pd.read_csv("result/formations.csv", sep=";", encoding="utf-8")
+    dataframe = load_formations()
     if zone:
-        sirets = pd.read_csv("result/sirets.csv", sep=";", encoding="utf-8")
+        sirets = load_sirets()
         correspondance = dict(zip(sirets["siret"], sirets["departement"]))
         dataframe["zone"] = dataframe["siret_of_contractant"].map(correspondance)
-        print(dataframe["zone"])
         dataframe = get_filtered_values(dataframe, "zone", zone)
     dataframe = get_quarter_values(dataframe, "annee_mois")
     dataframe = sum_values(dataframe, "sorties_realisation_totale", "quarter")

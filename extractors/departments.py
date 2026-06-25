@@ -1,21 +1,31 @@
+from utils.compute_dataframe import load_csv_to_df
+from dotenv import load_dotenv
+
+import os
 import requests
 import pandas as pd
 import json
 
-HEADERS = {"User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/125.0 Safari/537.36"
-    )}
+load_dotenv()
+
+HEADERS = {
+    "User-Agent": os.getenv("USER_AGENT")
+}
+
+RESULT_PATH = os.getenv("RESULT_FOLDER_PATH")
+DEPARTMENTS_PATH = f"{RESULT_PATH}/{os.getenv("DEPARTMENTS_PATH")}"
+DEPARTMENTS_BASE_URL = os.getenv("DEPARTMENTS_BASE_URL")
+REGIONS_BASE_URL = os.getenv("REGIONS_BASE_URL")
+
+def load_departments():
+    departments = load_csv_to_df(DEPARTMENTS_PATH)
+    return departments
 
 def scrap_departments_information():
-
-    url = "https://geo.api.gouv.fr/departements"
-    response = requests.get(url, headers=HEADERS).text
+    response = requests.get(DEPARTMENTS_BASE_URL, headers=HEADERS).text
     departements = json.loads(response)
 
-    url = "https://geo.api.gouv.fr/regions"
-    response = requests.get(url, headers=HEADERS).text
+    response = requests.get(REGIONS_BASE_URL, headers=HEADERS).text
     regions = json.loads(response)
 
     mapping_regions = {
