@@ -1,14 +1,21 @@
-import pandas as pd
 import re
 import requests
 import json
 import time
+import os
 
-HEADERS = {"User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/125.0 Safari/537.36"
-    )}
+from dotenv import load_dotenv
+from utils.compute_dataframe import load_csv_to_df
+
+load_dotenv()
+
+HEADERS = {
+    "User-Agent": os.getenv("USER_AGENT")
+}
+
+RESULT_PATH = os.getenv("RESULT_FOLDER_PATH")
+DEPARTMENTS_PATH = f"{RESULT_PATH}/{os.getenv("DEPARTMENTS_PATH")}"
+LOCATION_BASE_URL = os.getenv("LOCATION_BASE_URL")
 
 def normalize_address(adresse: str) -> str:
     adresse = adresse.lower()
@@ -23,7 +30,7 @@ def get_department(locations):
         return("Île-de-France")
     locations_list = locations.split(", ")
 
-    departments = pd.read_csv("result/departments.csv", sep=";", dtype=str)
+    departments = load_csv_to_df(DEPARTMENTS_PATH)
     for location in locations_list:
         if location in departments["nom_departement"].values:   
             return(location)
@@ -32,7 +39,7 @@ def get_department(locations):
                 return(location)
     else:
         address = normalize_address(locations)
-        url = "https://api-adresse.data.gouv.fr/search/?q=" + address
+        url = f"{LOCATION_BASE_URL}/?q={address}"
 
         response = requests.get(url, headers=HEADERS).text
         time.sleep(0.3)

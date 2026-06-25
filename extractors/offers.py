@@ -1,18 +1,27 @@
 import requests
 import json
 import pandas as pd
+import os
+from dotenv import load_dotenv
 from bs4 import BeautifulSoup
-
+from utils.compute_dataframe import load_csv_to_df
 from transformers.get_department import get_department
 
-HEADERS = {"User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/125.0 Safari/537.36"
-    )}
+load_dotenv()
 
-BASE_URL = "https://www.free-work.com/api/job_postings?locationKeys=fr%7E%7E%7E"
-OFFER_URL = "https://www.free-work.com/fr/tech-it/job-mission/"
+HEADERS = {
+    "User-Agent": os.getenv("USER_AGENT")
+}
+
+RESULT_PATH = os.getenv("RESULT_FOLDER_PATH")
+FREEWORK_OFFERS_PATH = f"{RESULT_PATH}/{os.getenv("FREEWORK_OFFERS_PATH")}"
+
+BASE_URL = os.getenv("FREEWORK_BASE_URL")
+OFFER_URL = os.getenv("FREEWORK_OFFER_URL")
+
+def load_freework_offers():
+    dataframe = load_csv_to_df(FREEWORK_OFFERS_PATH)
+    return dataframe
 
 def scrap_freework_pages_quantity(items_per_page):
     url = f"{BASE_URL}&page=1&itemsPerPage={items_per_page}"
