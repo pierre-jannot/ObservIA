@@ -10,8 +10,10 @@ DB_PORT     = os.getenv("DB_PORT",     "5432")
 DB_NAME     = os.getenv("DB_NAME")
 DB_USER     = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
-CSV_PATH    = os.getenv("SIRETS_PATH", "results/sirets.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# Remonte d'un niveau (ObservIA) et va chercher dans results/sirets.csv
+CSV_PATH = os.path.abspath(os.path.join(BASE_DIR, "..", "results", "sirets.csv"))
 # CSV colonnes (par position) : 0=siret | 1=nom | 2=code_postal | 3=code_departement
 # Table : siret_of_contractant (bigint PK) | nom_raison_social (varchar) | code_departement (varchar 5)
 

@@ -14,8 +14,10 @@ DB_NAME     = os.getenv("DB_NAME")
 DB_USER     = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 
-CSV_PATH = os.getenv("DEPARTMENTS_PATH", "departments.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# Remonte d'un niveau (ObservIA) et va chercher dans results/sirets.csv
+CSV_PATH = os.path.abspath(os.path.join(BASE_DIR, "..", "results", "departments.csv"))
 # ─────────────────────────────────────────────
 # Requêtes SQL
 # ─────────────────────────────────────────────

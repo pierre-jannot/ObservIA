@@ -4,7 +4,7 @@ from psycopg2 import errors
 from dotenv import load_dotenv
 
 # Chargement des variables d'environnement depuis le fichier .env
-load_dotenv()
+load_dotenv(encoding='cp1252')
 
 # Recuperation des parametres de configuration
 DB_HOST = os.getenv("DB_HOST", "localhost")
@@ -31,7 +31,7 @@ def create_database():
     cursor = conn.cursor()
 
     try:
-        cursor.execute(f"CREATE DATABASE {DB_NAME};")
+        cursor.execute(f'CREATE DATABASE "{DB_NAME}";')
         print(f"Base de donnees '{DB_NAME}' creee avec succes !")
     except errors.DuplicateDatabase:
         print(f"La base de donnees '{DB_NAME}' existe deja.")
@@ -58,13 +58,14 @@ def create_tables():
         """
         CREATE TABLE IF NOT EXISTS Localisation (
             code_Departement VARCHAR(5) PRIMARY KEY,
-            Region VARCHAR(100),
-            Departement VARCHAR(100)
+            nom_region VARCHAR(100),
+            nom_departement VARCHAR(100),
+            code_region VARCHAR(5)
         );
         """,
         """
         CREATE TABLE IF NOT EXISTS correspondance_rome_rncp (
-            code_rome VARCHAR(5)[] PRIMARY KEY,
+            code_rome VARCHAR(5) PRIMARY KEY,
             intitule_rome VARCHAR(255)
         );
         """,
@@ -82,25 +83,30 @@ def create_tables():
         CREATE TABLE IF NOT EXISTS Scraping (
             ID_Scraping SERIAL PRIMARY KEY,
             titre VARCHAR(255) NOT NULL,
-            code_region VARCHAR(3),
+            code_Departement VARCHAR(3),
+            code_region VARCHAR(100),
             date_publication DATE,
             competence_tags VARCHAR(255),
-            profil VARCHAR(255)
+            profil VARCHAR(255),
+            FOREIGN KEY (code_Departement) REFERENCES Localisation(code_Departement) ON DELETE SET NULL
         );
         """,
         """
         CREATE TABLE IF NOT EXISTS Offre_France_travail (
-            ID_FranceTravail SERIAL PRIMARY KEY,
+            id_offre SERIAL PRIMARY KEY,                    -- Ton INT obligatoire pour tes autres tables
+            id_francetravail VARCHAR(20) UNIQUE,          -- L'ID unique avec lettres (ex: '210HPPY')
             code_rome VARCHAR(5),
             code_Region VARCHAR(3),
             Competence VARCHAR(255),
             dateActualisation TIMESTAMP,
-            dateCreation DATE
-        );
+            dateCreation DATE,
+            salaire VARCHAR(255),
+            experience_exige VARCHAR(255)
+            );
         """,
         """
         CREATE TABLE IF NOT EXISTS rncp_rome (
-            code_rome VARCHAR(5)[],
+            code_rome VARCHAR(5),
             code_rncp INT,
             PRIMARY KEY (code_rome, code_rncp),
             FOREIGN KEY (code_rome) REFERENCES correspondance_rome_rncp(code_rome) ON DELETE CASCADE
@@ -119,15 +125,13 @@ def create_tables():
             FOREIGN KEY (siret_of_contractant) REFERENCES Siret(siret_of_contractant) ON DELETE SET NULL
         );
         """,
-        """
+       """
         CREATE TABLE IF NOT EXISTS Offre_Competence (
-            ID_Competence INT,
-            ID_FranceTravail INT,
-            ID_Scraping INT,
-            PRIMARY KEY (ID_Competence, ID_FranceTravail, ID_Scraping),
-            FOREIGN KEY (ID_Competence) REFERENCES Competence(ID_Competence) ON DELETE CASCADE,
-            FOREIGN KEY (ID_FranceTravail) REFERENCES Offre_France_travail(ID_FranceTravail) ON DELETE CASCADE,
-            FOREIGN KEY (ID_Scraping) REFERENCES Scraping(ID_Scraping) ON DELETE CASCADE
+            id_competence INT,
+            id_francetravail VARCHAR(20),
+            id_scraping INT DEFAULT 0,
+            PRIMARY KEY (id_competence, id_francetravail, id_scraping),
+            FOREIGN KEY (id_francetravail) REFERENCES Offre_France_travail(id_francetravail) ON DELETE CASCADE
         );
         """
     ]

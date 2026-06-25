@@ -54,13 +54,13 @@ def importer_codes_rome_m(chemin_csv):
             
             query_rome = """
             INSERT INTO correspondance_rome_rncp (code_rome, intitule_rome)
-            VALUES (%s::varchar[], %s)
+            VALUES (%s, %s)
             ON CONFLICT (code_rome) DO NOTHING;
             """
             
             try:
                 # On passe [code_rome_formatte] sous forme de liste pour remplir le type VARCHAR(5)[]
-                cursor.execute(query_rome, ([code_rome_formatte], intitule_rome))
+                cursor.execute(query_rome, (code_rome_formatte, intitule_rome))
                 if cursor.rowcount > 0:
                     compteur_rome += 1
             except Exception as e:
@@ -74,12 +74,12 @@ def importer_codes_rome_m(chemin_csv):
                 
                 query_rncp = """
                 INSERT INTO rncp_rome (code_rome, code_rncp)
-                VALUES (%s::varchar[], %s)
+                VALUES (%s, %s)
                 ON CONFLICT (code_rome, code_rncp) DO NOTHING;
                 """
                 
                 try:
-                    cursor.execute(query_rncp, ([code_rome_formatte], code_rncp))
+                    cursor.execute(query_rncp, (code_rome_formatte, code_rncp))
                     if cursor.rowcount > 0:
                         compteur_rncp += 1
                 except Exception as e:
@@ -97,7 +97,9 @@ def importer_codes_rome_m(chemin_csv):
         conn.close()
 
 if __name__ == "__main__":
-    nom_fichier_csv = "correspondance-rome-rncp.csv"
+    dossier_actuel = os.path.dirname(os.path.abspath(__file__))
+    dossier_racine = os.path.dirname(dossier_actuel)
+    nom_fichier_csv = os.path.join(dossier_racine, 'result', 'correspondances.csv')
     
     if os.path.exists(nom_fichier_csv):
         importer_codes_rome_m(nom_fichier_csv)

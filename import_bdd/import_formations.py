@@ -10,9 +10,10 @@ DB_PORT     = os.getenv("DB_PORT",     "5432")
 DB_NAME     = os.getenv("DB_NAME")
 DB_USER     = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
-CSV_PATH    = os.getenv("FORMATIONS_PATH", "results/formations.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# CSV : annee_mois ; code_rncp ; intitule_certification ; siret_of_contractant ; entrees_formation
+# Remonte d'un niveau pour aller dans ObservIA, puis entre dans results/formations.csv
+CSV_PATH = os.path.abspath(os.path.join(BASE_DIR, "..", "results", "formations.csv"))# CSV : annee_mois ; code_rncp ; intitule_certification ; siret_of_contractant ; entrees_formation
 # Table : id_formation (serial PK auto) | intitule_certification | entrees_formation | code_rncp | annee_mois | siret_of_contractant
 
 INSERT_ROW = """

@@ -12,7 +12,7 @@ DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_PORT = os.getenv("DB_PORT", "5432")
 DB_USER = os.getenv("DB_USER", "postgres")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_NAME = os.getenv("DB_NAME", "ObservIA")  # Assure-toi que cette variable est bien définie sur ObservIA dans le .env
+DB_NAME = os.getenv("DB_NAME", "ObservIA")
 
 CONN_PARAMS = {
     "host": DB_HOST,
@@ -27,15 +27,15 @@ def charger_codes_rome_depuis_bdd(conn):
     """Récupère uniquement les codes ROME présents en BDD qui commencent par M."""
     print("Récupération des codes ROME depuis la base de données...")
     cursor = conn.cursor()
-    
-    # Correction : On cible le premier élément du tableau postgres code_rome[1] 
+
+    # Correction : On cible le premier élément du tableau postgres code_rome[1]
     # et on filtre ceux qui commencent par 'M'
-    query = "SELECT code_rome[1] FROM correspondance_rome_rncp WHERE code_rome[1] LIKE 'M%';"
-    
+    query = "SELECT code_rome FROM correspondance_rome_rncp WHERE code_rome LIKE 'M%';"
+
     cursor.execute(query)
     liste_rome = [row[0] for row in cursor.fetchall() if row[0]]
     cursor.close()
-    
+
     # Utilisation de set() pour éliminer les doublons éventuels
     return list(set(liste_rome))
 
@@ -68,7 +68,7 @@ def get_france_travail_token():
 
 def stocker_offre_et_competences(cursor, offre):
     """Insère une offre, ses compétences et met à jour la table pivot."""
-    
+
     # Extraction et nettoyage strict du code département (ex: 75, 13, 974)
     lieu = offre.get("lieuTravail", {})
     code_postal = lieu.get("codePostal")
@@ -82,22 +82,26 @@ def stocker_offre_et_competences(cursor, offre):
         else:
             # Métropole : le département est sur 2 chiffres (ex: 75001 -> 75)
             code_dept = code_postal[:2]
-            
+
     # Sécurité pour respecter la contrainte de taille de la colonne en BDD
     if code_dept:
         code_dept = code_dept[:5]
 
-    # Insertion sécurisée contre les doublons d'offres (ON CONFLICT)
+    # Extraction du salaire : l'API renvoie un objet, on cible uniquement le libellé lisible
+    salaire_libelle = offre.get('salaire', {}).get('libelle') if offre.get('salaire') else None
+
+    # Extraction du niveau d'expérience exigé (ex: "D" pour débutant, "E" pour expérimenté)
+    experience_exige = offre.get('experienceExige')
+
+    # Insertion sécurisée : si l'offre existe déjà (id_francetravail unique), on ne fait rien
     insert_offre_query = """
-    INSERT INTO Offre_France_travail (ID_FranceTravail, code_rome, code_Region, Competence, dateActualisation, dateCreation)
-    VALUES (%s, %s, %s, %s, %s, %s)
-    ON CONFLICT (ID_FranceTravail) DO UPDATE 
-    SET dateActualisation = EXCLUDED.dateActualisation
-    RETURNING ID_FranceTravail;
+    INSERT INTO Offre_France_travail (id_francetravail, code_rome, code_Region, Competence, dateActualisation, dateCreation, salaire, experience_exige)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+    ON CONFLICT (id_francetravail) DO NOTHING;
     """
-    
+
     id_offre_brut = offre.get('id')
-    rome_code_param = offre.get('romeCode') 
+    rome_code_param = offre.get('romeCode')
 
     cursor.execute(insert_offre_query, (
         id_offre_brut,
@@ -105,14 +109,15 @@ def stocker_offre_et_competences(cursor, offre):
         code_dept,
         offre.get('intitule'),
         offre.get('dateActualisation'),
-        offre.get('dateCreation')
+        offre.get('dateCreation'),
+        salaire_libelle,
+        experience_exige
     ))
-    
-    res = cursor.fetchone()
-    if not res:
-        # L'offre existait déjà et n'a pas été modifiée/insérée à nouveau
-        return 
-    id_france_travail = res[0]
+
+    # Récupération directe de l'ID textuel de France Travail (ex: "1707XYZ") pour les liaisons
+    id_france_travail = offre.get('id')
+    if not id_france_travail:
+        return
 
     # Insertion des compétences liées et alimentation de la table pivot
     liste_competences = offre.get("competences", [])
@@ -120,21 +125,21 @@ def stocker_offre_et_competences(cursor, offre):
         nom_comp = comp.get("libelle")
         if not nom_comp:
             continue
-            
+
         insert_comp_query = """
         INSERT INTO Competence (nom_competence)
         VALUES (%s)
         ON CONFLICT (nom_competence) DO NOTHING;
         """
         cursor.execute(insert_comp_query, (nom_comp,))
-        
+
         select_comp_query = "SELECT ID_Competence FROM Competence WHERE nom_competence = %s;"
         cursor.execute(select_comp_query, (nom_comp,))
         id_competence = cursor.fetchone()[0]
 
-        # FIX OBLIGATOIRE PK : Insertion de 0 au lieu de NULL pour la clé composite
+        # Insertion finale dans la table pivot avec les noms de colonnes en minuscules
         insert_pivot_query = """
-        INSERT INTO Offre_Competence (ID_Competence, ID_FranceTravail, ID_Scraping)
+        INSERT INTO Offre_Competence (id_competence, id_francetravail, id_scraping)
         VALUES (%s, %s, 0)
         ON CONFLICT DO NOTHING;
         """
@@ -150,9 +155,9 @@ def chercher_offres(token_access, code_rome, conn):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
     }
 
-    debut = 0          
-    taille = 149       
-    total = None       
+    debut = 0
+    taille = 149
+    total = None
 
     while True:
         params = {
@@ -168,9 +173,9 @@ def chercher_offres(token_access, code_rome, conn):
 
         # Gestion du Rate Limit de l'API
         if reponse.status_code == 429:
-            print("  Rate limit atteint, pause 15s...")
-            time.sleep(15)
-            continue 
+            print("  Rate limit atteint, pause 2s...")
+            time.sleep(2)
+            continue
 
         # Pas de contenu (0 offre pour ce code)
         if reponse.status_code == 204:
@@ -198,7 +203,7 @@ def chercher_offres(token_access, code_rome, conn):
         try:
             for offre in liste_offres:
                 stocker_offre_et_competences(cursor, offre)
-            
+
             conn.commit()
         except Exception as e:
             conn.rollback()
@@ -217,7 +222,7 @@ def chercher_offres(token_access, code_rome, conn):
 
         # Temporisation pour respecter les quotas d'appels par seconde de l'API
         time.sleep(0.5)
-        
+
     cursor.close()
 
 
@@ -228,24 +233,20 @@ if __name__ == "__main__":
         try:
             print("Connexion à la base de données...")
             conn = psycopg2.connect(**CONN_PARAMS)
-            
+
             CODES_ROME = charger_codes_rome_depuis_bdd(conn)
             print(f"{len(CODES_ROME)} codes ROME uniques trouvés en BDD.\n")
-            
+
             # Application de la contrainte unique de sécurité sur la table Competence
             with conn.cursor() as cur:
-                cur.execute("""
-                    ALTER TABLE Competence 
-                    DROP CONSTRAINT IF EXISTS unique_nom_competence;
-                    ALTER TABLE Competence 
-                    ADD CONSTRAINT unique_nom_competence UNIQUE (nom_competence);
-                """)
+                cur.execute("ALTER TABLE Competence DROP CONSTRAINT IF EXISTS unique_nom_competence;")
+                cur.execute("ALTER TABLE Competence ADD CONSTRAINT unique_nom_competence UNIQUE (nom_competence);")
                 conn.commit()
 
             # Lancement de la collecte pour chaque code ROME trouvé
             for code in CODES_ROME:
                 chercher_offres(token_access, code, conn)
-                
+
             conn.close()
             print("\nTraitement et stockage en base de données terminés avec succès.")
         except Exception as e:
