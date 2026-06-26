@@ -6,6 +6,12 @@ from indicators.formations import column_per_quarter
 
 router = APIRouter()
 
+@router.get("/all")
+def get_all(limit: int = Query(50, le=500, description="Nombre max de résultats")):
+    dataframe = load_formations()
+    dataframe = dataframe.head(limit)
+    return {"result": dataframe.to_dict(orient="records")}
+
 @router.get("/entry-per-quarter")
 def get_formation_entry_per_quarter(
     zone: list[str] | None = Query(None)

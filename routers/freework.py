@@ -5,6 +5,13 @@ from extractors.departments import load_departments
 
 router = APIRouter()
 
+@router.get("/all")
+def get_all(limit: int = Query(50, le=500, description="Nombre max de résultats")):
+    dataframe = load_freework_offers()
+    dataframe = dataframe.fillna("")
+    dataframe = dataframe.head(limit)
+    return {"result": dataframe.to_dict(orient="records")}
+
 @router.get("/offers-per-quarter")
 def get_offers_per_quarter(
     zone: list[str] | None = Query(None)
