@@ -96,7 +96,7 @@ def create_tables():
             id_offre SERIAL PRIMARY KEY,                    -- Ton INT obligatoire pour tes autres tables
             id_francetravail VARCHAR(20) UNIQUE,          -- L'ID unique avec lettres (ex: '210HPPY')
             code_rome VARCHAR(5),
-            code_Region VARCHAR(3),
+            code_departement VARCHAR(3),
             Competence VARCHAR(255),
             dateActualisation TIMESTAMP,
             dateCreation DATE,

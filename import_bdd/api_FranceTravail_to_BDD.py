@@ -95,7 +95,7 @@ def stocker_offre_et_competences(cursor, offre):
 
     # Insertion sécurisée : si l'offre existe déjà (id_francetravail unique), on ne fait rien
     insert_offre_query = """
-    INSERT INTO Offre_France_travail (id_francetravail, code_rome, code_Region, Competence, dateActualisation, dateCreation, salaire, experience_exige)
+    INSERT INTO Offre_France_travail (id_francetravail, code_rome, code_departement, Competence, dateActualisation, dateCreation, salaire, experience_exige)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
     ON CONFLICT (id_francetravail) DO NOTHING;
     """
