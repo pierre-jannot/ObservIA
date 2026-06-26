@@ -1,11 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from compute_freework_offers import compute_freework_offers
-from compute_formations import compute_all
-from routers import formations, freework
 
-compute_all()
-compute_freework_offers()
+from routers import formations, freework, data
 
 app = FastAPI(
     title="Tensions formations et offres d'emploi Tech IA",
@@ -20,6 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(data.router, prefix="/data", tags=["Données"])
 app.include_router(formations.router, prefix="/formations", tags=["Formations"])
 app.include_router(freework.router, prefix="/freework", tags=["Freework"])
 

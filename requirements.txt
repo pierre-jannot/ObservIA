@@ -5,3 +5,4 @@ tqdm
 sqlalchemy
 beautifulsoup4
 fastapi
+uvicorn[standard]
