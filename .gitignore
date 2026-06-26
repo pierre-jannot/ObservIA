@@ -1,6 +1,10 @@
 /data/*
 /result/*
 /__pycache__
+<<<<<<< HEAD
 */__pycache__
 .env
 test.py
+=======
+.env
+>>>>>>> francetravail
