@@ -2,16 +2,34 @@
 Brief Simplon ObservIA
 
 ## Création et initialisation de l'environnement
-py 3.14.2 -m venv .venv
+```bash
+py 3.14.2 -m venv .ven
 .venv\Scripts\activate
 pip install -r requirements.txt
+```
 
 ## Ajout des variables d'environnement
 Copier le .env.example en .env et remplir les champs avec les informations de l'API France Travail
 
-## Initialisation du projet
+## Ajout des données csv
 Ajouter les données csv au dossier data/datagouv
 Ajouter la table de correspondances avec le nom table-correspondance-rome-rncp.csv au dossier data/datagouv
+
+## Initialisation du projet
+
+Pour lancer le projet, il est nécessaire de suivre une des deux opérations ci-dessous. Une fois exécuté, l'API devrait être accessible depuis http://localhost:8000/docs
+
+### Exécution depuis Python
+Dans le dossier du projet, au même niveau que le main, exécuter
+```bash
+uvicorn main:app --reload --port 8000
+```
+
+### Exécution depuis Docker
+Dans le dossier du projet, au même niveau que le Dockerfile, exécuter
+```bash
+docker compose up --build
+```
 
 ## Données formations.csv
 Colonnes :
