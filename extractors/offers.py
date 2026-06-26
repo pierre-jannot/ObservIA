@@ -39,20 +39,22 @@ def scrap_freework_offers(items_per_page, page):
     data = json.loads(response.text)
     for element in data["hydra:member"]:
         skills_tags = []
+        id = element["id"]
         title = element["title"]
         publication_date = element["publishedAt"]
         for skill in element["skills"]:
             skills_tags.append(skill["name"])
         profile = element["candidateProfile"] or ""
         profile = BeautifulSoup(profile, "html.parser").get_text(separator=" ", strip=True)
-        experience = element["experienceLevel"] or "NaN"
-        min_annual_salary = element["minAnnualSalary"] or "NaN"
-        max_annual_salary = element["maxAnnualSalary"] or "NaN"
-        min_daily_salary = element["maxDailySalary"] or "NaN"
-        max_daily_salary = element["maxDailySalary"] or "NaN"
-        duration_value = element["durationValue"] or 0
-        duration_period = element["durationPeriod"] or "NaN"
-        if type(duration_value) == int and duration_value > 0 and duration_period in ["month", "year"]:
+        experience = element["experienceLevel"] or ""
+        min_annual_salary = element["minAnnualSalary"] or None
+        max_annual_salary = element["maxAnnualSalary"] or None
+        min_daily_salary = element["maxDailySalary"] or None
+        max_daily_salary = element["maxDailySalary"] or None
+        duration_value = element["durationValue"] or None
+        duration_period = element["durationPeriod"] or None
+        month_duration = None
+        if isinstance(duration_value, int) and duration_value > 0 and duration_period in ["month", "year"]:
             if duration_period == "month":
                 month_duration = duration_value
             elif duration_period == "year":
@@ -66,6 +68,7 @@ def scrap_freework_offers(items_per_page, page):
         url = f"{OFFER_URL}{contribution_slug}/{slug}"
 
         job_offer = {
+            "id": id,
             "title": title,
             "publication_date": publication_date,
             "skill_tags": skills_tags,

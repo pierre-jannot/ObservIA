@@ -32,5 +32,5 @@ def get_department_from_siret(siret: str) -> dict:
         "siret": siret,
         "nom_raison_sociale": result["nom_raison_sociale"],
         "code_postal": siege["code_postal"],
-        "departement":      siege["departement"],
+        "location": f"D{siege['departement']}",
     }
