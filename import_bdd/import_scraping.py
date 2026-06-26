@@ -180,12 +180,13 @@ def localisation_columns(cursor) -> tuple[str, str, list[str], list[str]] | None
         for name in ("region", "nom_region")
         if name in columns
     ]
-
+    code_region_column = columns.get("code_region")
     return (
         selected_table,
         code_departement_column,
         department_label_columns,
         region_label_columns,
+        code_region_column,
     )
 
 
@@ -206,12 +207,16 @@ def load_localisation_lookup(cursor) -> dict:
         code_departement_column,
         department_label_columns,
         region_label_columns,
+        code_region_column,
     ) = columns
     selected_columns = [
         code_departement_column,
         *department_label_columns,
         *region_label_columns,
+        code_region_column,
     ]
+    if code_region_column:
+        selected_columns.append(code_region_column)
     query = sql.SQL("SELECT {} FROM {}").format(
         sql.SQL(", ").join(sql.Identifier(column) for column in selected_columns),
         sql.Identifier(table_name),
@@ -235,16 +240,22 @@ def load_localisation_lookup(cursor) -> dict:
         next_index = 1
         department_values = values[next_index:next_index + len(department_label_columns)]
         next_index += len(department_label_columns)
-        region_values = values[next_index:]
+        region_values = values[next_index:next_index + len(region_label_columns)]
+        next_index += len(region_label_columns)
 
-        code_region = next(
-            (
-                clean(str(region_value) if region_value is not None else None)
-                for region_value in region_values
-                if clean(str(region_value) if region_value is not None else None)
-            ),
-            None,
-        )
+        # Utilise la colonne code_region directement si disponible
+        if code_region_column and next_index < len(values):
+            raw = values[next_index]
+            code_region = clean(str(raw) if raw is not None else None)
+        else:
+            code_region = next(
+                (
+                    clean(str(v) if v is not None else None)
+                    for v in region_values
+                    if clean(str(v) if v is not None else None)
+                ),
+                None,
+            )
 
         lookup["valid_departments"].add(code_departement)
         lookup["region_by_department"][code_departement] = code_region
@@ -262,7 +273,7 @@ def load_localisation_lookup(cursor) -> dict:
         for label in region_values:
             label = clean(str(label) if label is not None else None)
             if label:
-                lookup["by_region"].setdefault(normalize_key(label), label)
+                lookup["by_region"].setdefault(normalize_key(label), code_region)
 
     print(
         f"Localisation utilisee : {table_name}.{code_departement_column} "
