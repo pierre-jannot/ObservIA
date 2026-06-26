@@ -97,11 +97,15 @@ def stocker_offre_et_competences(cursor, offre):
     insert_offre_query = """
     INSERT INTO Offre_France_travail (id_francetravail, code_rome, code_departement, Competence, dateActualisation, dateCreation, salaire, experience_exige)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-    ON CONFLICT (id_francetravail) DO NOTHING;
+    ON CONFLICT (id_francetravail) DO UPDATE SET id_francetravail = EXCLUDED.id_francetravail
+    RETURNING id_offre;
     """
 
     id_offre_brut = offre.get('id')
     rome_code_param = offre.get('romeCode')
+
+    if not id_offre_brut:
+        return
 
     cursor.execute(insert_offre_query, (
         id_offre_brut,
@@ -113,11 +117,9 @@ def stocker_offre_et_competences(cursor, offre):
         salaire_libelle,
         experience_exige
     ))
-
-    # Récupération directe de l'ID textuel de France Travail (ex: "1707XYZ") pour les liaisons
-    id_france_travail = offre.get('id')
-    if not id_france_travail:
-        return
+    
+    # Récupération de l'ID numérique généré par PostgreSQL
+    id_offre_bdd = cursor.fetchone()[0]
 
     # Insertion des compétences liées et alimentation de la table pivot
     liste_competences = offre.get("competences", [])
@@ -137,13 +139,13 @@ def stocker_offre_et_competences(cursor, offre):
         cursor.execute(select_comp_query, (nom_comp,))
         id_competence = cursor.fetchone()[0]
 
-        # Insertion finale dans la table pivot avec les noms de colonnes en minuscules
+        # Utilisation de id_offre_bdd (l'entier) au lieu de l'identifiant textuel
         insert_pivot_query = """
-        INSERT INTO Offre_Competence (id_competence, id_francetravail, id_scraping)
+        INSERT INTO Offre_Competence (id_competence, id_offre, id_scraping)
         VALUES (%s, %s, 0)
         ON CONFLICT DO NOTHING;
         """
-        cursor.execute(insert_pivot_query, (id_competence, id_france_travail))
+        cursor.execute(insert_pivot_query, (id_competence, id_offre_bdd))
 
 
 def chercher_offres(token_access, code_rome, conn):

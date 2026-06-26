@@ -12,7 +12,7 @@ DB_NAME     = os.getenv("DB_NAME")
 DB_USER     = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 
-CSV_PATH = os.path.abspath(os.path.join(BASE_DIR, "..", "results", "departments.csv"))
+CSV_PATH = os.path.abspath(os.path.join(BASE_DIR, "..", "result", "departments.csv"))
 
 # DEBUG
 print("DB_PASSWORD :", "OK" if DB_PASSWORD else "None")

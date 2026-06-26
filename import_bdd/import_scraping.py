@@ -375,7 +375,6 @@ def load_csv(path: Path, lookup: dict, limits: dict[str, int]) -> list[tuple]:
             rows.append((title, code_departement, code_region, date_publication, competence_tags, profil))
     return rows
 
-
 def import_scraping() -> None:
     csv_path = resolve_path(CSV_PATH)
     if not csv_path.exists():
@@ -425,10 +424,52 @@ def import_scraping() -> None:
                     profil,
                 ),
             )
-            if cursor.fetchone():
+            
+            # --- MODIFICATION ICI : RÉCUPÉRATION DE L'ID DE SCRAPING RÉEL ---
+            res = cursor.fetchone()
+            if res:
+                id_scraping = res[0]
                 inserted += 1
             else:
                 ignored += 1
+                # Si l'offre existait déjà (pas d'insertion), on va chercher son VRAI id_scraping en BDD
+                cursor.execute("SELECT id_scraping FROM scraping WHERE titre = %s LIMIT 1", (titre,))
+                id_scraping = cursor.fetchone()[0]
+
+            # --- REMPLISSAGE AUTOMATIQUE DE LA TABLE PIVOT OFFRE_COMPETENCE ---
+            if competence_tags:
+                # 1. On cherche le vrai id_offre dans la table Offre_France_travail (via le titre)
+                # Si non trouvé, on applique votre règle : id_offre sera identique à id_scraping
+                cursor.execute("SELECT id_offre FROM Offre_France_travail WHERE titre = %s LIMIT 1", (titre,))
+                offre_res = cursor.fetchone()
+                id_offre = offre_res[0] if offre_res else id_scraping
+
+                # 2. On découpe la chaîne de caractères des compétences (ex: "Python, SQL" -> ["Python", "SQL"])
+                liste_competences = [c.strip() for c in competence_tags.split(",") if c.strip()]
+                
+                for nom_competence in liste_competences:
+                    # 3. On va chercher le vrai id_competence dans la table Competence
+                    cursor.execute("SELECT id_competence FROM Competence WHERE nom = %s", (nom_competence,))
+                    comp_res = cursor.fetchone()
+                    
+                    if comp_res:
+                        id_competence = comp_res[0]
+                    else:
+                        # Si la compétence n'existe pas encore dans votre table Competence, on l'insère à la volée
+                        cursor.execute("INSERT INTO Competence (nom) VALUES (%s) RETURNING id_competence", (nom_competence,))
+                        id_competence = cursor.fetchone()[0]
+                    
+                    # 4. On insère proprement le triplet unique dans Offre_Competence
+                    query_pivot = """
+                        INSERT INTO Offre_Competence (id_competence, id_offre, id_scraping)
+                        VALUES (%s, %s, %s)
+                        ON CONFLICT (id_competence, id_offre, id_scraping) DO NOTHING;
+                    """
+                    try:
+                        cursor.execute(query_pivot, (id_competence, id_offre, id_scraping))
+                    except Exception:
+                        # Sécurité pour éviter de bloquer l'import global en cas d'erreur de contrainte extérieure
+                        pass
 
         conn.commit()
 
@@ -445,7 +486,6 @@ def import_scraping() -> None:
         cursor.close()
         conn.close()
         print("Connexion fermee.")
-
 
 if __name__ == "__main__":
     import_scraping()

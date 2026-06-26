@@ -125,15 +125,16 @@ def create_tables():
             FOREIGN KEY (siret_of_contractant) REFERENCES Siret(siret_of_contractant) ON DELETE SET NULL
         );
         """,
-       """
-        CREATE TABLE IF NOT EXISTS Offre_Competence (
-            id_competence INT,
-            id_francetravail VARCHAR(20),
-            id_scraping INT DEFAULT 0,
-            PRIMARY KEY (id_competence, id_francetravail, id_scraping),
-            FOREIGN KEY (id_francetravail) REFERENCES Offre_France_travail(id_francetravail) ON DELETE CASCADE
+    """
+    CREATE TABLE IF NOT EXISTS Offre_Competence (
+        id_competence INT,
+        id_offre INT,
+        id_scraping INT, -- Plus de SERIAL ici
+        PRIMARY KEY (id_competence, id_offre, id_scraping),
+        FOREIGN KEY (id_offre) REFERENCES Offre_France_travail(id_offre) ON DELETE CASCADE,
+        FOREIGN KEY (id_scraping) REFERENCES Scraping(ID_Scraping) ON DELETE CASCADE
         );
-        """
+    """
     ]
 
     try:
