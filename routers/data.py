@@ -1,5 +1,5 @@
-from compute_freework_offers import compute_freework_offers
-from compute_formations import compute_all
+from pipeline.compute_freework_offers import compute_freework_offers
+from pipeline.compute_formations import compute_all
 
 from fastapi import APIRouter
 
