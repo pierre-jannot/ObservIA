@@ -1,10 +1,11 @@
 import re
-import requests
 import json
 import time
 import os
 
+import requests
 from dotenv import load_dotenv
+
 from utils.compute_dataframe import load_csv_to_df
 
 load_dotenv()
@@ -36,7 +37,7 @@ def get_department(locations):
             return code_from_name(zones, location, "departement")
         if location in zones["nom_region"].values:
             return code_from_name(zones, location, "region")
-        
+    
     address = normalize_address(locations)
     url = f"{LOCATION_BASE_URL}/?q={address}"
 
@@ -52,9 +53,8 @@ def get_department(locations):
             result = f"D{department}"
             return result
         except:
-            return ""
-    else:
-        return ""
+            pass
+    return ""
 
 
 def code_from_name(zones, name, zone_type):

@@ -1,7 +1,8 @@
 import os
 
-from utils.compute_dataframe import load_csv_to_df
 from dotenv import load_dotenv
+
+from utils.compute_dataframe import load_csv_to_df
 
 load_dotenv()
 

@@ -1,9 +1,10 @@
-from utils.compute_dataframe import load_csv_to_df
-from dotenv import load_dotenv
-
-import requests
 import os
 import time
+
+from dotenv import load_dotenv
+import requests
+
+from utils.compute_dataframe import load_csv_to_df
 
 load_dotenv()
 

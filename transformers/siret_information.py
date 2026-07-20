@@ -1,5 +1,6 @@
-from extractors.sirets import get_department_from_siret
 from tqdm import tqdm
+
+from extractors.sirets import get_department_from_siret
 
 def get_sirets_information(unique_sirets):
     print('\nAvancement récupération informations SIRET :\n')

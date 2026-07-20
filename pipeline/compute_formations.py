@@ -22,32 +22,28 @@ def compute_formation_data():
     if os.path.exists(FORMATIONS_PATH) and os.path.exists(CORRESPONDANCES_PATH):
         print(f"Données {FORMATIONS_PATH} et {CORRESPONDANCES_PATH} existantes. Réécriture des données ignorée.")
         return
-    else:
-        formations, correspondances = load_init_data()
-        formations, correspondances = filter_data(formations=formations, correspondances=correspondances)
-        write_dataframe(path=FORMATIONS_PATH, dataframe=formations)
-        write_dataframe(path=CORRESPONDANCES_PATH, dataframe=correspondances)
+    formations, correspondances = load_init_data()
+    formations, correspondances = filter_data(formations, correspondances)
+    write_dataframe(path=FORMATIONS_PATH, dataframe=formations)
+    write_dataframe(path=CORRESPONDANCES_PATH, dataframe=correspondances)
 
 def compute_sirets_information():
     if os.path.exists(SIRETS_PATH):
         print(f"Données {SIRETS_PATH} existantes. Réécriture des données ignorée.")
         return
-    else:
-        formations = pd.read_csv(FORMATIONS_PATH, sep=";", encoding="utf-8")
-        unique_sirets = get_unique_values(formations, "siret_of_contractant")
-        sirets_information = pd.DataFrame(get_sirets_information(unique_sirets=unique_sirets))
-        write_dataframe(path=SIRETS_PATH, dataframe=sirets_information)
+    formations = pd.read_csv(FORMATIONS_PATH, sep=";", encoding="utf-8")
+    unique_sirets = get_unique_values(formations, "siret_of_contractant")
+    sirets_information = pd.DataFrame(get_sirets_information(unique_sirets=unique_sirets))
+    write_dataframe(path=SIRETS_PATH, dataframe=sirets_information)
 
 def compute_departments_information():
     if os.path.exists(DEPARTMENTS_PATH):
         print(f"Données {DEPARTMENTS_PATH} existantes. Réécriture des données ignorée.")
         return
-    else:
-        departments = scrap_departments_information()
-        write_dataframe(path=DEPARTMENTS_PATH, dataframe=departments)
+    departments = scrap_departments_information()
+    write_dataframe(path=DEPARTMENTS_PATH, dataframe=departments)
 
 def compute_all():
     compute_formation_data()
     compute_departments_information()
     compute_sirets_information()
-    return

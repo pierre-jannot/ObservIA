@@ -1,5 +1,6 @@
-from utils.compute_dataframe import get_filtered_values, get_quarter_values, count_unique_values
 from fastapi import APIRouter, Query
+
+from utils.compute_dataframe import get_filtered_values, get_quarter_values, count_unique_values
 from extractors.offers import load_freework_offers
 from extractors.departments import load_departments
 
@@ -54,7 +55,7 @@ def get_offers_per_region():
 
 
 @router.get("/offers-per-region/{region}")
-def get_offers_per_region(region: str):
+def get_offers_per_chosen_region(region: str):
     dataframe = load_freework_offers()
     departments = load_departments()
     correspondance = dict(zip(departments["nom_departement"], departments["nom_region"]))

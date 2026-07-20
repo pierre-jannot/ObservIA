@@ -1,10 +1,11 @@
-from utils.compute_dataframe import load_csv_to_df
-from dotenv import load_dotenv
-
 import os
+import json
+
+from dotenv import load_dotenv
 import requests
 import pandas as pd
-import json
+
+from utils.compute_dataframe import load_csv_to_df
 
 load_dotenv()
 

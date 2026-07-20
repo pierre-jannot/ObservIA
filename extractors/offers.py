@@ -1,7 +1,9 @@
-import requests
-import json
-import pandas as pd
 import os
+import json
+
+import requests
+import pandas as pd
+
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from utils.compute_dataframe import load_csv_to_df
@@ -27,8 +29,7 @@ def scrap_freework_pages_quantity(items_per_page):
     url = f"{BASE_URL}&page=1&itemsPerPage={items_per_page}"
     response = requests.get(url, headers=HEADERS).text
     data = json.loads(response)
-    number_of_pages = int(data["hydra:view"]["hydra:last"].split("=")[-1])
-    return number_of_pages
+    return int(data["hydra:view"]["hydra:last"].split("=")[-1])
 
 def scrap_freework_offers(items_per_page, page):
     job_offers = []
@@ -39,48 +40,36 @@ def scrap_freework_offers(items_per_page, page):
     data = json.loads(response.text)
     for element in data["hydra:member"]:
         skills_tags = []
-        id = element["id"]
-        title = element["title"]
-        publication_date = element["publishedAt"]
         for skill in element["skills"]:
             skills_tags.append(skill["name"])
         profile = element["candidateProfile"] or ""
         profile = BeautifulSoup(profile, "html.parser").get_text(separator=" ", strip=True)
-        experience = element["experienceLevel"] or ""
-        min_annual_salary = element["minAnnualSalary"] or None
-        max_annual_salary = element["maxAnnualSalary"] or None
-        min_daily_salary = element["maxDailySalary"] or None
-        max_daily_salary = element["maxDailySalary"] or None
-        duration_value = element["durationValue"] or None
-        duration_period = element["durationPeriod"] or None
-        month_duration = None
-        if isinstance(duration_value, int) and duration_value > 0 and duration_period in ["month", "year"]:
-            if duration_period == "month":
-                month_duration = duration_value
-            elif duration_period == "year":
-                month_duration = duration_value * 12
-        else:
-            month_duration = 0
-        address = element["location"]["label"]
-        location = get_department(address)
+        dur_value = element["durationValue"] or None
+        dur_period = element["durationPeriod"] or None
+        month_duration = 0
+        if isinstance(dur_value, int) and dur_value > 0 and dur_period in ["month", "year"]:
+            if dur_period == "month":
+                month_duration = dur_value
+            elif dur_period == "year":
+                month_duration = dur_value * 12
         slug = element["slug"]
         contribution_slug = element["job"]["nameForContributionSlug"]
         url = f"{OFFER_URL}{contribution_slug}/{slug}"
 
         job_offer = {
-            "id": id,
-            "title": title,
-            "publication_date": publication_date,
+            "id": element["id"],
+            "title": element["title"],
+            "publication_date": element["publishedAt"],
             "skill_tags": skills_tags,
             "profile": profile,
-            "experience": experience,
-            "min_annual_salary": min_annual_salary,
-            "max_annual_salary": max_annual_salary,
-            "min_daily_salary": min_daily_salary,
-            "max_daily_salary": max_daily_salary,
+            "experience": element["experienceLevel"] or "",
+            "min_annual_salary": element["minAnnualSalary"] or None,
+            "max_annual_salary": element["maxAnnualSalary"] or None,
+            "min_daily_salary": element["maxDailySalary"] or None,
+            "max_daily_salary": element["maxDailySalary"] or None,
             "month_duration": month_duration,
-            "address": address,
-            "location": location,
+            "address": element["location"]["label"],
+            "location": get_department(element["location"]["label"]),
             "url": url
         }
 
