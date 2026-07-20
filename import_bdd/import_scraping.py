@@ -9,7 +9,6 @@ import psycopg2
 from psycopg2 import sql
 from dotenv import load_dotenv
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(PROJECT_ROOT / ".env")
 
@@ -375,6 +374,7 @@ def load_csv(path: Path, lookup: dict, limits: dict[str, int]) -> list[tuple]:
             rows.append((title, code_departement, code_region, date_publication, competence_tags, profil))
     return rows
 
+
 def import_scraping() -> None:
     csv_path = resolve_path(CSV_PATH)
     if not csv_path.exists():
@@ -425,51 +425,68 @@ def import_scraping() -> None:
                 ),
             )
             
-            # --- MODIFICATION ICI : RÉCUPÉRATION DE L'ID DE SCRAPING RÉEL ---
             res = cursor.fetchone()
             if res:
                 id_scraping = res[0]
                 inserted += 1
             else:
                 ignored += 1
-                # Si l'offre existait déjà (pas d'insertion), on va chercher son VRAI id_scraping en BDD
-                cursor.execute("SELECT id_scraping FROM scraping WHERE titre = %s LIMIT 1", (titre,))
+                # CORRECTION : Recherche de l'id_scraping existant dans la bonne table 'Scraping'
+                cursor.execute(
+                    """
+                    SELECT ID_Scraping FROM Scraping 
+                    WHERE titre = %s 
+                      AND code_departement IS NOT DISTINCT FROM %s 
+                      AND code_region IS NOT DISTINCT FROM %s 
+                      AND date_publication IS NOT DISTINCT FROM %s 
+                      AND profil IS NOT DISTINCT FROM %s 
+                    LIMIT 1;
+                    """,
+                    (titre, code_departement, code_region, date_publication, profil)
+                )
                 id_scraping = cursor.fetchone()[0]
 
-            # --- REMPLISSAGE AUTOMATIQUE DE LA TABLE PIVOT OFFRE_COMPETENCE ---
+            # --- CORRECTION : REMPLISSAGE DE LA TABLE UNIQUE OFFRE_COMPETENCE ---
+            # --- BLOC CORRIGÉ À METTRE DANS LA BOUCLE FOR ROW IN ROWS ---
             if competence_tags:
-                # 1. On cherche le vrai id_offre dans la table Offre_France_travail (via le titre)
-                # Si non trouvé, on applique votre règle : id_offre sera identique à id_scraping
-                cursor.execute("SELECT id_offre FROM Offre_France_travail WHERE titre = %s LIMIT 1", (titre,))
-                offre_res = cursor.fetchone()
-                id_offre = offre_res[0] if offre_res else id_scraping
-
-                # 2. On découpe la chaîne de caractères des compétences (ex: "Python, SQL" -> ["Python", "SQL"])
                 liste_competences = [c.strip() for c in competence_tags.split(",") if c.strip()]
                 
-                for nom_competence in liste_competences:
-                    # 3. On va chercher le vrai id_competence dans la table Competence
-                    cursor.execute("SELECT id_competence FROM Competence WHERE nom = %s", (nom_competence,))
+                for nom_comp in liste_competences:
+                    if not nom_comp: continue
+                    
+                    # 1. Trouver ou créer la compétence AVEC le source_type
+                    cursor.execute("SELECT ID_Competence FROM Competence WHERE nom_competence = %s AND source_type = 'scraping'", (nom_comp,))
                     comp_res = cursor.fetchone()
                     
                     if comp_res:
                         id_competence = comp_res[0]
                     else:
-                        # Si la compétence n'existe pas encore dans votre table Competence, on l'insère à la volée
-                        cursor.execute("INSERT INTO Competence (nom) VALUES (%s) RETURNING id_competence", (nom_competence,))
+                        cursor.execute("INSERT INTO Competence (nom_competence, source_type) VALUES (%s, 'scraping') RETURNING ID_Competence", (nom_comp,))
                         id_competence = cursor.fetchone()[0]
                     
-                    # 4. On insère proprement le triplet unique dans Offre_Competence
-                    query_pivot = """
-                        INSERT INTO Offre_Competence (id_competence, id_offre, id_scraping)
-                        VALUES (%s, %s, %s)
-                        ON CONFLICT (id_competence, id_offre, id_scraping) DO NOTHING;
-                    """
+                    # 2. Insertion dans la table pivot (bien indenté DANS la boucle !)
                     try:
-                        cursor.execute(query_pivot, (id_competence, id_offre, id_scraping))
-                    except Exception:
-                        # Sécurité pour éviter de bloquer l'import global en cas d'erreur de contrainte extérieure
-                        pass
+                        query_pivot = """
+                            INSERT INTO Offre_Competence (id_competence, id_scraping, id_francetravail)
+                            VALUES (%s, %s, NULL)
+                            ON CONFLICT (id_competence, id_scraping) WHERE id_scraping IS NOT NULL DO NOTHING;
+                        """
+                        cursor.execute(query_pivot, (id_competence, id_scraping))
+                    except Exception as e:
+                        continue # Ignore les erreurs de doublons pour ne pas stopper le script
+                    
+                    # 2. Insertion sécurisée dans la table pivot
+                    try:
+                        query_pivot = """
+                            INSERT INTO Offre_Competence (id_competence, id_scraping)
+                            VALUES (%s, %s)
+                            ON CONFLICT (id_competence, id_scraping) WHERE id_scraping IS NOT NULL DO NOTHING;
+                        """
+                        cursor.execute(query_pivot, (id_competence, id_scraping))
+                    except Exception as e:
+                        # On ignore l'erreur de doublon spécifique pour continuer le script
+                        continue 
+            # --- FIN DU BLOC CORRIGÉ ---
 
         conn.commit()
 
@@ -486,6 +503,7 @@ def import_scraping() -> None:
         cursor.close()
         conn.close()
         print("Connexion fermee.")
+
 
 if __name__ == "__main__":
     import_scraping()

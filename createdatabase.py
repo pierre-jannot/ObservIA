@@ -8,7 +8,7 @@ load_dotenv(encoding='cp1252')
 
 # Recuperation des parametres de configuration
 DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_PORT = os.getenv("DB_PORT", "3432")
+DB_PORT = os.getenv("DB_PORT", "5432")  # 🟢 CORRIGÉ : 5432 au lieu de 3432
 DB_USER = os.getenv("DB_USER", "postgres")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_NAME = os.getenv("DB_NAME", "ObservIA")
@@ -52,7 +52,9 @@ def create_tables():
         """
         CREATE TABLE IF NOT EXISTS Competence (
             ID_Competence SERIAL PRIMARY KEY,
-            nom_competence VARCHAR(255) NOT NULL
+            nom_competence VARCHAR(255) NOT NULL,
+            source_type VARCHAR(50) NOT NULL,
+            UNIQUE (nom_competence, source_type)
         );
         """,
         """
@@ -93,8 +95,7 @@ def create_tables():
         """,
         """
         CREATE TABLE IF NOT EXISTS Offre_France_travail (
-            id_offre SERIAL PRIMARY KEY,                    -- Ton INT obligatoire pour tes autres tables
-            id_francetravail VARCHAR(20) UNIQUE,          -- L'ID unique avec lettres (ex: '210HPPY')
+            id_francetravail VARCHAR(20) UNIQUE,
             code_rome VARCHAR(5),
             code_departement VARCHAR(3),
             Competence VARCHAR(255),
@@ -125,23 +126,30 @@ def create_tables():
             FOREIGN KEY (siret_of_contractant) REFERENCES Siret(siret_of_contractant) ON DELETE SET NULL
         );
         """,
-    """
-    CREATE TABLE IF NOT EXISTS Offre_Competence (
-        id_competence INT,
-        id_offre INT,
-        id_scraping INT, -- Plus de SERIAL ici
-        PRIMARY KEY (id_competence, id_offre, id_scraping),
-        FOREIGN KEY (id_offre) REFERENCES Offre_France_travail(id_offre) ON DELETE CASCADE,
-        FOREIGN KEY (id_scraping) REFERENCES Scraping(ID_Scraping) ON DELETE CASCADE
+        """
+        CREATE TABLE IF NOT EXISTS Offre_Competence (
+            id_offre_competence SERIAL PRIMARY KEY,
+            id_competence INT NOT NULL,
+            id_francetravail VARCHAR(20) ,
+            id_scraping INT NULL,
+            FOREIGN KEY (id_competence) REFERENCES Competence(ID_Competence) ON DELETE CASCADE,
+            FOREIGN KEY (id_francetravail) REFERENCES Offre_France_travail(id_francetravail) ON DELETE CASCADE,
+            FOREIGN KEY (id_scraping) REFERENCES Scraping(ID_Scraping) ON DELETE CASCADE
         );
-    """
+        """,
+        """
+        CREATE UNIQUE INDEX IF NOT EXISTS idx_offre_comp_ft ON Offre_Competence (id_competence, id_francetravail) WHERE id_francetravail IS NOT NULL;
+        """,
+        """
+        CREATE UNIQUE INDEX IF NOT EXISTS idx_offre_comp_scrap ON Offre_Competence (id_competence, id_scraping) WHERE id_scraping IS NOT NULL;
+        """
     ]
 
     try:
         for query in sql_queries:
             cursor.execute(query)
         conn.commit()
-        print("Structure relationnelle complete creee avec succes dans PostgreSQL !")
+        print("Structure relationnelle complete creee avec succes dans PostgreSQL (Port 5432) !")
     except Exception as e:
         conn.rollback()
         print(f"Erreur lors de la creation des tables : {e}")
