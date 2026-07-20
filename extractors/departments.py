@@ -1,3 +1,7 @@
+"""
+Extraction des régions et départements depuis une page geo.api.gouv.
+"""
+
 import os
 import json
 
@@ -19,14 +23,30 @@ DEPARTMENTS_BASE_URL = os.getenv("DEPARTMENTS_BASE_URL")
 REGIONS_BASE_URL = os.getenv("REGIONS_BASE_URL")
 
 def load_departments():
+    """
+    Récupère les informations des départements et régions depuis le csv.
+
+    Returns:
+        departments : Dataframe pandas - Fichier departments.csv
+    """
     departments = load_csv_to_df(DEPARTMENTS_PATH)
     return departments
 
 def scrap_departments_information():
-    response = requests.get(DEPARTMENTS_BASE_URL, headers=HEADERS).text
+    """
+    Scrapping des informations des départements et régions depuis une page geo.api.gouv.
+
+    Returns:
+        Dataframe pandas - Noms et codes des départements et régions
+    """
+    response = requests.get(DEPARTMENTS_BASE_URL,
+                            headers=HEADERS,
+                            timeout=10).text
     departements = json.loads(response)
 
-    response = requests.get(REGIONS_BASE_URL, headers=HEADERS).text
+    response = requests.get(REGIONS_BASE_URL,
+                            headers=HEADERS,
+                            timeout=10).text
     regions = json.loads(response)
 
     mapping_regions = {

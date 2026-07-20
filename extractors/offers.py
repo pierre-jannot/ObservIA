@@ -1,3 +1,7 @@
+"""
+Scrapping des offres freework et lecture du fichier csv résultant.
+"""
+
 import os
 import json
 
@@ -22,21 +26,52 @@ BASE_URL = os.getenv("FREEWORK_BASE_URL")
 OFFER_URL = os.getenv("FREEWORK_OFFER_URL")
 
 def load_freework_offers():
+    """
+    Lecture des offres freework depuis le csv freework_offers.
+
+    Returns:
+        dataframe : Dataframe pandas - Offres freework du fichier csv
+    """
     dataframe = load_csv_to_df(FREEWORK_OFFERS_PATH)
     return dataframe
 
 def scrap_freework_pages_quantity(items_per_page):
+    """
+    Récupère le nombre de pages d'offres en fonction du nombre d'offres par page.
+
+    Args:
+        items_per_page : int - Nombre d'offres par pages
+
+    Returns:
+        int - Nombre de pages d'offres
+    """
     url = f"{BASE_URL}&page=1&itemsPerPage={items_per_page}"
-    response = requests.get(url, headers=HEADERS).text
+    response = requests.get(url,
+                            headers=HEADERS,
+                            timeout=10).text
     data = json.loads(response)
     return int(data["hydra:view"]["hydra:last"].split("=")[-1])
 
 def scrap_freework_offers(items_per_page, page):
+    """
+    Réalise le scraping de toutes les offres freework d'une page.
+
+    Args:
+        items_per_page : int - Nombre d'offres par pages
+        page : int - Numéro de page
+
+    Returns:
+        df : Dataframe pandas - Offres scrapées de la page
+    """
     job_offers = []
     url = f"{BASE_URL}&page={page}&itemsPerPage={items_per_page}"
-    response = requests.get(url, headers=HEADERS)
+    response = requests.get(url,
+                            headers=HEADERS,
+                            timeout=10)
     while response.status_code != 200:
-        response = requests.get(url, headers=HEADERS)
+        response = requests.get(url,
+                                headers=HEADERS,
+                                timeout=10)
     data = json.loads(response.text)
     for element in data["hydra:member"]:
         skills_tags = []
@@ -52,9 +87,7 @@ def scrap_freework_offers(items_per_page, page):
                 month_duration = dur_value
             elif dur_period == "year":
                 month_duration = dur_value * 12
-        slug = element["slug"]
-        contribution_slug = element["job"]["nameForContributionSlug"]
-        url = f"{OFFER_URL}{contribution_slug}/{slug}"
+        url = f"{OFFER_URL}{element["job"]["nameForContributionSlug"]}/{element["slug"]}"
 
         job_offer = {
             "id": element["id"],

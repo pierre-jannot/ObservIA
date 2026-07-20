@@ -1,3 +1,7 @@
+"""
+Lecture en dataframe des données brutes de formation et de correspondance.
+"""
+
 import os
 
 from dotenv import load_dotenv
@@ -11,6 +15,13 @@ E_S_FORMATIONS_PATH = f"{SOURCES_PATH}/{os.getenv("E_S_FORMATIONS_PATH")}"
 CORRESPONDANCES_PATH = f"{SOURCES_PATH}/{os.getenv("TABLE_CORRESP_PATH")}"
 
 def load_init_data():
+    """
+    Récupère les informations des formations et des correspondances ROME/RNCP depuis les csv bruts.
+
+    Returns:
+        formations : Dataframe pandas - Formations
+        correspondances : Dataframe pandas - Correspondances ROME/RNCP
+    """
     formations = load_csv_to_df(E_S_FORMATIONS_PATH)
     correspondances = load_csv_to_df(CORRESPONDANCES_PATH)
 
