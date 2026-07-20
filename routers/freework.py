@@ -47,7 +47,7 @@ def get_offers_per_region():
 
 
 @router.get("/offers-per-region/{region}")
-def get_offers_per_region(region: str):
+def get_offers_per_specific_region(region: str):
     dataframe = load_freework_offers()
     departments = load_departments()
     correspondance = dict(zip(departments["nom_departement"], departments["nom_region"]))

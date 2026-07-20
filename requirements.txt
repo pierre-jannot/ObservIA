@@ -5,3 +5,5 @@ tqdm
 sqlalchemy
 beautifulsoup4
 fastapi
+psycopg2-binary
+uvicorn

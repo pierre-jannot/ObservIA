@@ -449,7 +449,7 @@ def import_scraping() -> None:
             # --- CORRECTION : REMPLISSAGE DE LA TABLE UNIQUE OFFRE_COMPETENCE ---
             # --- BLOC CORRIGÉ À METTRE DANS LA BOUCLE FOR ROW IN ROWS ---
             if competence_tags:
-                liste_competences = [c.strip() for c in competence_tags.split(",") if c.strip()]
+                liste_competences = [c.strip() for c in competence_tags.split("|") if c.strip()]
                 
                 for nom_comp in liste_competences:
                     if not nom_comp: continue
@@ -464,7 +464,7 @@ def import_scraping() -> None:
                         cursor.execute("INSERT INTO Competence (nom_competence, source_type) VALUES (%s, 'scraping') RETURNING ID_Competence", (nom_comp,))
                         id_competence = cursor.fetchone()[0]
                     
-                    # 2. Insertion dans la table pivot (bien indenté DANS la boucle !)
+                    # 2. Insertion dans la table pivot
                     try:
                         query_pivot = """
                             INSERT INTO Offre_Competence (id_competence, id_scraping, id_francetravail)
@@ -474,18 +474,6 @@ def import_scraping() -> None:
                         cursor.execute(query_pivot, (id_competence, id_scraping))
                     except Exception as e:
                         continue # Ignore les erreurs de doublons pour ne pas stopper le script
-                    
-                    # 2. Insertion sécurisée dans la table pivot
-                    try:
-                        query_pivot = """
-                            INSERT INTO Offre_Competence (id_competence, id_scraping)
-                            VALUES (%s, %s)
-                            ON CONFLICT (id_competence, id_scraping) WHERE id_scraping IS NOT NULL DO NOTHING;
-                        """
-                        cursor.execute(query_pivot, (id_competence, id_scraping))
-                    except Exception as e:
-                        # On ignore l'erreur de doublon spécifique pour continuer le script
-                        continue 
             # --- FIN DU BLOC CORRIGÉ ---
 
         conn.commit()

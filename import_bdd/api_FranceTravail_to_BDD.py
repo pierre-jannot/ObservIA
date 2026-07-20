@@ -119,9 +119,9 @@ def stocker_offre_et_competences(cursor, offre):
         if result:
             id_competence = result[0]
 
-            query_pivot = query_pivot = """
-    INSERT INTO Offre_Competence (id_competence, id_francetravail, id_scraping, source_type)
-    VALUES (%s, %s, NULL, 'francetravail');
+            query_pivot = """
+    INSERT INTO Offre_Competence (id_competence, id_francetravail, id_scraping)
+    VALUES (%s, %s, NULL);
 """
             cursor.execute(query_pivot, (id_competence, id_offre_brut))
 
