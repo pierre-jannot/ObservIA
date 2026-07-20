@@ -65,86 +65,65 @@ def get_france_travail_token():
     print(f"Token généré (expire dans {resultat.get('expires_in')}s)")
     return token
 
-
 def stocker_offre_et_competences(cursor, offre):
-    """Insère une offre, ses compétences et met à jour la table pivot."""
+    """Insère une offre et ses compétences en utilisant id_francetravail comme lien."""
 
-    # Extraction et nettoyage strict du code département (ex: 75, 13, 974)
+    # 1. Extraction des données
+    id_offre_brut = offre.get('id')
+    if not id_offre_brut:
+        return
+
     lieu = offre.get("lieuTravail", {})
     code_postal = lieu.get("codePostal")
-    code_dept = None
+    code_dept = code_postal[:2] if code_postal and isinstance(code_postal, str) else None
 
-    if code_postal and isinstance(code_postal, str):
-        code_postal = code_postal.strip()
-        if code_postal.startswith(("97", "98")):
-            # Outre-mer : le département est sur 3 chiffres (ex: 97400 -> 974)
-            code_dept = code_postal[:3]
-        else:
-            # Métropole : le département est sur 2 chiffres (ex: 75001 -> 75)
-            code_dept = code_postal[:2]
-
-    # Sécurité pour respecter la contrainte de taille de la colonne en BDD
-    if code_dept:
-        code_dept = code_dept[:5]
-
-    # Extraction du salaire : l'API renvoie un objet, on cible uniquement le libellé lisible
-    salaire_libelle = offre.get('salaire', {}).get('libelle') if offre.get('salaire') else None
-
-    # Extraction du niveau d'expérience exigé (ex: "D" pour débutant, "E" pour expérimenté)
-    experience_exige = offre.get('experienceExige')
-
-    # Insertion sécurisée : si l'offre existe déjà (id_francetravail unique), on ne fait rien
+    # 2. Insertion de l'offre (sans RETURNING id_offre)
     insert_offre_query = """
     INSERT INTO Offre_France_travail (id_francetravail, code_rome, code_departement, Competence, dateActualisation, dateCreation, salaire, experience_exige)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-    ON CONFLICT (id_francetravail) DO NOTHING;
+    ON CONFLICT (id_francetravail) DO UPDATE SET 
+        code_rome = EXCLUDED.code_rome,
+        dateActualisation = EXCLUDED.dateActualisation;
     """
-
-    id_offre_brut = offre.get('id')
-    rome_code_param = offre.get('romeCode')
 
     cursor.execute(insert_offre_query, (
         id_offre_brut,
-        rome_code_param,
+        offre.get('romeCode'),
         code_dept,
         offre.get('intitule'),
         offre.get('dateActualisation'),
         offre.get('dateCreation'),
-        salaire_libelle,
-        experience_exige
+        offre.get('salaire', {}).get('libelle') if offre.get('salaire') else None,
+        offre.get('experienceExige')
     ))
 
-    # Récupération directe de l'ID textuel de France Travail (ex: "1707XYZ") pour les liaisons
-    id_france_travail = offre.get('id')
-    if not id_france_travail:
-        return
-
-    # Insertion des compétences liées et alimentation de la table pivot
+    # 3. Insertion des compétences et alimentation de la table pivot
     liste_competences = offre.get("competences", [])
+    
     for comp in liste_competences:
         nom_comp = comp.get("libelle")
         if not nom_comp:
             continue
-
+        # Insertion de la compétence AVEC le source_type
         insert_comp_query = """
-        INSERT INTO Competence (nom_competence)
-        VALUES (%s)
-        ON CONFLICT (nom_competence) DO NOTHING;
+        INSERT INTO Competence (nom_competence, source_type)
+        VALUES (%s, 'francetravail')
+        ON CONFLICT (nom_competence, source_type) DO NOTHING;
         """
         cursor.execute(insert_comp_query, (nom_comp,))
 
-        select_comp_query = "SELECT ID_Competence FROM Competence WHERE nom_competence = %s;"
-        cursor.execute(select_comp_query, (nom_comp,))
-        id_competence = cursor.fetchone()[0]
+        # Récupération de l'ID compétence (filtré par source_type)
+        cursor.execute("SELECT ID_Competence FROM Competence WHERE nom_competence = %s AND source_type = 'francetravail';", (nom_comp,))
+        result = cursor.fetchone()
+        
+        if result:
+            id_competence = result[0]
 
-        # Insertion finale dans la table pivot avec les noms de colonnes en minuscules
-        insert_pivot_query = """
-        INSERT INTO Offre_Competence (id_competence, id_francetravail, id_scraping)
-        VALUES (%s, %s, 0)
-        ON CONFLICT DO NOTHING;
-        """
-        cursor.execute(insert_pivot_query, (id_competence, id_france_travail))
-
+            query_pivot = query_pivot = """
+    INSERT INTO Offre_Competence (id_competence, id_francetravail, id_scraping, source_type)
+    VALUES (%s, %s, NULL, 'francetravail');
+"""
+            cursor.execute(query_pivot, (id_competence, id_offre_brut))
 
 def chercher_offres(token_access, code_rome, conn):
     """Parcourt l'API de France Travail pour un code ROME donné et stocke les résultats."""
@@ -240,7 +219,16 @@ if __name__ == "__main__":
             # Application de la contrainte unique de sécurité sur la table Competence
             with conn.cursor() as cur:
                 cur.execute("ALTER TABLE Competence DROP CONSTRAINT IF EXISTS unique_nom_competence;")
-                cur.execute("ALTER TABLE Competence ADD CONSTRAINT unique_nom_competence UNIQUE (nom_competence);")
+                cur.execute("ALTER TABLE Competence ADD CONSTRAINT unique_nom_competence UNIQUE (nom_competence, source_type);")
+                conn.commit()
+                # Juste avant la boucle "for code in CODES_ROME:"
+            with conn.cursor() as cur:
+                # Création de la contrainte unique sur la table pivot
+                cur.execute("""
+                ALTER TABLE Offre_Competence 
+                ADD CONSTRAINT unique_couple_comp_ft 
+                 UNIQUE (id_competence, id_francetravail);
+                """)
                 conn.commit()
 
             # Lancement de la collecte pour chaque code ROME trouvé

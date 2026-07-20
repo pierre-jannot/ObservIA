@@ -10,7 +10,8 @@ DB_PORT     = os.getenv("DB_PORT",     "5432")
 DB_NAME     = os.getenv("DB_NAME")
 DB_USER     = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
-CSV_PATH    = os.getenv("CORRESPONDANCES_PATH", "results/correspondances.csv")
+DOSSIER_SCRIPT = os.path.dirname(os.path.abspath(__file__))
+CSV_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "result", "correspondances.csv")
 
 # CSV colonnes (par position) : 0=code_rome | 1=intitule_rome | 2=code_rncp
 # Table : code_rome (varchar[] PK) | code_rncp (integer PK)

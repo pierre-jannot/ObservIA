@@ -9,7 +9,6 @@ import psycopg2
 from psycopg2 import sql
 from dotenv import load_dotenv
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(PROJECT_ROOT / ".env")
 
@@ -425,10 +424,69 @@ def import_scraping() -> None:
                     profil,
                 ),
             )
-            if cursor.fetchone():
+            
+            res = cursor.fetchone()
+            if res:
+                id_scraping = res[0]
                 inserted += 1
             else:
                 ignored += 1
+                # CORRECTION : Recherche de l'id_scraping existant dans la bonne table 'Scraping'
+                cursor.execute(
+                    """
+                    SELECT ID_Scraping FROM Scraping 
+                    WHERE titre = %s 
+                      AND code_departement IS NOT DISTINCT FROM %s 
+                      AND code_region IS NOT DISTINCT FROM %s 
+                      AND date_publication IS NOT DISTINCT FROM %s 
+                      AND profil IS NOT DISTINCT FROM %s 
+                    LIMIT 1;
+                    """,
+                    (titre, code_departement, code_region, date_publication, profil)
+                )
+                id_scraping = cursor.fetchone()[0]
+
+            # --- CORRECTION : REMPLISSAGE DE LA TABLE UNIQUE OFFRE_COMPETENCE ---
+            # --- BLOC CORRIGÉ À METTRE DANS LA BOUCLE FOR ROW IN ROWS ---
+            if competence_tags:
+                liste_competences = [c.strip() for c in competence_tags.split(",") if c.strip()]
+                
+                for nom_comp in liste_competences:
+                    if not nom_comp: continue
+                    
+                    # 1. Trouver ou créer la compétence AVEC le source_type
+                    cursor.execute("SELECT ID_Competence FROM Competence WHERE nom_competence = %s AND source_type = 'scraping'", (nom_comp,))
+                    comp_res = cursor.fetchone()
+                    
+                    if comp_res:
+                        id_competence = comp_res[0]
+                    else:
+                        cursor.execute("INSERT INTO Competence (nom_competence, source_type) VALUES (%s, 'scraping') RETURNING ID_Competence", (nom_comp,))
+                        id_competence = cursor.fetchone()[0]
+                    
+                    # 2. Insertion dans la table pivot (bien indenté DANS la boucle !)
+                    try:
+                        query_pivot = """
+                            INSERT INTO Offre_Competence (id_competence, id_scraping, id_francetravail)
+                            VALUES (%s, %s, NULL)
+                            ON CONFLICT (id_competence, id_scraping) WHERE id_scraping IS NOT NULL DO NOTHING;
+                        """
+                        cursor.execute(query_pivot, (id_competence, id_scraping))
+                    except Exception as e:
+                        continue # Ignore les erreurs de doublons pour ne pas stopper le script
+                    
+                    # 2. Insertion sécurisée dans la table pivot
+                    try:
+                        query_pivot = """
+                            INSERT INTO Offre_Competence (id_competence, id_scraping)
+                            VALUES (%s, %s)
+                            ON CONFLICT (id_competence, id_scraping) WHERE id_scraping IS NOT NULL DO NOTHING;
+                        """
+                        cursor.execute(query_pivot, (id_competence, id_scraping))
+                    except Exception as e:
+                        # On ignore l'erreur de doublon spécifique pour continuer le script
+                        continue 
+            # --- FIN DU BLOC CORRIGÉ ---
 
         conn.commit()
 
