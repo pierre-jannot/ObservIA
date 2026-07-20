@@ -121,7 +121,8 @@ def stocker_offre_et_competences(cursor, offre):
 
             query_pivot = """
     INSERT INTO Offre_Competence (id_competence, id_francetravail, id_scraping)
-    VALUES (%s, %s, NULL);
+    VALUES (%s, %s, NULL)
+    ON CONFLICT (id_competence, id_francetravail) DO NOTHING;
 """
             cursor.execute(query_pivot, (id_competence, id_offre_brut))
 
@@ -225,9 +226,8 @@ if __name__ == "__main__":
             with conn.cursor() as cur:
                 # Création de la contrainte unique sur la table pivot
                 cur.execute("""
-                ALTER TABLE Offre_Competence 
-                ADD CONSTRAINT unique_couple_comp_ft 
-                 UNIQUE (id_competence, id_francetravail);
+                ALTER TABLE Offre_Competence DROP CONSTRAINT IF EXISTS unique_couple_comp_ft;
+                ALTER TABLE Offre_Competence ADD CONSTRAINT unique_couple_comp_ft UNIQUE (id_competence, id_francetravail);
                 """)
                 conn.commit()
 
