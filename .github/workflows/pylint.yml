@@ -28,4 +28,4 @@ jobs:
 
       - name: Lancement de pylint
         run: |
-          pylint extractors transformers indicators routers utils pipeline
+          python -m pylint extractors indicators pipeline routers transformers utils --fail-under=8.0
