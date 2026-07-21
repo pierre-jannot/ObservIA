@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
-from compute_freework_offers import compute_freework_offers
-from compute_formations import compute_all
+from pipeline.compute_freework_offers import compute_freework_offers
+from pipeline.compute_formations import compute_all
 from routers import formations, freework, francetravail, data
 
 import pandas as pd
