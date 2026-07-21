@@ -1,3 +1,7 @@
+"""
+Scraping et écriture des données des offres Freework.
+"""
+
 import os
 
 from tqdm import tqdm
@@ -12,6 +16,15 @@ RESULT_PATH = os.getenv("RESULT_FOLDER_PATH")
 FREEWORK_OFFERS_PATH = f"{RESULT_PATH}/{os.getenv("FREEWORK_OFFERS_PATH")}"
 
 def compute_freework_offers(items_per_page=50):
+    """
+    Scraping et écriture des données des offres Freework.
+
+    Args:
+        Pas d'arguments
+
+    Returns:
+        Pas de return
+    """
     if os.path.exists(FREEWORK_OFFERS_PATH):
         print(f"Données {FREEWORK_OFFERS_PATH} existantes. Réécriture des données ignorée.")
         return
