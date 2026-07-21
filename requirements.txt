@@ -7,3 +7,4 @@ beautifulsoup4
 fastapi
 psycopg2-binary
 uvicorn
+uvicorn[standard]

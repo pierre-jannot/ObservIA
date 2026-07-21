@@ -33,10 +33,10 @@ def scrap_freework_pages_quantity(items_per_page):
 def scrap_freework_offers(items_per_page, page):
     job_offers = []
     url = f"{BASE_URL}&page={page}&itemsPerPage={items_per_page}"
-    response = None
-    while response is None:
-        response = requests.get(url, headers=HEADERS).text
-    data = json.loads(response)
+    response = requests.get(url, headers=HEADERS)
+    while response.status_code != 200:
+        response = requests.get(url, headers=HEADERS)
+    data = json.loads(response.text)
     for element in data["hydra:member"]:
         skills_tags = []
         title = element["title"]
