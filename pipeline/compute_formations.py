@@ -8,7 +8,7 @@ import pandas as pd
 from dotenv import load_dotenv
 
 from extractors.init_csv_data import load_init_data
-from extractors.departments import scrap_departments_information
+from extractors.location import scrap_locations_information
 from transformers.rome_rncp_filtering import filter_data
 from transformers.siret_information import get_sirets_information
 from utils.write_to_csv import write_dataframe
@@ -21,7 +21,7 @@ RESULT_PATH = os.getenv("RESULT_FOLDER_PATH")
 FORMATIONS_PATH = f"{RESULT_PATH}/{os.getenv("FORMATIONS_PATH")}"
 CORRESPONDANCES_PATH = f"{RESULT_PATH}/{os.getenv("CORRESPONDANCES_PATH")}"
 SIRETS_PATH = f"{RESULT_PATH}/{os.getenv("SIRETS_PATH")}"
-DEPARTMENTS_PATH = f"{RESULT_PATH}/{os.getenv("DEPARTMENTS_PATH")}"
+LOCATIONS_PATH = f"{RESULT_PATH}/{os.getenv("LOCATIONS_PATH")}"
 
 def compute_formation_data():
     """
@@ -61,7 +61,7 @@ def compute_sirets_information():
     sirets_information = pd.DataFrame(get_sirets_information(unique_sirets=unique_sirets))
     write_dataframe(path=SIRETS_PATH, dataframe=sirets_information)
 
-def compute_departments_information():
+def compute_regions_information():
     """
     Réalise le scraping des données de départements et les écrits dans un fichier csv.
 
@@ -71,11 +71,11 @@ def compute_departments_information():
     Returns:
         Pas de return
     """
-    if os.path.exists(DEPARTMENTS_PATH):
-        print(f"Données {DEPARTMENTS_PATH} existantes. Réécriture ignorée.")
+    if os.path.exists(LOCATIONS_PATH):
+        print(f"Données {LOCATIONS_PATH} existantes. Réécriture ignorée.")
         return
-    departments = scrap_departments_information()
-    write_dataframe(path=DEPARTMENTS_PATH, dataframe=departments)
+    departments = scrap_locations_information()
+    write_dataframe(path=LOCATIONS_PATH, dataframe=departments)
 
 def compute_all():
     """
@@ -88,5 +88,5 @@ def compute_all():
         Pas de return
     """
     compute_formation_data()
-    compute_departments_information()
+    compute_regions_information()
     compute_sirets_information()

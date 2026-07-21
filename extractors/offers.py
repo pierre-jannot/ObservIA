@@ -11,7 +11,7 @@ import pandas as pd
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from utils.compute_dataframe import load_csv_to_df
-from transformers.get_department import get_department
+from transformers.get_region import get_region
 
 load_dotenv()
 
@@ -102,7 +102,7 @@ def scrap_freework_offers(items_per_page, page):
             "max_daily_salary": element["maxDailySalary"] or None,
             "month_duration": month_duration,
             "address": element["location"]["label"],
-            "location": get_department(element["location"]["label"]),
+            "location": get_region(element["location"]["label"]),
             "url": url
         }
 

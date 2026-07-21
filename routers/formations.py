@@ -27,7 +27,7 @@ def get_all(limit: int = Query(50, le=500, description="Nombre max de résultats
 
 @router.get("/entry-per-quarter")
 def get_formation_entry_per_quarter(
-    zone: list[str] | None = Query(None)
+    zone: list[int] | None = Query(None)
 ):
     """
     Retourne le nombre d'entrées en formation par trimestre.
@@ -48,7 +48,7 @@ def get_formation_entry_per_quarter(
 
 @router.get("/exit-per-quarter")
 def get_formation_exit_per_quarter(
-    zone: list[str] | None = Query(None)
+    zone: list[int] | None = Query(None)
 ):
     """
     Retourne le nombre de sorties de formation par trimestre.

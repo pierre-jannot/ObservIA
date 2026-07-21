@@ -1,5 +1,5 @@
 """
-Transformeurs permettant la récupération du code régional ou départemental.
+Transformeurs permettant la récupération du code régional.
 """
 
 import re
@@ -19,7 +19,7 @@ HEADERS = {
 }
 
 RESULT_PATH = os.getenv("RESULT_FOLDER_PATH")
-DEPARTMENTS_PATH = f"{RESULT_PATH}/{os.getenv("DEPARTMENTS_PATH")}"
+LOCATIONS_PATH = f"{RESULT_PATH}/{os.getenv("LOCATIONS_PATH")}"
 LOCATION_BASE_URL = os.getenv("LOCATION_BASE_URL")
 
 def normalize_address(adresse: str) -> str:
@@ -37,23 +37,23 @@ def normalize_address(adresse: str) -> str:
     mots = [m for m in mots if m]
     return "+".join(mots)
 
-def get_department(locations):
+def get_region(locations):
     """
-    Renvoie le département ou la région de l'adresse donnée.
+    Renvoie la région de l'adresse donnée.
 
     Args:
         locations : str - Adresse
 
     Returns:
-        str - Département ou région
+        str - Région
     """
     if locations is None:
         return ""
     if locations == "France":
-        return "R11"
+        return "11"
     locations_list = locations.split(", ")
 
-    zones = load_csv_to_df(DEPARTMENTS_PATH)
+    zones = load_csv_to_df(LOCATIONS_PATH)
     for location in locations_list:
         if location in zones["nom_departement"].values:
             return code_from_name(zones, location, "departement")
@@ -73,9 +73,8 @@ def get_department(locations):
 
     if data["features"]:
         try:
-            correspondance = dict(zip(zones["code_departement"], zones["nom_departement"]))
-            department = correspondance[data["features"][0]["properties"]["context"].split(',')[0]]
-            result = f"D{department}"
+            correspondance = dict(zip(zones["code_departement"], zones["code_region"]))
+            result = correspondance[data["features"][0]["properties"]["depcode"]]
         except (KeyError, IndexError, AttributeError, TypeError) as e:
             return e
     return result
@@ -83,25 +82,19 @@ def get_department(locations):
 
 def code_from_name(zones, name, zone_type):
     """
-    Retourne le code département ou région.
+    Retourne le code région.
 
     Args:
         zones : Dataframe - Table des départements et régions
-        name : str - nom du département ou de la région
-        zone_type : str - departement ou region
+        name : str - Nom du département ou de la région
+        zone_type : str - Région
 
     Returns:
         str - Adresse normalisée
     """
-    if zone_type == "departement":
-        marker = "D"
-    elif zone_type == "region":
-        marker = "R"
-    else:
-        raise ValueError(f"zone_type inconnu : {zone_type}")
 
-    resultat = zones[zones[f"nom_{zone_type}"] == name][f"code_{zone_type}"]
+    resultat = zones[zones[f"nom_{zone_type}"] == name][f"code_region"]
     if resultat.empty:
         return None  # ou raise une exception explicite selon votre besoin
 
-    return f"{marker}{resultat.iloc[0]}"
+    return resultat.iloc[0]
