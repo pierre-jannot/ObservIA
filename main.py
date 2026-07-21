@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 from compute_freework_offers import compute_freework_offers
 from compute_formations import compute_all
@@ -25,6 +26,6 @@ app.include_router(formations.router, prefix="/formations", tags=["Formations"])
 app.include_router(freework.router, prefix="/freework", tags=["Freework"])
 app.include_router(francetravail.router, prefix="/france-travail", tags=["France Travail"])
 
-@app.get("/")
-def root():
-    return {"status": "ok"}
+@app.exception_handler(404)
+async def not_found_handler(request, exc):
+    return RedirectResponse(url="http://localhost:8000/docs")
