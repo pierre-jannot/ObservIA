@@ -1,5 +1,9 @@
 import pandas as pd
 
+def load_csv_to_df(path):
+    dataframe = pd.read_csv(path, sep=";", encoding="utf-8")
+    return dataframe
+
 def get_unique_values(dataframe, column_name):
     unique_values = dataframe[column_name].unique()
     return unique_values
