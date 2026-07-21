@@ -1,3 +1,7 @@
+"""
+Transformeurs permettant la récupération du code régional ou départemental.
+"""
+
 import re
 import json
 import time
@@ -19,12 +23,30 @@ DEPARTMENTS_PATH = f"{RESULT_PATH}/{os.getenv("DEPARTMENTS_PATH")}"
 LOCATION_BASE_URL = os.getenv("LOCATION_BASE_URL")
 
 def normalize_address(adresse: str) -> str:
+    """
+    Normalise le format de l'adresse donnée en paramètres.
+
+    Args:
+        adresse : str - Adresse brute
+
+    Returns:
+        str - Adresse normalisée
+    """
     adresse = adresse.lower()
     mots = re.split(r"[^a-z0-9àâäéèêëïîôöùûüç]+", adresse)
     mots = [m for m in mots if m]
     return "+".join(mots)
 
 def get_department(locations):
+    """
+    Renvoie le département ou la région de l'adresse donnée.
+
+    Args:
+        locations : str - Adresse
+
+    Returns:
+        str - Département ou région
+    """
     if locations is None:
         return ""
     if locations == "France":
@@ -60,6 +82,17 @@ def get_department(locations):
 
 
 def code_from_name(zones, name, zone_type):
+    """
+    Retourne le code département ou région.
+
+    Args:
+        zones : Dataframe - Table des départements et régions
+        name : str - nom du département ou de la région
+        zone_type : str - departement ou region
+
+    Returns:
+        str - Adresse normalisée
+    """
     if zone_type == "departement":
         marker = "D"
     elif zone_type == "region":
