@@ -35,7 +35,8 @@ def compute_formation_data():
     """
     create_folder(RESULT_PATH)
     if os.path.exists(FORMATIONS_PATH) and os.path.exists(CORRESPONDANCES_PATH):
-        print(f"Données {FORMATIONS_PATH} et {CORRESPONDANCES_PATH} existantes. Réécriture ignorée.")
+        print(f"Données {FORMATIONS_PATH} existantes. Réécriture ignorée.")
+        print(f"Données {CORRESPONDANCES_PATH} existantes. Réécriture ignorée.")
         return
     formations, correspondances = load_init_data()
     formations, correspondances = filter_data(formations, correspondances)

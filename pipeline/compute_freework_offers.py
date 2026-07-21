@@ -37,4 +37,3 @@ def compute_freework_offers(items_per_page=50):
         pbar.update(1)
     print(f"Données {FREEWORK_OFFERS_PATH} écrites avec succès.")
     return
-    
