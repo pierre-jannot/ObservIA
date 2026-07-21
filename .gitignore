@@ -1,6 +1,40 @@
-/data/*
-/result/*
-/__pycache__
-*/__pycache__
+# Python compilation
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Configuration & environment variables
 .env
-test.py
+.env.*
+!.env.example
+
+# Project specific data files
+*.csv
+*.txt
+*.xlsx
+/data/
+/result/
+/results/
+
+# Log files
+*.log
+log.txt
+
+# IDEs & Editor configs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS-generated files
+.DS_Store
+Thumbs.db
