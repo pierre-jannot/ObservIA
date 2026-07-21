@@ -26,7 +26,7 @@ def load_sirets():
     sirets = load_csv_to_df(SIRETS_PATH)
     return sirets
 
-def get_department_from_siret(siret: str) -> dict:
+def get_region_from_siret(siret: str) -> dict:
     """
     Récupère les informations géographiques d'un code SIRET.
 
@@ -54,5 +54,5 @@ def get_department_from_siret(siret: str) -> dict:
         "siret": siret,
         "nom_raison_sociale": result["nom_raison_sociale"],
         "code_postal": siege["code_postal"],
-        "location": f"D{siege['departement']}",
+        "location": siege['region'],
     }

@@ -18,21 +18,21 @@ HEADERS = {
 }
 
 RESULT_PATH = os.getenv("RESULT_FOLDER_PATH")
-DEPARTMENTS_PATH = f"{RESULT_PATH}/{os.getenv("DEPARTMENTS_PATH")}"
+LOCATIONS_PATH = f"{RESULT_PATH}/{os.getenv("LOCATIONS_PATH")}"
 DEPARTMENTS_BASE_URL = os.getenv("DEPARTMENTS_BASE_URL")
 REGIONS_BASE_URL = os.getenv("REGIONS_BASE_URL")
 
-def load_departments():
+def load_locations():
     """
     Récupère les informations des départements et régions depuis le csv.
 
     Returns:
-        departments : Dataframe pandas - Fichier departments.csv
+        locations : Dataframe pandas - Fichier locations.csv
     """
-    departments = load_csv_to_df(DEPARTMENTS_PATH)
-    return departments
+    locations = load_csv_to_df(LOCATIONS_PATH)
+    return locations
 
-def scrap_departments_information():
+def scrap_locations_information():
     """
     Scrapping des informations des départements et régions depuis une page geo.api.gouv.
 
