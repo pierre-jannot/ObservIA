@@ -37,24 +37,26 @@ def get_department(locations):
             return code_from_name(zones, location, "departement")
         if location in zones["nom_region"].values:
             return code_from_name(zones, location, "region")
-    
+
     address = normalize_address(locations)
     url = f"{LOCATION_BASE_URL}/?q={address}"
 
-    response = requests.get(url, headers=HEADERS).text
+    response = requests.get(url,
+                            headers=HEADERS,
+                            timeout=10).text
     time.sleep(0.3)
 
     data = json.loads(response)
+    result = ""
 
     if data["features"]:
         try:
             correspondance = dict(zip(zones["code_departement"], zones["nom_departement"]))
             department = correspondance[data["features"][0]["properties"]["context"].split(',')[0]]
             result = f"D{department}"
-            return result
-        except:
-            pass
-    return ""
+        except (KeyError, IndexError, AttributeError, TypeError) as e:
+            return e
+    return result
 
 
 def code_from_name(zones, name, zone_type):
