@@ -1,4 +1,0 @@
-/******** QUERY *********/
-TRUNCATE TABLE localisation CASCADE;
-/************************/
-
