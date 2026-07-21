@@ -4,8 +4,7 @@ from compute_freework_offers import compute_freework_offers
 from compute_formations import compute_all
 from routers import formations, freework, francetravail
 
-compute_all()
-compute_freework_offers()
+from routers import data
 
 app = FastAPI(
     title="Tensions formations et offres d'emploi Tech IA",
@@ -20,6 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(data.router, prefix="/data", tags=["Données"])
 app.include_router(formations.router, prefix="/formations", tags=["Formations"])
 app.include_router(freework.router, prefix="/freework", tags=["Freework"])
 app.include_router(francetravail.router, prefix="/france-travail", tags=["France Travail"])
