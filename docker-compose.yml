@@ -1,12 +1,13 @@
 services:
   api:
-    build: .
+    image: ghcr.io/pierre-jannot/observia:latest
     ports:
       - "8000:8000"
     env_file:
       - .env
     volumes:
       - result_data:/app/result
+      - ./data:/app/data
 
 volumes:
   result_data:
