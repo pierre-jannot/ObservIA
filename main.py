@@ -6,7 +6,7 @@ from pipeline.compute_formations import compute_all
 from routers import formations, freework, francetravail, data
 
 import pandas as pd
-from compute_stats import get_top_skills
+
 compute_all()
 compute_freework_offers()
 

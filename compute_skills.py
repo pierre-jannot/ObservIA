@@ -1,5 +1,5 @@
-import profile
 import pandas as pd 
+from collections import Counter 
 
 skills_list = [
  # Langages
