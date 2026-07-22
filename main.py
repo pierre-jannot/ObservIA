@@ -1,12 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
-from pipeline.compute_freework_offers import compute_freework_offers
-from pipeline.compute_formations import compute_all
 from routers import formations, freework, francetravail, data
-
-compute_all()
-compute_freework_offers()
 
 app = FastAPI(
     title="Tensions formations et offres d'emploi Tech IA",
