@@ -1,8 +1,8 @@
-name: Docker Image CI
+name: Docker Image
 
 on:
   push:
-    branches: ["cicd"]
+    branches: ["main"]
 
 jobs:
   build:
