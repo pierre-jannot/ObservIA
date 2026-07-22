@@ -1,3 +1,7 @@
+"""
+Fichier des tests unitaires de utils/compute_dataframe
+"""
+
 import pytest
 import pandas as pd
 from utils.compute_dataframe import (
@@ -37,7 +41,7 @@ def df_dates():
 @pytest.fixture
 def csv_file(tmp_path):
     """Fichier CSV temporaire pour tester load_csv_to_df."""
-    contenu = "region;valeur\nÎle-de-France;10"
+    contenu = "region;valeur\nÎle-de-France;10\nBretagne;20\n"
     fichier = tmp_path / "test.csv"
     fichier.write_text(contenu, encoding="utf-8")
     return str(fichier)
