@@ -4,6 +4,7 @@ Routes d'affichage des offres Freework.
 
 from fastapi import APIRouter, Query
 
+from compute_stats import get_top_skills
 from utils.compute_dataframe import get_filtered_values, get_quarter_values, count_unique_values
 from extractors.offers import load_freework_offers
 from extractors.departments import load_departments
@@ -118,3 +119,35 @@ def get_offers_per_chosen_region(region: str):
     for index, value in dataframe.sort_values(ascending=False).items()
     ]
     return {"result": result}
+
+	
+@router.get("/stats/skills")
+def top_skills():
+    return get_top_skills()
+ 
+ 
+@router.get("/stats/seniority")
+def seniority_stats():
+    return get_seniority_stats()
+ 
+ 
+@router.get("/stats/skills/profile")
+def skills_profile():
+    return get_skills_from_profile()
+ 
+ 
+@router.get("/stats/salary-per-skill-count")
+def salary_per_skill_count():
+    dataframe = get_salary_grouped_by_skill_count()
+    result = [
+        {
+            "nombre_competences": int(row["nb_skills"]),
+            "tjm_moyen": float(row["tjm_moyen"]),
+            "tjm_median": float(row["tjm_median"]),
+            "nombre_offres": int(row["nb_offres"]),
+        }
+        for _, row in dataframe.iterrows()
+    ]
+    return {"result": result}
+ 
+
