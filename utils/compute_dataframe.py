@@ -14,7 +14,7 @@ def get_filtered_values(dataframe, column_name, values):
     print(column_name)
     filtered_values = dataframe[dataframe[column_name].isin(values)]
     return filtered_values
-
+    
 def get_quarter_values(dataframe, column_name):
     dataframe[column_name] = pd.to_datetime(dataframe[column_name], format="ISO8601", utc=True)
     dataframe["quarter"] = dataframe[column_name].dt.to_period("Q")
