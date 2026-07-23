@@ -6,6 +6,7 @@ import re
 import json
 import time
 import os
+import pandas as pd
 
 import requests
 from dotenv import load_dotenv
@@ -21,6 +22,41 @@ HEADERS = {
 RESULT_PATH = os.getenv("RESULT_FOLDER_PATH")
 LOCATIONS_PATH = f"{RESULT_PATH}/{os.getenv("LOCATIONS_PATH")}"
 LOCATION_BASE_URL = os.getenv("LOCATION_BASE_URL")
+
+COLONNES_MAPPING_REGION = {
+    "code_region":          "id_region",
+    "nom_region":           "name_region",
+}
+
+COLONNES_DB_REGION = list(COLONNES_MAPPING_REGION.values())
+
+COLONNES_MAPPING_DEPARTMENT = {
+    "code_region":          "id_region",
+    "code_departement":     "id_department",
+    "nom_departement":      "name_department",
+}
+
+COLONNES_DB_DEPARTMENT = list(COLONNES_MAPPING_DEPARTMENT.values())
+
+def prepare_location_for_db(df: pd.DataFrame, location_type: str) -> pd.DataFrame:
+    """
+    Renomme et sélectionne les colonnes du DataFrame location
+    pour correspondre au schéma de la table PostgreSQL.
+
+    Args:
+        df: DataFrame brut issu du CSV MonCompteFormation.
+
+    Returns:
+        DataFrame prêt pour l'insertion en base.
+    """
+    if location_type == "region":
+        df = df.rename(columns=COLONNES_MAPPING_REGION)
+        df = df[COLONNES_DB_REGION]
+    elif location_type == "department":
+        df = df.rename(columns=COLONNES_MAPPING_DEPARTMENT)
+        df = df[COLONNES_DB_DEPARTMENT]
+    df = df.where(pd.notna(df), None)
+    return df
 
 def normalize_address(adresse: str) -> str:
     """

@@ -5,7 +5,10 @@ tqdm
 sqlalchemy
 beautifulsoup4
 fastapi
+psycopg2
 psycopg2-binary
 uvicorn
 uvicorn[standard]
 pytest
+psycopg[binary]
+alembic

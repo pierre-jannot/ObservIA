@@ -126,7 +126,7 @@ def chercher_offres(token_access, code_rome, writer):
 
 # ── POINT D'ENTRÉE ──────────────────────────────────────────────────
 if __name__ == "__main__":
-    CODES_ROME = charger_codes_rome("correspondance-rome-rncp.csv")
+    CODES_ROME = charger_codes_rome("data/datagouv/table-correspondance-rome-rncp.csv")
     print(f"{len(CODES_ROME)} codes ROME chargés depuis le CSV\n")
 
     token_access = get_france_travail_token()

@@ -5,7 +5,7 @@ Routes d'affichage des données de formation.
 from fastapi import APIRouter, Query
 from utils.compute_dataframe import get_filtered_values
 from extractors.formations import load_formations
-from transformers.zone_normalizer import add_zone_column
+from transformers.formations import add_zone_column
 from indicators.formations import column_per_quarter
 
 router = APIRouter()
