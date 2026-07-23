@@ -85,7 +85,7 @@ class Offer(Base):
     min_annual_sal  = Column(Float)
     max_annual_sal  = Column(Float)
     month_dur       = Column(Integer)
-    id_region       = Column(String, ForeignKey("regions.id_region"))
+    id_region       = Column(String, ForeignKey("regions.id_region"), nullable=True)
     pub_date        = Column(Date, nullable=False)
     rome_code       = Column(String, ForeignKey("romes.code_rome"))
 

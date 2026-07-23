@@ -11,7 +11,7 @@ import pandas as pd
 import requests
 from dotenv import load_dotenv
 
-from utils.compute_dataframe import load_csv_to_df
+from db.repositories.region_repository import get_locations
 
 load_dotenv()
 
@@ -84,16 +84,15 @@ def get_region(locations):
         str - Région
     """
     if locations is None:
-        return ""
+        return None
     if locations == "France":
         return "11"
     locations_list = locations.split(", ")
-
-    zones = load_csv_to_df(LOCATIONS_PATH)
+    zones = get_locations()
     for location in locations_list:
-        if location in zones["nom_departement"].values:
-            return code_from_name(zones, location, "departement")
-        if location in zones["nom_region"].values:
+        if location in zones["name_department"].values:
+            return code_from_name(zones, location, "department")
+        if location in zones["name_region"].values:
             return code_from_name(zones, location, "region")
 
     address = normalize_address(locations)
@@ -105,14 +104,15 @@ def get_region(locations):
     time.sleep(0.3)
 
     data = json.loads(response)
-    result = ""
+    result = None
 
-    if data["features"]:
+    if data.get("features"):
         try:
-            correspondance = dict(zip(zones["code_departement"], zones["code_region"]))
-            result = correspondance[data["features"][0]["properties"]["depcode"]]
-        except (KeyError, IndexError, AttributeError, TypeError) as e:
-            return e
+            correspondance = dict(zip(zones["id_department"], zones["id_region"]))
+            depcode = data["features"][0]["properties"]["depcode"]
+            result = correspondance.get(depcode, None)
+        except (KeyError, IndexError, AttributeError, TypeError):
+            return None
     return result
 
 
@@ -129,7 +129,7 @@ def code_from_name(zones, name, zone_type):
         str - Adresse normalisée
     """
 
-    resultat = zones[zones[f"nom_{zone_type}"] == name][f"code_region"]
+    resultat = zones[zones[f"name_{zone_type}"] == name][f"id_region"]
     if resultat.empty:
         return None  # ou raise une exception explicite selon votre besoin
 

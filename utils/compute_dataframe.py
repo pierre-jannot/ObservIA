@@ -9,9 +9,6 @@ def get_unique_values(dataframe, column_name):
     return unique_values
 
 def get_filtered_values(dataframe, column_name, values):
-    print(dataframe)
-    print(values)
-    print(column_name)
     filtered_values = dataframe[dataframe[column_name].isin(values)]
     return filtered_values
     

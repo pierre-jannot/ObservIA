@@ -1,5 +1,5 @@
 import pandas as pd
-from extractors.sirets import load_sirets
+from db.repositories.siret_repository import get_all_sirets
 
 COLONNES_MAPPING = {
     "siret_of_contractant":         "id_siret",
@@ -47,7 +47,7 @@ def filter_data(formations, correspondances):
     return formations, correspondances
 
 def add_zone_column(dataframe):
-    sirets = load_sirets()
-    correspondance = dict(zip(sirets["siret"], sirets["location"]))
-    dataframe["zone"] = dataframe["siret_of_contractant"].map(correspondance)
+    sirets = get_all_sirets()
+    correspondance = dict(zip(sirets["id_siret"], sirets["id_region"]))
+    dataframe["id_region"] = dataframe["id_siret"].map(correspondance)
     return dataframe

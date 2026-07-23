@@ -7,7 +7,6 @@ import os
 from tqdm import tqdm
 from dotenv import load_dotenv
 
-from db.session import SessionLocal
 from transformers.offers import prepare_freework_offer_for_db
 from db.repositories.offers_repository import insert_offer
 from extractors.offers import scrap_freework_pages_quantity, scrap_freework_offers
@@ -33,12 +32,8 @@ def compute_freework_offers(items_per_page=50):
     pbar = tqdm(total=number_of_pages)
     for page in range(1,number_of_pages + 1):
         scrapped_page = scrap_freework_offers(items_per_page, page)
-        db = SessionLocal()
-        try:
-            df_db = prepare_freework_offer_for_db(scrapped_page)
-            insert_offer(df_db, db)
-        finally:
-            db.close()
+        df_db = prepare_freework_offer_for_db(scrapped_page)
+        insert_offer(df_db)
         pbar.update(1)
     print(f"Données {FREEWORK_OFFERS_PATH} écrites avec succès.")
     return

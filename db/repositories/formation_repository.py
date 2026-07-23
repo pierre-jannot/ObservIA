@@ -1,12 +1,13 @@
 """Repository pour le modèle Formation."""
 import pandas as pd
 
-from sqlalchemy.orm import Session
+from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 
+from db.session import SessionLocal
 from db.models import Formation
 
-def insert_formation(df: pd.DataFrame, db: Session) -> dict:
+def insert_formation(df: pd.DataFrame) -> dict:
     """
     Insère un DataFrame de formations en ne gardant que les colonnes
     correspondant aux colonnes de la table PostgreSQL.
@@ -21,11 +22,11 @@ def insert_formation(df: pd.DataFrame, db: Session) -> dict:
     df = df.where(pd.notna(df), None)
     rows = df.to_dict(orient="records")
 
-    db.execute(insert(Formation), rows)
-    db.commit()
+    with SessionLocal() as db:
+        db.execute(insert(Formation), rows)
+        db.commit()
 
 def get_formation(
-    db: Session,
     formation_id: int | None = None,
     id_siret: int | None = None,
     code_rncp: str | None = None,
@@ -34,7 +35,8 @@ def get_formation(
     region: str | None = None,
 ) -> list[Formation]:
     """Récupère les formations avec filtres optionnels."""
-    query = db.query(Formation)
+    with SessionLocal() as db:
+        query = db.query(Formation)
 
     if formation_id is not None:
         query = query.filter(Formation.id == formation_id)
@@ -50,3 +52,10 @@ def get_formation(
         query = query.filter(Formation.region == region)
 
     return query.all()
+
+def get_all_formations() -> pd.DataFrame:
+    """Récupère toutes les formations."""
+    with SessionLocal() as db:
+        stmt = select(*Formation.__table__.columns)
+        result = db.execute(stmt).mappings().all()
+        return pd.DataFrame(result)

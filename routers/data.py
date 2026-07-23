@@ -21,5 +21,9 @@ def init():
         json - result : résultat de l'opération
     """
     compute_all()
-    compute_freework_offers()
     return {"result": "Initialisation effectuée avec succès."}
+
+@router.post("/get-freework-offers")
+def get_freework_offers():
+    compute_freework_offers()
+    return {"result": "Offres freework récupérées."}
