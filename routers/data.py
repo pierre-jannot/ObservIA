@@ -6,7 +6,7 @@ from fastapi import APIRouter
 
 from pipeline.compute_freework_offers import compute_freework_offers
 from pipeline.compute_formations import compute_all
-from import_bdd.api_FranceTravail_to_BDD import compute_france_travail_offers
+from pipeline.compute_france_travail_offers import compute_france_travail_offers
 
 router = APIRouter()
 
