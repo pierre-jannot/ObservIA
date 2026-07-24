@@ -3,6 +3,12 @@ import requests
 import time
 import psycopg2
 from dotenv import load_dotenv
+from utils.regex import extract_duration_months
+from transformers.locations import code_from_code
+from db.repositories.rome_repository import get_rome_codes
+from db.repositories.offers_repository import insert_offer_dict
+from db.repositories.skill_repository import insert_skill_dict
+from db.repositories.offer_skills_repository import insert_offer_skill_dict
 
 # Chargement des variables d'environnement depuis le fichier .env
 load_dotenv()
@@ -65,7 +71,7 @@ def get_france_travail_token():
     print(f"Token généré (expire dans {resultat.get('expires_in')}s)")
     return token
 
-def stocker_offre_et_competences(cursor, offre):
+def stocker_offre_et_competences(offre):
     """Insère une offre et ses compétences en utilisant id_francetravail comme lien."""
 
     # 1. Extraction des données
@@ -77,58 +83,38 @@ def stocker_offre_et_competences(cursor, offre):
     code_postal = lieu.get("codePostal")
     code_dept = code_postal[:2] if code_postal and isinstance(code_postal, str) else None
 
-    # 2. Insertion de l'offre (sans RETURNING id_offre)
-    insert_offre_query = """
-    INSERT INTO Offre_France_travail (id_francetravail, code_rome, code_departement, Competence, dateActualisation, dateCreation, salaire, experience_exige)
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-    ON CONFLICT (id_francetravail) DO UPDATE SET 
-        code_rome = EXCLUDED.code_rome,
-        dateActualisation = EXCLUDED.dateActualisation;
-    """
+    offer =     {"id_offer":                id_offre_brut,
+                "title":                    offre.get('intitule'),
+                "description":              offre.get("description"),
+                "experience":               offre.get('experienceLibelle'),
+                "month_dur":                extract_duration_months(offre.get("typeContratLibelle")),
+                "id_region":                code_from_code(code_dept),
+                "pub_date":                 offre.get('dateCreation'),
+                "rome_code":                offre.get('romeCode'),
+                "source":                   "FranceTravail"}
 
-    cursor.execute(insert_offre_query, (
-        id_offre_brut,
-        offre.get('romeCode'),
-        code_dept,
-        offre.get('intitule'),
-        offre.get('dateActualisation'),
-        offre.get('dateCreation'),
-        offre.get('salaire', {}).get('libelle') if offre.get('salaire') else None,
-        offre.get('experienceExige')
-    ))
+    insert_offer_dict(offer)
 
     # 3. Insertion des compétences et alimentation de la table pivot
     liste_competences = offre.get("competences", [])
     
     for comp in liste_competences:
-        nom_comp = comp.get("libelle")
-        if not nom_comp:
-            continue
-        # Insertion de la compétence AVEC le source_type
-        insert_comp_query = """
-        INSERT INTO Competence (nom_competence, source_type)
-        VALUES (%s, 'francetravail')
-        ON CONFLICT (nom_competence, source_type) DO NOTHING;
-        """
-        cursor.execute(insert_comp_query, (nom_comp,))
+        if comp.get("code") is not None:
+            skill = {"id":                      comp.get("code"),
+                    "source":                  "FranceTravail",
+                    "name":                    comp.get("libelle")}
 
-        # Récupération de l'ID compétence (filtré par source_type)
-        cursor.execute("SELECT ID_Competence FROM Competence WHERE nom_competence = %s AND source_type = 'francetravail';", (nom_comp,))
-        result = cursor.fetchone()
-        
-        if result:
-            id_competence = result[0]
+            insert_skill_dict(skill)
 
-            query_pivot = """
-    INSERT INTO Offre_Competence (id_competence, id_francetravail, id_scraping)
-    VALUES (%s, %s, NULL)
-    ON CONFLICT (id_competence, id_francetravail) DO NOTHING;
-"""
-            cursor.execute(query_pivot, (id_competence, id_offre_brut))
+            offer_skill = {"id_offer":          id_offre_brut,
+                        "source":            "FranceTravail",
+                        "id_skill":          comp.get("code"),
+                        "skill_source":      "FranceTravail"}
 
-def chercher_offres(token_access, code_rome, conn):
+            insert_offer_skill_dict(offer_skill)
+
+def chercher_offres(token_access, code_rome):
     """Parcourt l'API de France Travail pour un code ROME donné et stocke les résultats."""
-    cursor = conn.cursor()
     entetes = {
         'Authorization': f'Bearer {token_access}',
         'Accept': 'application/json',
@@ -182,11 +168,9 @@ def chercher_offres(token_access, code_rome, conn):
 
         try:
             for offre in liste_offres:
-                stocker_offre_et_competences(cursor, offre)
+                stocker_offre_et_competences(offre)
 
-            conn.commit()
         except Exception as e:
-            conn.rollback()
             print(f"Erreur d'insertion pour le lot {code_rome} : {e}")
             break
 
@@ -203,41 +187,19 @@ def chercher_offres(token_access, code_rome, conn):
         # Temporisation pour respecter les quotas d'appels par seconde de l'API
         time.sleep(0.5)
 
-    cursor.close()
 
-
-if __name__ == "__main__":
+def compute_france_travail_offers():
     token_access = get_france_travail_token()
 
     if token_access:
-        try:
-            print("Connexion à la base de données...")
-            conn = psycopg2.connect(**CONN_PARAMS)
+    
+        CODES_ROME = get_rome_codes()
+        print(f"{len(CODES_ROME)} codes ROME uniques trouvés en BDD.\n")
 
-            CODES_ROME = charger_codes_rome_depuis_bdd(conn)
-            print(f"{len(CODES_ROME)} codes ROME uniques trouvés en BDD.\n")
+        # Lancement de la collecte pour chaque code ROME trouvé
+        for code in CODES_ROME:
+            chercher_offres(token_access, code)
 
-            # Application de la contrainte unique de sécurité sur la table Competence
-            with conn.cursor() as cur:
-                cur.execute("ALTER TABLE Competence DROP CONSTRAINT IF EXISTS unique_nom_competence;")
-                cur.execute("ALTER TABLE Competence ADD CONSTRAINT unique_nom_competence UNIQUE (nom_competence, source_type);")
-                conn.commit()
-                # Juste avant la boucle "for code in CODES_ROME:"
-            with conn.cursor() as cur:
-                # Création de la contrainte unique sur la table pivot
-                cur.execute("""
-                ALTER TABLE Offre_Competence DROP CONSTRAINT IF EXISTS unique_couple_comp_ft;
-                ALTER TABLE Offre_Competence ADD CONSTRAINT unique_couple_comp_ft UNIQUE (id_competence, id_francetravail);
-                """)
-                conn.commit()
-
-            # Lancement de la collecte pour chaque code ROME trouvé
-            for code in CODES_ROME:
-                chercher_offres(token_access, code, conn)
-
-            conn.close()
-            print("\nTraitement et stockage en base de données terminés avec succès.")
-        except Exception as e:
-            print(f"Erreur générale pendant l'exécution : {e}")
+        print("\nTraitement et stockage en base de données terminés avec succès.")
     else:
         print("Impossible de démarrer le script : Token invalide.")

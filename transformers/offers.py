@@ -15,7 +15,7 @@ COLONNES_MAPPING_FREEWORK = {
 }
 
 COLONNES_MAPPING_FRANCE_TRAVAIL = {
-    "id":                       "id_offer",
+    "id_francetravail":         "id_offer",
     "title":                    "title",
     "profile":                  "description",
     "experience":               "experience",

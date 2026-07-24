@@ -134,3 +134,36 @@ def code_from_name(zones, name, zone_type):
         return None  # ou raise une exception explicite selon votre besoin
 
     return resultat.iloc[0]
+
+def code_from_code(code):
+    """
+    Retourne le code région.
+
+    Args:
+        code : str - Code du département
+
+    Returns:
+        str - Adresse normalisée
+    """
+
+    locations = get_locations()
+    resultat = locations[locations[f"id_department"] == code][f"id_region"]
+    if resultat.empty:
+        return None  # ou raise une exception explicite selon votre besoin
+
+    return resultat.iloc[0]
+
+def get_location_correspondance(dataframe):
+    """
+    Ajoute une colonne location avec le nom de la région correspondante.
+
+    Args:
+        dataframe : Dataframe - Dataframe contenant une colonne id_region
+
+    Returns:
+        dataframe : Dataframe - Dataframe avec la nouvelle colonne location
+    """
+    locations = get_locations()
+    correspondance = dict(zip(locations["id_region"], locations["name_region"]))
+    dataframe["location"] = dataframe["id_region"].map(correspondance).fillna(dataframe["id_region"])
+    return dataframe

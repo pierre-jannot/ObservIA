@@ -6,7 +6,7 @@ from fastapi import APIRouter, Query
 
 from utils.compute_dataframe import get_filtered_values, get_quarter_values, count_unique_values
 from db.repositories.offers_repository import get_all_freework_offers
-from db.repositories.region_repository import get_locations
+from transformers.locations import get_location_correspondance
 
 router = APIRouter()
 
@@ -63,9 +63,7 @@ def get_offers_per_region():
         json - { result : nombre d'offres Freework par région }
     """
     dataframe = get_all_freework_offers()
-    locations = get_locations()
-    correspondance = dict(zip(locations["id_region"], locations["name_region"]))
-    dataframe["location"] = dataframe["id_region"].map(correspondance).fillna(dataframe["id_region"])
+    dataframe = get_location_correspondance(dataframe)
     dataframe = count_unique_values(dataframe, "location")
     result = [
     {"région": index, "nombre_offres_freework": int(value)}
@@ -87,10 +85,8 @@ def get_offers_per_chosen_region(id_region: str):
         json - { result : nombre d'offres Freework par région }
     """
     dataframe = get_all_freework_offers()
-    locations = get_locations()
     dataframe = get_filtered_values(dataframe, "id_region", [id_region])
-    correspondance = dict(zip(locations["id_region"], locations["name_region"]))
-    dataframe["region"] = dataframe["id_region"].map(correspondance).fillna(dataframe["id_region"])
+    dataframe = get_location_correspondance(dataframe)
     dataframe = count_unique_values(dataframe, "region")
     result = [
     {"région": index, "nombre_offres_freework": int(value)}

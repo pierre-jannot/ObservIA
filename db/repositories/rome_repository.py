@@ -2,6 +2,7 @@
 
 import pandas as pd
 
+from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 
 from db.session import SessionLocal
@@ -30,3 +31,8 @@ def get_rome(
         query = query.filter(Rome.rome_name == rome_name)
 
     return query.all()
+
+def get_rome_codes() -> list[str]:
+    with SessionLocal() as db:
+        stmt = select(Rome.code_rome)
+        return db.execute(stmt).scalars().all()

@@ -15,10 +15,6 @@ def insert_offer(df: pd.DataFrame) -> dict:
 
     Args:
         df: DataFrame nettoyé issu du pipeline formations.
-        db: Session SQLAlchemy.
-
-    Returns:
-        Dictionnaire avec le nombre de lignes insérées et ignorées.
     """
     df = df.replace({pd.NA: None, float("nan"): None})
     df = df.where(pd.notna(df), None)
@@ -26,6 +22,18 @@ def insert_offer(df: pd.DataFrame) -> dict:
 
     with SessionLocal() as db:
         db.execute(insert(Offer).on_conflict_do_nothing(), rows)
+        db.commit()
+
+
+def insert_offer_dict(offer: dict) -> None:
+    """
+    Insère une offre au format dictionnaire.
+
+    Args:
+        offer: dict - Dictionnaire contenant l'offre.
+    """
+    with SessionLocal() as db:
+        db.execute(insert(Offer).values(**offer).on_conflict_do_nothing())
         db.commit()
 
 

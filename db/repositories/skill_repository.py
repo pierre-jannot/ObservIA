@@ -1,27 +1,20 @@
 """Repository pour le modèle Skill."""
 
+from sqlalchemy.dialects.postgresql import insert
 from db.session import SessionLocal
 from db.models import Skill
 
 
-def insert_skill(source: str, name: str) -> Skill:
-    """Insère une compétence si elle n'existe pas déjà."""
+def insert_skill_dict(skill: dict) -> None:
+    """
+    Insère une compétence au format dictionnaire.
+
+    Args:
+        offer: dict - Dictionnaire contenant la compétence.
+    """
     with SessionLocal() as db:
-        existing = (
-            db.query(Skill)
-            .filter(Skill.source == source, Skill.name == name)
-            .first()
-        )
-
-        if existing is not None:
-            return existing
-
-        skill = Skill(source=source, name=name)
-        db.add(skill)
+        db.execute(insert(Skill).values(**skill).on_conflict_do_nothing())
         db.commit()
-        db.refresh(skill)
-    return skill
-
 
 def get_skill(
     skill_id: int | None = None,
