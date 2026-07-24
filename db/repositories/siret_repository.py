@@ -8,7 +8,7 @@ from sqlalchemy.dialects.postgresql import insert
 from db.session import SessionLocal
 from db.models import Siret
 
-def insert_siret(df: pd.Dataframe) -> Siret:
+def insert_siret(df: pd.DataFrame) -> Siret:
     """Insère les régions présentes dans le dataframe"""
     df = df.where(pd.notna(df), None)
     rows = df.to_dict(orient="records")

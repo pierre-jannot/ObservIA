@@ -8,7 +8,7 @@ from sqlalchemy.dialects.postgresql import insert
 from db.session import SessionLocal
 from db.models import Rome
 
-def insert_rome(df: pd.Dataframe) -> Rome:
+def insert_rome(df: pd.DataFrame) -> Rome:
     """Insère les ROME présents dans le dataframe"""
     df = df.where(pd.notna(df), None)
     rows = df.to_dict(orient="records")

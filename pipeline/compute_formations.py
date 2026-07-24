@@ -30,7 +30,7 @@ CORRESPONDANCES_PATH = f"{RESULT_PATH}/{os.getenv("CORRESPONDANCES_PATH")}"
 SIRETS_PATH = f"{RESULT_PATH}/{os.getenv("SIRETS_PATH")}"
 LOCATIONS_PATH = f"{RESULT_PATH}/{os.getenv("LOCATIONS_PATH")}"
 
-def compute_formation_data(formations: pd.Dataframe, correspondances: pd.Dataframe):
+def compute_formation_data(formations: pd.DataFrame, correspondances: pd.DataFrame):
     """
     Traitement et écriture des données de formation dans des fichiers csv.
 

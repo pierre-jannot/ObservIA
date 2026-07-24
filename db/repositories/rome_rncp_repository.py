@@ -7,7 +7,7 @@ from sqlalchemy.dialects.postgresql import insert
 from db.session import SessionLocal
 from db.models import RomeRncp
 
-def insert_rome_rncp(df: pd.Dataframe) -> RomeRncp:
+def insert_rome_rncp(df: pd.DataFrame) -> RomeRncp:
     """Insère les ROME/RNCP présents dans le dataframe"""
     df = df.where(pd.notna(df), None)
     rows = df.to_dict(orient="records")

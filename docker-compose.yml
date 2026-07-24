@@ -32,3 +32,4 @@ services:
 
 volumes:
   result_data:
+  db_data:

@@ -8,7 +8,7 @@ from db.session import SessionLocal
 from db.models import Region, Department
 
 
-def insert_region(df: pd.Dataframe) -> Region:
+def insert_region(df: pd.DataFrame) -> Region:
     """Insère les régions présentes dans le dataframe"""
     df = df.where(pd.notna(df), None)
     rows = df.to_dict(orient="records")

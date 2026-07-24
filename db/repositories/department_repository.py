@@ -8,7 +8,7 @@ from db.models import Department, Region
 from sqlalchemy.dialects.postgresql import insert
 
 
-def insert_department(df: pd.Dataframe) -> Region:
+def insert_department(df: pd.DataFrame) -> Region:
     """Insère les régions présentes dans le dataframe"""
     df = df.where(pd.notna(df), None)
     rows = df.to_dict(orient="records")

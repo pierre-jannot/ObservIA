@@ -87,7 +87,7 @@ def get_offers_per_chosen_region(id_region: str):
     dataframe = get_all_freework_offers()
     dataframe = get_filtered_values(dataframe, "id_region", [id_region])
     dataframe = get_location_correspondance(dataframe)
-    dataframe = count_unique_values(dataframe, "region")
+    dataframe = count_unique_values(dataframe, "location")
     result = [
     {"région": index, "nombre_offres_freework": int(value)}
     for index, value in dataframe.sort_values(ascending=False).items()
