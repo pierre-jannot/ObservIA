@@ -1,0 +1,2226 @@
+{
+  "modele": "nvidia/nemotron-3-ultra-550b-a55b:free",
+  "duree_secondes": 1074.7,
+  "nb_reussies": 50,
+  "nb_ratees": 0,
+  "resultats": [
+    {
+      "offre_id": "FT_211LVDG",
+      "offre_intitule": "Chargé(e) de développement commercial (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.1,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.05,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 12,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 39,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 13,
+          "score": 0.01,
+          "nom_formation": "Concepteur développeur en intelligence artificielle et analyse big data"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211LTPY",
+      "offre_intitule": "Contrat d'apprentissage MASTER Chargé(e) développement commercial (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.1,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.05,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        },
+        {
+          "id_formation": 13,
+          "score": 0.05,
+          "nom_formation": "Concepteur développeur en intelligence artificielle et analyse big data"
+        },
+        {
+          "id_formation": 18,
+          "score": 0.05,
+          "nom_formation": "MASTER Intelligence artificielle (fiche nationale)"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.03,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 12,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 39,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211LSPR",
+      "offre_intitule": "Responsable commercial hôtellerie H/F (H/F)",
+      "classement": [
+        {
+          "id_formation": 6,
+          "score": 0.1,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.05,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.05,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.05,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211LRHN",
+      "offre_intitule": "Responsable Développement Commercial & Marketing F/H (H/F)",
+      "classement": [
+        {
+          "id_formation": 4,
+          "score": 0.15,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.1,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.05,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.03,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.02,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211LQDX",
+      "offre_intitule": "Alternant Business Manager (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.15,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.12,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.1,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.08,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.05,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211LQCG",
+      "offre_intitule": "Chargé de développement administratif et commercial (H/F)",
+      "classement": []
+    },
+    {
+      "offre_id": "FT_211LKQC",
+      "offre_intitule": "Business developer (H/F)",
+      "classement": [
+        {
+          "id_formation": 6,
+          "score": 0.15,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.15,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.05,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.05,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211LGSV",
+      "offre_intitule": "Responsable commercial (F/H) (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.15,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.1,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.02,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.02,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 7,
+          "score": 0.02,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.02,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.01,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211LFPR",
+      "offre_intitule": "Responsable Commercial/e division Hôpitaux (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.15,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.15,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.1,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.05,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        },
+        {
+          "id_formation": 7,
+          "score": 0.02,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.02,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211LFGX",
+      "offre_intitule": "Chargé de développement commercial travail à façon (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.0,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.0,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.0,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.0,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.0,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.0,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 7,
+          "score": 0.0,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.0,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211LDLQ",
+      "offre_intitule": "RESPONSABLE COMMERCIAL VEHICULES NEUFS H/F (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.05,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.05,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.02,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.01,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 7,
+          "score": 0.01,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.01,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211JGRK",
+      "offre_intitule": "Responsable développement / Business Developer",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.15,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.15,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 40,
+          "score": 0.05,
+          "nom_formation": "Développeur Web"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 7,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.05,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211KRBB",
+      "offre_intitule": "Responsable Commercial H/F (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.1,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.02,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        },
+        {
+          "id_formation": 34,
+          "score": 0.01,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 44,
+          "score": 0.01,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 41,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211KMKY",
+      "offre_intitule": "Business developer (H/F)",
+      "classement": [
+        {
+          "id_formation": 6,
+          "score": 0.1,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.1,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.05,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.05,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211KKRJ",
+      "offre_intitule": "Responsable du Développement Commercial France (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.15,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.15,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.1,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 7,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.05,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211KJHH",
+      "offre_intitule": "Chef de Projet Développement F/H (H/F)",
+      "classement": [
+        {
+          "id_formation": 6,
+          "score": 0.9,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.6,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.55,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.55,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.5,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.4,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.25,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.2,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211KHZC",
+      "offre_intitule": "Responsable commercial (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.05,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.05,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 7,
+          "score": 0.01,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 40,
+          "score": 0.01,
+          "nom_formation": "Développeur Web"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.01,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.01,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211KBRW",
+      "offre_intitule": "Business Developer (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.15,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.1,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.05,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        },
+        {
+          "id_formation": 34,
+          "score": 0.02,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 41,
+          "score": 0.02,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 44,
+          "score": 0.02,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.02,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.02,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211KBQR",
+      "offre_intitule": "Chargé(e) de Développement Commercial (H/F)",
+      "classement": [
+        {
+          "id_formation": 6,
+          "score": 0.1,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.1,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.05,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.05,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211KBLY",
+      "offre_intitule": "Chargé(e) de Développement Commercia (H/F)",
+      "classement": [
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.05,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.05,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.05,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.05,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211JRQK",
+      "offre_intitule": "Responsable Commercial (h/f) (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.15,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.1,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 7,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 11,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 22,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.02,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211JQHJ",
+      "offre_intitule": "Distribution Sales Manager H/F (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.1,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 29,
+          "score": 0.1,
+          "nom_formation": "Manager de Projet Web Digital"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.05,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.05,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.01,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        },
+        {
+          "id_formation": 34,
+          "score": 0.01,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 41,
+          "score": 0.01,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 44,
+          "score": 0.01,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211JQCN",
+      "offre_intitule": "Sales Development Representative (H/F)",
+      "classement": [
+        {
+          "id_formation": 6,
+          "score": 0.1,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.1,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.05,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.05,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211JNTD",
+      "offre_intitule": "Chargé de missions Business Development (H/F)",
+      "classement": [
+        {
+          "id_formation": 1,
+          "score": 0.45,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.35,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.3,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 7,
+          "score": 0.1,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.1,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.05,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        }
+      ]
+    },
+    {
+      "offre_id": "FT_211JMPP",
+      "offre_intitule": "Business Development Manager France (H/F)",
+      "classement": [
+        {
+          "id_formation": 29,
+          "score": 0.25,
+          "nom_formation": "Manager de Projet Web Digital"
+        },
+        {
+          "id_formation": 1,
+          "score": 0.2,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.18,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.15,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.1,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.05,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_1",
+      "offre_intitule": "Ingénieur Réseau et Infra Diffusion Vidéo",
+      "classement": [
+        {
+          "id_formation": 15,
+          "score": 0.95,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.8,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.05,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.05,
+          "nom_formation": "Développeur informatique"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_2",
+      "offre_intitule": "Ingénieur de Production DevOps Mainframe",
+      "classement": [
+        {
+          "id_formation": 16,
+          "score": 0.25,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 17,
+          "score": 0.25,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 19,
+          "score": 0.25,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 21,
+          "score": 0.25,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 31,
+          "score": 0.25,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 48,
+          "score": 0.25,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.05,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_3",
+      "offre_intitule": "Data Analyst (H/F)",
+      "classement": [
+        {
+          "id_formation": 4,
+          "score": 1.0,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 20,
+          "score": 1.0,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 13,
+          "score": 0.75,
+          "nom_formation": "Concepteur développeur en intelligence artificielle et analyse big data"
+        },
+        {
+          "id_formation": 36,
+          "score": 0.75,
+          "nom_formation": "Concepteur développeur en intelligence artificielle et analyse big data"
+        },
+        {
+          "id_formation": 23,
+          "score": 0.4,
+          "nom_formation": "Coordinateur de projets informatiques (infrastructures cloud, applicatives ou data)"
+        },
+        {
+          "id_formation": 40,
+          "score": 0.25,
+          "nom_formation": "Développeur Web"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 1,
+          "score": 0.15,
+          "nom_formation": "Manager de projets informatiques"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_4",
+      "offre_intitule": "Business Analyst / Project Manager – Cash Management & Billing Banking",
+      "classement": [
+        {
+          "id_formation": 6,
+          "score": 0.25,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.15,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 20,
+          "score": 0.15,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.1,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.05,
+          "nom_formation": "Développeur informatique"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_5",
+      "offre_intitule": "Développeur Mobile Android KMP_Sénior à Annecy (ITAMSYS)",
+      "classement": [
+        {
+          "id_formation": 44,
+          "score": 0.25,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 12,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 22,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 26,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 41,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_6",
+      "offre_intitule": "Ingénieur Système & Réseaux (F/H)",
+      "classement": []
+    },
+    {
+      "offre_id": "SC_7",
+      "offre_intitule": "Data Analyst – Métrologie & Usages M365",
+      "classement": [
+        {
+          "id_formation": 4,
+          "score": 0.95,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 20,
+          "score": 0.95,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 13,
+          "score": 0.85,
+          "nom_formation": "Concepteur développeur en intelligence artificielle et analyse big data"
+        },
+        {
+          "id_formation": 36,
+          "score": 0.85,
+          "nom_formation": "Concepteur développeur en intelligence artificielle et analyse big data"
+        },
+        {
+          "id_formation": 23,
+          "score": 0.6,
+          "nom_formation": "Coordinateur de projets informatiques (infrastructures cloud, applicatives ou data)"
+        },
+        {
+          "id_formation": 1,
+          "score": 0.3,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.1,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_8",
+      "offre_intitule": "Consultant sécurité RGPD - Accompagnement IA et Cookies",
+      "classement": [
+        {
+          "id_formation": 6,
+          "score": 0.8,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.75,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.4,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.3,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.3,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.25,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.15,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.15,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_9",
+      "offre_intitule": "Ingénieur DevOps (H/F)",
+      "classement": [
+        {
+          "id_formation": 16,
+          "score": 0.75,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 17,
+          "score": 0.75,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 19,
+          "score": 0.75,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 21,
+          "score": 0.75,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 31,
+          "score": 0.75,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 34,
+          "score": 0.75,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 48,
+          "score": 0.75,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.35,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_10",
+      "offre_intitule": "Ingénieur Projet Infrastructure Systèmes & Réseaux (H/F)",
+      "classement": [
+        {
+          "id_formation": 3,
+          "score": 0.9,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.5,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 24,
+          "score": 0.5,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 33,
+          "score": 0.5,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 37,
+          "score": 0.5,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 29,
+          "score": 0.3,
+          "nom_formation": "Manager de Projet Web Digital"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.2,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 49,
+          "score": 0.1,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_11",
+      "offre_intitule": "Technicien Support Helpdesk Front-Office (H/F)",
+      "classement": [
+        {
+          "id_formation": 38,
+          "score": 0.95,
+          "nom_formation": "Technicien informatique en installation, maintenance et support"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.85,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 24,
+          "score": 0.85,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 33,
+          "score": 0.85,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 37,
+          "score": 0.85,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 49,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 29,
+          "score": 0.1,
+          "nom_formation": "Manager de Projet Web Digital"
+        },
+        {
+          "id_formation": 1,
+          "score": 0.05,
+          "nom_formation": "Manager de projets informatiques"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_12",
+      "offre_intitule": "Technicien Support de Proximité (H/F)",
+      "classement": [
+        {
+          "id_formation": 38,
+          "score": 0.98,
+          "nom_formation": "Technicien informatique en installation, maintenance et support"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.8,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 24,
+          "score": 0.8,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 33,
+          "score": 0.8,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 37,
+          "score": 0.8,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 3,
+          "score": 0.35,
+          "nom_formation": "MASTER Réseaux et télécommunication (fiche nationale)"
+        },
+        {
+          "id_formation": 1,
+          "score": 0.1,
+          "nom_formation": "Manager de projets informatiques"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_13",
+      "offre_intitule": "Responsable De Mise En Production applications",
+      "classement": [
+        {
+          "id_formation": 7,
+          "score": 0.55,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.55,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 11,
+          "score": 0.55,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 43,
+          "score": 0.55,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 44,
+          "score": 0.55,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 45,
+          "score": 0.55,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 47,
+          "score": 0.55,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 1,
+          "score": 0.35,
+          "nom_formation": "Manager de projets informatiques"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_14",
+      "offre_intitule": "IT Project Manager / Business Analyst FAH  - Paris",
+      "classement": [
+        {
+          "id_formation": 6,
+          "score": 0.85,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.55,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.4,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 20,
+          "score": 0.4,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.15,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.15,
+          "nom_formation": "Développeur informatique"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_15",
+      "offre_intitule": "Administrateur Systèmes & Réseaux (H/F)",
+      "classement": [
+        {
+          "id_formation": 15,
+          "score": 0.95,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 24,
+          "score": 0.95,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 33,
+          "score": 0.95,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 37,
+          "score": 0.95,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 16,
+          "score": 0.85,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 17,
+          "score": 0.85,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 19,
+          "score": 0.85,
+          "nom_formation": "TP Administrateur système DevOps"
+        },
+        {
+          "id_formation": 2,
+          "score": 0.1,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_16",
+      "offre_intitule": "Senior Product Manager – Produits Web & Mobile (H/F)",
+      "classement": [
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 26,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 30,
+          "score": 0.05,
+          "nom_formation": "Développeur Web"
+        },
+        {
+          "id_formation": 32,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 42,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 46,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 50,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_17",
+      "offre_intitule": "Chef de Projet IT – Niveau Senior",
+      "classement": [
+        {
+          "id_formation": 6,
+          "score": 0.9,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.7,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.2,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.15,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.1,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.1,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.1,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.05,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_18",
+      "offre_intitule": "Développeur Symfony Confirmé (H/F)",
+      "classement": [
+        {
+          "id_formation": 8,
+          "score": 0.95,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.85,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.85,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 26,
+          "score": 0.85,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 32,
+          "score": 0.85,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 30,
+          "score": 0.6,
+          "nom_formation": "Développeur Web"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.4,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 25,
+          "score": 0.4,
+          "nom_formation": "Développeur informatique"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_19",
+      "offre_intitule": "Directeur de Projet- pilotage mise en oeuvre d’une solution SI",
+      "classement": [
+        {
+          "id_formation": 9,
+          "score": 0.85,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.6,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.2,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.15,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.1,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.1,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.1,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.1,
+          "nom_formation": "Développeur informatique"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_20",
+      "offre_intitule": "Chef de Projet Conformité LCB-FT",
+      "classement": [
+        {
+          "id_formation": 4,
+          "score": 0.3,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.25,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.15,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.05,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.05,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_155",
+      "offre_intitule": "Business Data Analyste bancaire - Règlementaire",
+      "classement": [
+        {
+          "id_formation": 4,
+          "score": 0.75,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 20,
+          "score": 0.75,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 23,
+          "score": 0.3,
+          "nom_formation": "Coordinateur de projets informatiques (infrastructures cloud, applicatives ou data)"
+        },
+        {
+          "id_formation": 36,
+          "score": 0.25,
+          "nom_formation": "Concepteur développeur en intelligence artificielle et analyse big data"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.05,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.05,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.05,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.05,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_21",
+      "offre_intitule": "DBA ElasticSearch / Iceberg",
+      "classement": [
+        {
+          "id_formation": 9,
+          "score": 0.7,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.6,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.35,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.25,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.15,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.1,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.1,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.05,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_22",
+      "offre_intitule": "Chef de Projet Technique Senior (H/F)",
+      "classement": [
+        {
+          "id_formation": 6,
+          "score": 0.9,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.85,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.5,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.3,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.3,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.25,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.2,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.15,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_23",
+      "offre_intitule": "Ingénieur sécurité H/F",
+      "classement": [
+        {
+          "id_formation": 9,
+          "score": 0.95,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 15,
+          "score": 0.7,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.3,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.25,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.25,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.2,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.1,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.05,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        }
+      ]
+    },
+    {
+      "offre_id": "SC_24",
+      "offre_intitule": "DBA SQL Server / Oracle / AWS",
+      "classement": [
+        {
+          "id_formation": 15,
+          "score": 0.8,
+          "nom_formation": "TP Technicien supérieur systèmes et réseaux"
+        },
+        {
+          "id_formation": 9,
+          "score": 0.55,
+          "nom_formation": "Manager en infrastructures et cybersécurité des systèmes d'information"
+        },
+        {
+          "id_formation": 8,
+          "score": 0.3,
+          "nom_formation": "TP Concepteur développeur d'applications"
+        },
+        {
+          "id_formation": 4,
+          "score": 0.25,
+          "nom_formation": "Data analyst"
+        },
+        {
+          "id_formation": 5,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 10,
+          "score": 0.15,
+          "nom_formation": "TP Développeur web et web mobile"
+        },
+        {
+          "id_formation": 14,
+          "score": 0.15,
+          "nom_formation": "Développeur informatique"
+        },
+        {
+          "id_formation": 6,
+          "score": 0.05,
+          "nom_formation": "Manager de projet intelligence artificielle"
+        }
+      ]
+    }
+  ]
+}
