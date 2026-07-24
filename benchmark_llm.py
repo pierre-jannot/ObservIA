@@ -35,9 +35,11 @@ code métier (ROME) : {offre['code_rome']}
 voici des formations candidats: 
 {liste_formations}
 
-Pour chaque formation, indique si elle correspond à l'offre et donne un score de 0 à 1.
-Classes-les de la plus pertinente à la moins pertinente
-Si aucune ne correspond vraiment, dis-le clairement"""
+Evalue la correspondance de chaque formation avec l'offre.
+Réponds UNIQUEMENT avec une liste JSON, sans texte autour, sans markdown, sans balises.
+Format exacte : [{{"id_formation": <id>, "score": <nombre de 0 à 1>}}]
+Classe du score le plus élevé au plus bas.""" 
+
 
 # Envoyer à l'IA
 reponse = client.chat.completions.create(
@@ -45,28 +47,19 @@ reponse = client.chat.completions.create(
     messages=[{"role": "user", "content": message}],
 )
 
-# afficher reponse
-print(reponse.choices[0].message.content)
+# récup texte de la réponse
+texte_reponse = reponse.choices[0].message.content
 
+# transformer le texte en données Python 
+classement = json.loads(texte_reponse)
 
+# afficher proprement
+print("classement pour l'offre:", offre["intitule"])
+for item in classement:
+    intitule = ""
+    for formation in candidates: 
+        if formation["id_formation"] == item["id_formation"]:
+            intitule = formation["intitule_certification"]
+            break
+    print(" Formation", item["id_formation"], ":", intitule, "score", item["score"])
 
-# # lire l'échantillon 
-# with open("sample.json", "r", encoding="utf-8") as f:
-#     data = json.load(f)
-
-# # Vérifier ce qu'on a 
-# print("Nombre de paires:", len(data["pairs"]))
-
-# #  afficher la première offre et ses formations 
-# premiere_paire = data["pairs"][0]
-# offre = premiere_paire["offre"]
-# candidates = premiere_paire["candidates"]
-
-# print("\nOffre :", offre["intitule"])
-# print("Code ROME :", offre["code_rome"], "/ Région :", offre["code_region"])
-# print ("\nFORMATIONS CANDIDATES :")
-# for formation in candidates: 
-#     print("  -", formation["intitule_certification"],
-#           "(région", formation["code_region"] + ")") 
-
-                         
