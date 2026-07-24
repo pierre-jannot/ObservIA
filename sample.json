@@ -1,0 +1,2956 @@
+{
+  "total_offres": 50,
+  "pool_formations_size": 50,
+  "pairs": [
+    {
+      "offre": {
+        "id": "FT_211LVDG",
+        "intitule": "Chargé(e) de développement commercial (H/F)",
+        "code_rome": "M1707",
+        "code_region": "93",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 12,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 13,
+          "intitule_certification": "Concepteur développeur en intelligence artificielle et analyse big data",
+          "code_rncp": 38616,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 39,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211LTPY",
+        "intitule": "Contrat d'apprentissage MASTER Chargé(e) développement commercial (H/F)",
+        "code_rome": "M1707",
+        "code_region": "93",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 12,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 13,
+          "intitule_certification": "Concepteur développeur en intelligence artificielle et analyse big data",
+          "code_rncp": 38616,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 39,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 18,
+          "intitule_certification": "MASTER Intelligence artificielle (fiche nationale)",
+          "code_rncp": 39485,
+          "code_region": "53"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211LSPR",
+        "intitule": "Responsable commercial hôtellerie H/F (H/F)",
+        "code_rome": "M1707",
+        "code_region": "11",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211LRHN",
+        "intitule": "Responsable Développement Commercial & Marketing F/H (H/F)",
+        "code_rome": "M1707",
+        "code_region": "11",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211LQDX",
+        "intitule": "Alternant Business Manager (H/F)",
+        "code_rome": "M1707",
+        "code_region": "11",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211LQCG",
+        "intitule": "Chargé de développement administratif et commercial (H/F)",
+        "code_rome": "M1707",
+        "code_region": "76",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 29,
+          "intitule_certification": "Manager de Projet Web Digital",
+          "code_rncp": 40150,
+          "code_region": "76"
+        },
+        {
+          "id_formation": 49,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "76"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211LKQC",
+        "intitule": "Business developer (H/F)",
+        "code_rome": "M1707",
+        "code_region": "11",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211LGSV",
+        "intitule": "Responsable commercial (F/H) (H/F)",
+        "code_rome": "M1707",
+        "code_region": "24",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 7,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211LFPR",
+        "intitule": "Responsable Commercial/e division Hôpitaux (H/F)",
+        "code_rome": "M1707",
+        "code_region": "28",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 7,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211LFGX",
+        "intitule": "Chargé de développement commercial travail à façon (H/F)",
+        "code_rome": "M1707",
+        "code_region": "75",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 7,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211LDLQ",
+        "intitule": "RESPONSABLE COMMERCIAL VEHICULES NEUFS H/F (H/F)",
+        "code_rome": "M1707",
+        "code_region": "28",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 7,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211JGRK",
+        "intitule": "Responsable développement / Business Developer",
+        "code_rome": "M1707",
+        "code_region": "32",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 40,
+          "intitule_certification": "Développeur Web",
+          "code_rncp": 37805,
+          "code_region": "32"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 7,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211KRBB",
+        "intitule": "Responsable Commercial H/F (H/F)",
+        "code_rome": "M1707",
+        "code_region": "84",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 34,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 41,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 44,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211KMKY",
+        "intitule": "Business developer (H/F)",
+        "code_rome": "M1707",
+        "code_region": "11",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211KKRJ",
+        "intitule": "Responsable du Développement Commercial France (H/F)",
+        "code_rome": "M1707",
+        "code_region": null,
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 7,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211KJHH",
+        "intitule": "Chef de Projet Développement F/H (H/F)",
+        "code_rome": "M1707",
+        "code_region": "11",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211KHZC",
+        "intitule": "Responsable commercial (H/F)",
+        "code_rome": "M1707",
+        "code_region": "32",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 40,
+          "intitule_certification": "Développeur Web",
+          "code_rncp": 37805,
+          "code_region": "32"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 7,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211KBRW",
+        "intitule": "Business Developer (H/F)",
+        "code_rome": "M1707",
+        "code_region": "84",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 34,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 41,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 44,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211KBQR",
+        "intitule": "Chargé(e) de Développement Commercial (H/F)",
+        "code_rome": "M1707",
+        "code_region": "11",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211KBLY",
+        "intitule": "Chargé(e) de Développement Commercia (H/F)",
+        "code_rome": "M1707",
+        "code_region": "11",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211JRQK",
+        "intitule": "Responsable Commercial (h/f) (H/F)",
+        "code_rome": "M1707",
+        "code_region": "52",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 7,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 11,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 22,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211JQHJ",
+        "intitule": "Distribution Sales Manager H/F (H/F)",
+        "code_rome": "M1707",
+        "code_region": "84",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 34,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 41,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 44,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 29,
+          "intitule_certification": "Manager de Projet Web Digital",
+          "code_rncp": 40150,
+          "code_region": "76"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211JQCN",
+        "intitule": "Sales Development Representative (H/F)",
+        "code_rome": "M1707",
+        "code_region": "11",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211JNTD",
+        "intitule": "Chargé de missions Business Development (H/F)",
+        "code_rome": "M1707",
+        "code_region": "44",
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 7,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "FT_211JMPP",
+        "intitule": "Business Development Manager France (H/F)",
+        "code_rome": "M1707",
+        "code_region": null,
+        "source": "france_travail"
+      },
+      "candidates": [
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 29,
+          "intitule_certification": "Manager de Projet Web Digital",
+          "code_rncp": 40150,
+          "code_region": "76"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_1",
+        "intitule": "Ingénieur Réseau et Infra Diffusion Vidéo",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_2",
+        "intitule": "Ingénieur de Production DevOps Mainframe",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 16,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 17,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 19,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 21,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 31,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 48,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_3",
+        "intitule": "Data Analyst (H/F)",
+        "code_rome": null,
+        "code_region": "32",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 20,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 40,
+          "intitule_certification": "Développeur Web",
+          "code_rncp": 37805,
+          "code_region": "32"
+        },
+        {
+          "id_formation": 13,
+          "intitule_certification": "Concepteur développeur en intelligence artificielle et analyse big data",
+          "code_rncp": 38616,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 23,
+          "intitule_certification": "Coordinateur de projets informatiques (infrastructures cloud, applicatives ou data)",
+          "code_rncp": 38478,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 36,
+          "intitule_certification": "Concepteur développeur en intelligence artificielle et analyse big data",
+          "code_rncp": 38616,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_4",
+        "intitule": "Business Analyst / Project Manager – Cash Management & Billing Banking",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 20,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_5",
+        "intitule": "Développeur Mobile Android KMP_Sénior à Annecy (ITAMSYS)",
+        "code_rome": null,
+        "code_region": "84",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 41,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 44,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 12,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 22,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 26,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_6",
+        "intitule": "Ingénieur Système & Réseaux (F/H)",
+        "code_rome": null,
+        "code_region": "75",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 16,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 17,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 19,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 21,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 31,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 34,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 48,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_7",
+        "intitule": "Data Analyst – Métrologie & Usages M365",
+        "code_rome": null,
+        "code_region": "24",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 20,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 13,
+          "intitule_certification": "Concepteur développeur en intelligence artificielle et analyse big data",
+          "code_rncp": 38616,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 23,
+          "intitule_certification": "Coordinateur de projets informatiques (infrastructures cloud, applicatives ou data)",
+          "code_rncp": 38478,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 36,
+          "intitule_certification": "Concepteur développeur en intelligence artificielle et analyse big data",
+          "code_rncp": 38616,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_8",
+        "intitule": "Consultant sécurité RGPD - Accompagnement IA et Cookies",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_9",
+        "intitule": "Ingénieur DevOps (H/F)",
+        "code_rome": null,
+        "code_region": "75",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 16,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 17,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 19,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 21,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 31,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 34,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 48,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_10",
+        "intitule": "Ingénieur Projet Infrastructure Systèmes & Réseaux (H/F)",
+        "code_rome": null,
+        "code_region": "76",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 29,
+          "intitule_certification": "Manager de Projet Web Digital",
+          "code_rncp": 40150,
+          "code_region": "76"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 24,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 33,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 37,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 49,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "76"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_11",
+        "intitule": "Technicien Support Helpdesk Front-Office (H/F)",
+        "code_rome": null,
+        "code_region": "76",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 38,
+          "intitule_certification": "Technicien informatique en installation, maintenance et support",
+          "code_rncp": 40357,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 29,
+          "intitule_certification": "Manager de Projet Web Digital",
+          "code_rncp": 40150,
+          "code_region": "76"
+        },
+        {
+          "id_formation": 49,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "76"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 24,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 33,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 37,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_12",
+        "intitule": "Technicien Support de Proximité (H/F)",
+        "code_rome": null,
+        "code_region": "75",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 38,
+          "intitule_certification": "Technicien informatique en installation, maintenance et support",
+          "code_rncp": 40357,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 24,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 33,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 37,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        },
+        {
+          "id_formation": 3,
+          "intitule_certification": "MASTER Réseaux et télécommunication (fiche nationale)",
+          "code_rncp": 38997,
+          "code_region": "84"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_13",
+        "intitule": "Responsable De Mise En Production applications",
+        "code_rome": null,
+        "code_region": "24",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 7,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 11,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "52"
+        },
+        {
+          "id_formation": 43,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 44,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "84"
+        },
+        {
+          "id_formation": 45,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 47,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "53"
+        },
+        {
+          "id_formation": 1,
+          "intitule_certification": "Manager de projets informatiques",
+          "code_rncp": 38905,
+          "code_region": "93"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_14",
+        "intitule": "IT Project Manager / Business Analyst FAH  - Paris",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 20,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_15",
+        "intitule": "Administrateur Systèmes & Réseaux (H/F)",
+        "code_rome": null,
+        "code_region": "75",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 24,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 33,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 37,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 2,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "75"
+        },
+        {
+          "id_formation": 16,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 17,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 19,
+          "intitule_certification": "TP Administrateur système DevOps",
+          "code_rncp": 36061,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_16",
+        "intitule": "Senior Product Manager – Produits Web & Mobile (H/F)",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 26,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 32,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 42,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 46,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 50,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 30,
+          "intitule_certification": "Développeur Web",
+          "code_rncp": 37805,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_17",
+        "intitule": "Chef de Projet IT – Niveau Senior",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_18",
+        "intitule": "Développeur Symfony Confirmé (H/F)",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 25,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 30,
+          "intitule_certification": "Développeur Web",
+          "code_rncp": 37805,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 26,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 32,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_19",
+        "intitule": "Directeur de Projet- pilotage mise en oeuvre d’une solution SI",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_20",
+        "intitule": "Chef de Projet Conformité LCB-FT",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_155",
+        "intitule": "Business Data Analyste bancaire - Règlementaire",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 20,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 23,
+          "intitule_certification": "Coordinateur de projets informatiques (infrastructures cloud, applicatives ou data)",
+          "code_rncp": 38478,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 36,
+          "intitule_certification": "Concepteur développeur en intelligence artificielle et analyse big data",
+          "code_rncp": 38616,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_21",
+        "intitule": "DBA ElasticSearch / Iceberg",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_22",
+        "intitule": "Chef de Projet Technique Senior (H/F)",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_23",
+        "intitule": "Ingénieur sécurité H/F",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    },
+    {
+      "offre": {
+        "id": "SC_24",
+        "intitule": "DBA SQL Server / Oracle / AWS",
+        "code_rome": null,
+        "code_region": "11",
+        "source": "scraping"
+      },
+      "candidates": [
+        {
+          "id_formation": 4,
+          "intitule_certification": "Data analyst",
+          "code_rncp": 37837,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 5,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 6,
+          "intitule_certification": "Manager de projet intelligence artificielle",
+          "code_rncp": 39376,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 8,
+          "intitule_certification": "TP Concepteur développeur d'applications",
+          "code_rncp": 37873,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 9,
+          "intitule_certification": "Manager en infrastructures et cybersécurité des systèmes d'information",
+          "code_rncp": 38779,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 10,
+          "intitule_certification": "TP Développeur web et web mobile",
+          "code_rncp": 37674,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 14,
+          "intitule_certification": "Développeur informatique",
+          "code_rncp": 38145,
+          "code_region": "11"
+        },
+        {
+          "id_formation": 15,
+          "intitule_certification": "TP Technicien supérieur systèmes et réseaux",
+          "code_rncp": 37682,
+          "code_region": "11"
+        }
+      ]
+    }
+  ]
+}
