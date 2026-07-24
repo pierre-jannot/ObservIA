@@ -1,7 +1,6 @@
 import os
 import requests
 import time
-import psycopg2
 from dotenv import load_dotenv
 from utils.regex import extract_duration_months
 from transformers.locations import code_from_code

@@ -1,8 +1,10 @@
 """Repository pour le modèle Skill."""
 
+import pandas as pd
+from sqlalchemy import select, func
 from sqlalchemy.dialects.postgresql import insert
 from db.session import SessionLocal
-from db.models import Skill
+from db.models import Skill, OfferSkill
 
 
 def insert_skill_dict(skill: dict) -> None:
@@ -33,3 +35,41 @@ def get_skill(
         query = query.filter(Skill.name == name)
 
     return query.all()
+
+def get_all_skills():
+    with SessionLocal() as db:
+        stmt = (
+            select(Skill.name)
+        )
+
+        return pd.DataFrame(db.execute(stmt).mappings().all())
+
+def get_all_freework_skills():
+    with SessionLocal() as db:
+        stmt = (
+            select(Skill.name)
+            .where(Skill.source == "Freework")
+        )
+
+        return pd.DataFrame(db.execute(stmt).mappings().all())
+
+def get_all_france_travail_skills():
+    with SessionLocal() as db:
+        stmt = (
+            select(Skill.name)
+            .where(Skill.source == "FranceTravail")
+        )
+
+        return pd.DataFrame(db.execute(stmt).mappings().all())
+
+def get_top_skills(source: str):
+    stmt = (
+        select(
+            OfferSkill.id_offer,
+            Skill.name
+        )
+        .join(OfferSkill.skill)
+        .where(Skill.source == source)
+    )
+    with SessionLocal() as db:
+        return pd.DataFrame(db.execute(stmt).mappings().all())

@@ -67,4 +67,10 @@ def get_all_freework_offers() -> pd.DataFrame:
         stmt = select(*Offer.__table__.columns).where(Offer.source == "Freework")
         result = db.execute(stmt).mappings().all()
         return pd.DataFrame(result)
-    
+
+def get_all_france_travail_offers() -> pd.DataFrame:
+    """Récupère toutes les formations."""
+    with SessionLocal() as db:
+        stmt = select(*Offer.__table__.columns).where(Offer.source == "FranceTravail")
+        result = db.execute(stmt).mappings().all()
+        return pd.DataFrame(result)
