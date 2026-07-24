@@ -2,9 +2,11 @@
 Routes d'affichage des données de formation.
 """
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, HTTPException
 from utils.compute_dataframe import get_filtered_values
-from db.repositories.formation_repository import get_all_formations
+from db.repositories.formation_repository import get_all_formations, get_formations_by_rncp
+from db.repositories.rome_rncp_repository import get_rncp_from_rome
+from db.repositories.offers_repository import get_offer_rome
 from transformers.formations import add_zone_column
 from indicators.formations import column_per_quarter
 
@@ -66,3 +68,22 @@ def get_formation_exit_per_quarter(
         dataframe = get_filtered_values(dataframe, "id_region", id_region)
     result = column_per_quarter(dataframe, "exits_full")
     return {"result": result}
+
+@router.get("/offers/{id_offer}/formations")
+def get_formations_for_offer(id_offer: str):
+
+    code_rome = get_offer_rome(id_offer)
+
+    if code_rome is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Offre introuvable"
+        )
+
+    rncp_codes = get_rncp_from_rome(code_rome)
+
+    formations = get_formations_by_rncp(rncp_codes)
+
+    return {
+        "result": formations.to_dict(orient="records")
+    }

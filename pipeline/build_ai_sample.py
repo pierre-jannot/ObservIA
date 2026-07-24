@@ -120,6 +120,8 @@ def build_sample():
         formations_df["title"].str.strip()
     )
 
+    formations_df = formations_df.rename(columns={"title": "titre"})
+
     formations_df["code_rncp"] = (
         formations_df["code_rncp"].astype(str).str.strip()
     )

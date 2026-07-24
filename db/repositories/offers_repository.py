@@ -95,3 +95,15 @@ def get_random_offers(limit: int, source: str) -> pd.DataFrame:
         )
 
         return pd.DataFrame(db.execute(stmt).mappings().all())
+
+def get_offer_rome(id_offer: str) -> pd.DataFrame:
+    with SessionLocal() as db:
+        stmt = (
+            select(Offer.rome_code)
+            .where(
+                Offer.id_offer == id_offer,
+                Offer.source == "FranceTravail",
+            )
+        )
+
+        return db.execute(stmt).scalar_one_or_none()

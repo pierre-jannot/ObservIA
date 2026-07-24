@@ -2,6 +2,7 @@
 
 import pandas as pd
 
+from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 
 from db.session import SessionLocal
@@ -30,3 +31,14 @@ def get_rome_rncp(
         query = query.filter(RomeRncp.code_rncp == code_rncp)
 
     return query.all()
+
+def get_rncp_from_rome(code_rome: str) -> list[str]:
+    """Retourne tous les codes RNCP associés à un code ROME."""
+
+    with SessionLocal() as db:
+        stmt = (
+            select(RomeRncp.code_rncp)
+            .where(RomeRncp.code_rome == code_rome)
+        )
+
+        return db.execute(stmt).scalars().all()

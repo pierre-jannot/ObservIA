@@ -38,20 +38,20 @@ def get_formation(
     with SessionLocal() as db:
         query = db.query(Formation)
 
-    if formation_id is not None:
-        query = query.filter(Formation.id == formation_id)
-    if id_siret is not None:
-        query = query.filter(Formation.id_siret == id_siret)
-    if code_rncp is not None:
-        query = query.filter(Formation.code_rncp == code_rncp)
-    if title is not None:
-        query = query.filter(Formation.title == title)
-    if year_month is not None:
-        query = query.filter(Formation.year_month == year_month)
-    if region is not None:
-        query = query.filter(Formation.region == region)
+        if formation_id is not None:
+            query = query.filter(Formation.id == formation_id)
+        if id_siret is not None:
+            query = query.filter(Formation.id_siret == id_siret)
+        if code_rncp is not None:
+            query = query.filter(Formation.code_rncp == code_rncp)
+        if title is not None:
+            query = query.filter(Formation.title == title)
+        if year_month is not None:
+            query = query.filter(Formation.year_month == year_month)
+        if region is not None:
+            query = query.filter(Formation.region == region)
 
-    return query.all()
+        return query.all()
 
 def get_all_formations() -> pd.DataFrame:
     """Récupère toutes les formations."""
@@ -82,6 +82,20 @@ def get_unique_formations() -> pd.DataFrame:
                 Formation.code_rncp,
                 func.length(Formation.title).desc(),
             )
+        )
+
+        return pd.DataFrame(db.execute(stmt).mappings().all())
+
+def get_formations_by_rncp(codes_rncp: list[str]) -> pd.DataFrame:
+    """Retourne les formations correspondant aux codes RNCP."""
+
+    if not codes_rncp:
+        return pd.DataFrame()
+
+    with SessionLocal() as db:
+        stmt = (
+            select(*Formation.__table__.columns)
+            .where(Formation.code_rncp.in_(codes_rncp))
         )
 
         return pd.DataFrame(db.execute(stmt).mappings().all())
