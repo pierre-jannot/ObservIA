@@ -59,3 +59,29 @@ def get_all_formations() -> pd.DataFrame:
         stmt = select(*Formation.__table__.columns)
         result = db.execute(stmt).mappings().all()
         return pd.DataFrame(result)
+
+from sqlalchemy import select, func, String
+import pandas as pd
+
+def get_unique_formations() -> pd.DataFrame:
+    with SessionLocal() as db:
+        stmt = (
+            select(
+                Formation.id,
+                Formation.title,
+                Formation.code_rncp,
+            )
+            .where(
+                Formation.title.is_not(None),
+                func.trim(Formation.title) != "",
+                Formation.code_rncp.is_not(None),
+                func.trim(Formation.code_rncp.cast(String)) != "",
+            )
+            .distinct(Formation.code_rncp)
+            .order_by(
+                Formation.code_rncp,
+                func.length(Formation.title).desc(),
+            )
+        )
+
+        return pd.DataFrame(db.execute(stmt).mappings().all())

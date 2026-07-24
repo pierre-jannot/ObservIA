@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-from sqlalchemy import select
+from sqlalchemy import select, func
 from sqlalchemy.dialects.postgresql import insert
 
 from db.session import SessionLocal
@@ -74,3 +74,24 @@ def get_all_france_travail_offers() -> pd.DataFrame:
         stmt = select(*Offer.__table__.columns).where(Offer.source == "FranceTravail")
         result = db.execute(stmt).mappings().all()
         return pd.DataFrame(result)
+
+def get_random_offers(limit: int, source: str) -> pd.DataFrame:
+    with SessionLocal() as db:
+        stmt = (
+            select(
+                Offer.id_offer,
+                Offer.title,
+                Offer.description,
+                Offer.id_region,
+                Offer.rome_code,
+            )
+            .where(
+                Offer.title.is_not(None),
+                func.trim(Offer.title) != "",
+                Offer.source == source,
+            )
+            .order_by(func.random())
+            .limit(limit)
+        )
+
+        return pd.DataFrame(db.execute(stmt).mappings().all())
