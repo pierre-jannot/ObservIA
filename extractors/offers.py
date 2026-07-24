@@ -11,7 +11,7 @@ import pandas as pd
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from utils.compute_dataframe import load_csv_to_df
-from transformers.get_region import get_region
+from transformers.locations import get_region
 
 load_dotenv()
 

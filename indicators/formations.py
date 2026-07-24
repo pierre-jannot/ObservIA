@@ -15,7 +15,7 @@ def column_per_quarter(dataframe, column):
     Returns:
         result : dict - Quantité par trimestre des valeurs uniques de la colonne choisie
     """
-    dataframe = get_quarter_values(dataframe, "annee_mois")
+    dataframe = get_quarter_values(dataframe, "year_month")
     dataframe = sum_values(dataframe, column, "quarter")
     result = [
         {"trimestre": str(index), f"nombre_{column}": int(value)}

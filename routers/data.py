@@ -6,6 +6,7 @@ from fastapi import APIRouter
 
 from pipeline.compute_freework_offers import compute_freework_offers
 from pipeline.compute_formations import compute_all
+from import_bdd.api_FranceTravail_to_BDD import compute_france_travail_offers
 
 router = APIRouter()
 
@@ -21,5 +22,14 @@ def init():
         json - result : résultat de l'opération
     """
     compute_all()
-    compute_freework_offers()
     return {"result": "Initialisation effectuée avec succès."}
+
+@router.post("/get-freework-offers")
+def get_freework_offers():
+    compute_freework_offers()
+    return {"result": "Offres Freework récupérées."}
+
+@router.post("/get-france-travail-offers")
+def get_france_travail_offers():
+    compute_france_travail_offers()
+    return {"result": "Offres France Travail récupérées"}

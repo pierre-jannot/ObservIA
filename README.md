@@ -28,8 +28,11 @@ uvicorn main:app --reload --port 8000
 ### Exécution depuis Docker
 Dans le dossier du projet, au même niveau que le Dockerfile, exécuter
 ```bash
-docker compose up --build
+docker compose pull
+docker compose up
 ```
+
+Le docker compose pull permet de récupérer l'image présente sur GHCR (dernière version du main) et le docker compose up permet de créer et lancer le conteneur.
 
 ## Données formations.csv
 Colonnes :

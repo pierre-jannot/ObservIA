@@ -3,11 +3,33 @@ services:
     image: ghcr.io/pierre-jannot/observia:latest
     ports:
       - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://observia:observia@db:5432/observia
+    depends_on:
+      db:
+        condition: service_healthy
     env_file:
       - .env
     volumes:
       - result_data:/app/result
       - ./data:/app/data
 
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: observia
+      POSTGRES_PASSWORD: observia
+      POSTGRES_DB: observia
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U observia"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
 volumes:
   result_data:
+  db_data:

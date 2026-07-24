@@ -5,8 +5,8 @@ Routes d'affichage des offres Freework.
 from fastapi import APIRouter, Query
 
 from utils.compute_dataframe import get_filtered_values, get_quarter_values, count_unique_values
-from extractors.offers import load_freework_offers
-from extractors.location import load_locations
+from db.repositories.offers_repository import get_all_freework_offers
+from transformers.locations import get_location_correspondance
 
 router = APIRouter()
 
@@ -21,14 +21,14 @@ def get_all(limit: int = Query(50, le=500, description="Nombre max de résultats
     Returns:
         json - { result : nombre d'offres Freework }
     """
-    dataframe = load_freework_offers()
+    dataframe = get_all_freework_offers()
     dataframe = dataframe.fillna("")
     dataframe = dataframe.head(limit)
     return {"result": dataframe.to_dict(orient="records")}
 
 @router.get("/offers-per-quarter")
 def get_offers_per_quarter(
-    zone: list[str] | None = Query(None)
+    id_region: list[str] | None = Query(None)
 ):
     """
     Retourne le nombre d'offres Freework par trimestre.
@@ -40,10 +40,10 @@ def get_offers_per_quarter(
     Returns:
         json - { result : nombre d'offres Freework par trimestre }
     """
-    dataframe = load_freework_offers()
-    if zone:
-        dataframe = get_filtered_values(dataframe, "location", zone)
-    dataframe = get_quarter_values(dataframe, "publication_date")
+    dataframe = get_all_freework_offers()
+    if id_region:
+        dataframe = get_filtered_values(dataframe, "id_region", id_region)
+    dataframe = get_quarter_values(dataframe, "pub_date")
     dataframe = count_unique_values(dataframe, "quarter")
     result = [
     {"trimestre": str(index), "nombre_offres_freework": int(value)}
@@ -62,10 +62,8 @@ def get_offers_per_region():
     Returns:
         json - { result : nombre d'offres Freework par région }
     """
-    dataframe = load_freework_offers()
-    locations = load_locations()
-    correspondance = dict(zip(locations["nom_departement"], locations["nom_region"]))
-    dataframe["location"] = dataframe["location"].map(correspondance).fillna(dataframe["location"])
+    dataframe = get_all_freework_offers()
+    dataframe = get_location_correspondance(dataframe)
     dataframe = count_unique_values(dataframe, "location")
     result = [
     {"région": index, "nombre_offres_freework": int(value)}
@@ -74,8 +72,8 @@ def get_offers_per_region():
     return {"result": result}
 
 
-@router.get("/offers-per-region/{region}")
-def get_offers_per_chosen_region(region: str):
+@router.get("/offers-per-region/{id_region}")
+def get_offers_per_chosen_region(id_region: str):
     """
     Retourne le nombre d'offres Freework par région.
     Peut être filtré par un argument donnant une zone géographique.
@@ -86,12 +84,10 @@ def get_offers_per_chosen_region(region: str):
     Returns:
         json - { result : nombre d'offres Freework par région }
     """
-    dataframe = load_freework_offers()
-    departments = load_locations()
-    correspondance = dict(zip(departments["nom_departement"], departments["nom_region"]))
-    dataframe["region"] = dataframe["location"].map(correspondance).fillna(dataframe["location"])
-    dataframe = get_filtered_values(dataframe, "region", [region])
-    dataframe = count_unique_values(dataframe, "region")
+    dataframe = get_all_freework_offers()
+    dataframe = get_filtered_values(dataframe, "id_region", [id_region])
+    dataframe = get_location_correspondance(dataframe)
+    dataframe = count_unique_values(dataframe, "location")
     result = [
     {"région": index, "nombre_offres_freework": int(value)}
     for index, value in dataframe.sort_values(ascending=False).items()

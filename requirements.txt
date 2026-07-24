@@ -9,3 +9,5 @@ psycopg2-binary
 uvicorn
 uvicorn[standard]
 pytest
+psycopg[binary]
+alembic

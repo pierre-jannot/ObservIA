@@ -2,11 +2,20 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 from routers import formations, freework, francetravail, data
+from contextlib import asynccontextmanager
+from db.create_database import create_database
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Initialise la base de données au démarrage de l'API."""
+    create_database()
+    yield
 
 app = FastAPI(
     title="Tensions formations et offres d'emploi Tech IA",
     description="API d'indicateurs de tension recrutement Tech/IA",
-    version="0.1.0"
+    version="0.1.0",
+    lifespan=lifespan
 )
 
 app.add_middleware(
